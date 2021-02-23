@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom'
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const Login = () => {
 
@@ -23,7 +24,7 @@ const Login = () => {
         e.preventDefault()
 
         // Validar que no haya campos vacios
-
+        
 
         // Pasarlo al action
     }
@@ -67,7 +68,9 @@ const Login = () => {
                         />
                     </div>
                 </form>
-                <Link to={'nueva-cuenta'} className='enlace-cuenta'>Obtener Cuenta</Link>
+                
+                <Link to={'/nueva-cuenta'} className='enlace-cuenta'>Crear cuenta</Link>
+                              
             </div>
         </div>
      );
