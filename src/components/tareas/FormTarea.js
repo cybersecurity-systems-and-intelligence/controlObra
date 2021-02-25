@@ -21,6 +21,7 @@ const FormTarea = () => {
                         placeholder='Nombre Tarea...'
                         name='nombre'
                     />
+                    
                 </div>
                 <div className='contenedor-input'>
                     <input
