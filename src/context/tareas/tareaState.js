@@ -8,7 +8,10 @@ import {
     AGREGAR_TAREA,
     VALIDAR_TAREA,
     ELIMINAR_TAREA,
-    ESTADO_TAREA
+    ESTADO_TAREA,
+    TAREA_ACTUAL,
+    ACTUALIZAR_TAREA,
+    LIMPIAR_TAREA
 } from '../../types'
 
 const TareaState = props => {
@@ -30,7 +33,8 @@ const TareaState = props => {
             { id: 13, proyectoId: 3, nombre: 'Elegir Hosting', estado: true },
         ],
         tareasproyecto: null,
-        errortarea: false
+        errortarea: false,
+        tareaseleccionada: null
     }
 
     // Crear dispatch y state
@@ -70,12 +74,34 @@ const TareaState = props => {
         })
     }
 
-    // Cambia el estado de cada tarea
+    // Cambiar el estado de cada tarea
     const cambiarEstadoTarea = tarea => {
-        console.log('fff');
         dispatch({
             type: ESTADO_TAREA,
             payload: tarea
+        })
+    }
+
+    // Extrae una tarea para su edicion
+    const guardarTareaActual = tarea => {
+        dispatch({
+            type: TAREA_ACTUAL,
+            payload: tarea
+        })
+    }
+
+    // Actualizar tarea
+    const actualizarTarea = tarea => {
+        dispatch({
+            type: ACTUALIZAR_TAREA,
+            payload: tarea
+        })
+    }
+
+    // Elimina tarea seleccionada
+    const limpiarTarea = () => {
+        dispatch({
+            type: LIMPIAR_TAREA
         })
     }
 
@@ -85,11 +111,15 @@ const TareaState = props => {
                 tareas: state.tareas,
                 tareasproyecto: state.tareasproyecto,
                 errortarea: state.errortarea,
+                tareaseleccionada: state.tareaseleccionada,
                 obtenerTareas,
                 agregarTarea,
                 validarTarea,
                 eliminarTarea,
-                cambiarEstadoTarea
+                cambiarEstadoTarea,
+                guardarTareaActual,
+                actualizarTarea,
+                limpiarTarea
             }}
         >
             { props.children }
