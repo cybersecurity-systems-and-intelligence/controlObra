@@ -10,7 +10,7 @@ const Tarea = ({ tarea }) => {
 
     // Obtener la funcion del context de tarea
     const tareasContext = useContext(tareaContext)
-    const { eliminarTarea, obtenerTareas } = tareasContext
+    const { eliminarTarea, obtenerTareas, cambiarEstadoTarea } = tareasContext
 
 
     // Extraer el prouyecto
@@ -20,6 +20,11 @@ const Tarea = ({ tarea }) => {
     const handleEliminar = () => {
         eliminarTarea(tarea.id)
         obtenerTareas(proyectoActual.id)
+    }
+
+    const handleEstado = () => {
+        console.log('ddd');
+       
     }
 
     return (
@@ -34,7 +39,8 @@ const Tarea = ({ tarea }) => {
                         <button
                             type='button'
                             className='completo'
-                        >Completo</button>
+                            onClick={() => console.log('jp;a')}
+                        >Completos</button>
                     )
                     :
                     (
@@ -49,7 +55,7 @@ const Tarea = ({ tarea }) => {
             <div className='acciones'>
                 <button
                     type='button'
-                    className='btn btn-primario'                    
+                    className='btn btn-primario'                  
                 >Editar</button>
 
                 <button
