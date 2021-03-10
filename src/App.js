@@ -10,7 +10,7 @@ import tokenAuth from './config/token'
 import RutaPrivada from './components/rutas/RutaPrivada'
 
 // Revisar si tenemos un token
-const token = localStorage.getItem('token')
+const token = localStorage.getItem('accessToken')
 if ( token ) {
   tokenAuth(token)  
 }
@@ -25,7 +25,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={Login}/>
             <Route  path='/nueva-cuenta' component={NuevaCuenta}/>
-            <RutaPrivada path='/modulos' component={Modulos}/>          
+            <Route path='/modulos' component={Modulos}/>          
           </Switch>
         </Router>
       </AuthState>

@@ -37,17 +37,17 @@ const Proyectos = () => {
 
     // se autentica el usuario
     useEffect(() => {
-        usuarioAutenticado()
+        //usuarioAutenticado()
     }, [])
     
     // arreglo de los documentos con la informaicon de los modulos
     const rows = [
-        { folioObra: '1', nombre: 'COMPRAS' },
-        { folioObra: '2', nombre: 'CONTROL DE OBRA' },
-        { folioObra: '3', nombre: 'CONTABILIDAD' },
-        { folioObra: '4', nombre: 'INVENTARIOS' },
-        { folioObra: '4', nombre: 'DASHBOARD' },
-        { folioObra: '4', nombre: 'NOTIFY CENTER' },
+        { id: '1', nombre: 'COMPRAS' },
+        { id: '2', nombre: 'CONTROL DE OBRA' },
+        { id: '3', nombre: 'CONTABILIDAD' },
+        { id: '4', nombre: 'INVENTARIOS' },
+        { id: '5', nombre: 'DASHBOARD' },
+        { id: '6', nombre: 'NOTIFY CENTER' },
     ]
 
     return (
@@ -67,7 +67,7 @@ const Proyectos = () => {
                 <main>
                     <Grid container spacing={2}>
                         {rows.map((row) => (
-                        <Grid item key={row.folioCotizacion} xs={12} sm={6} md={4}>
+                        <Grid item key={row.id} xs={12} sm={6} md={4}>
                             <Card className={classes.card}>
                                 <CardActionArea>
                                     <CardMedia

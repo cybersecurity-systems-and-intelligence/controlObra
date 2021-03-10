@@ -46,12 +46,12 @@ const Login = props => {
 
     // State para iniciar sesion
     const [ usuario, guardarUsuario ] = useState({
-        email: '',
+        correo: '',
         password: ''
     })
 
     // se extrae la informacion del state del usuario
-    const { email, password } = usuario
+    const { correo, password } = usuario
 
     // En caso de que el password o usuario sean incorrectos
     useEffect(() => {
@@ -78,7 +78,7 @@ const Login = props => {
         e.preventDefault()
 
         // Validar que no haya campos vacios
-        if ( email.trim() === '' || password.trim() === ''){
+        if ( correo.trim() === '' || password.trim() === ''){
             mostrarAlerta('Todos los campos son obligatorios', 'alerta-error')
             return
         }
@@ -111,12 +111,12 @@ const Login = props => {
                             margin="normal"
                             required
                             fullWidth
-                            id="email"
+                            id="correo"
                             label="Correo:"
-                            name="email"
-                            autoComplete="email"
+                            name="correo"
+                            autoComplete="correo"
                             autoFocus
-                            value={email}
+                            value={correo}
                             onChange={handleChange}
                         />                
                         <TextField

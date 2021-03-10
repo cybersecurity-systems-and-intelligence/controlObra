@@ -4,6 +4,7 @@ import authContext from './authContext'
 import authReducer from './authReducer'
 
 import clienteAxios from '../../config/axios'
+import api from '../../libs/api'
 import tokenAuth from '../../config/token'
 
 import {
@@ -18,7 +19,7 @@ import {
 const AuthState = props => {
     
     const initialState = {
-        token: localStorage.getItem('token'),
+        token: localStorage.getItem('accessToken'),
         autenticado: null,
         usuario: null,
         mensaje: null,
@@ -38,7 +39,7 @@ const AuthState = props => {
             })
 
             // Obtener el usuario
-            usuarioAutenticado()
+            //usuarioAutenticado()
 
         } catch (error) {
             //console.log(error.response.data.msg)
@@ -56,7 +57,7 @@ const AuthState = props => {
     }
     // Retornar el usuario autenticado
     const usuarioAutenticado = async () => {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem('accessToken')
 
         if(token) {
             // TODO: Funcion para enviar el token por headers
@@ -82,22 +83,24 @@ const AuthState = props => {
     // Cuando el usuario inicia sesion 
     const iniciarSesion = async datos => {
         try{
-            const respuesta = await clienteAxios.post('/auth', datos)
+    
+            const respuesta = await api.login(datos)
 
             console.log(respuesta);
+
             dispatch({
                 type: LOGIN_EXITOSO,
                 payload: respuesta.data
             })
 
-             // Obtener el usuario
-             usuarioAutenticado()
+            // Obtener el usuario
+            //usuarioAutenticado()
 
         } catch (error) {
-            console.log(error.response)
+            console.log(error)
 
             const alerta = {
-                msg: error.response.data.msg,
+                msg: 'Correo o cotrase;a incorrectos',
                 categoria: 'alerta-error'
             }
 
