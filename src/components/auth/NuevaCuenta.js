@@ -1,7 +1,29 @@
-import React, {useState} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
-const NuevaCuenta = () => {
+import alertaContext from '../../context/alertas/alertaContext'
+import authContext from '../../context/autenticacion/authContext'
+
+const NuevaCuenta = (props) => {
+
+    // Extraer los valores del context
+    const alertasContext = useContext(alertaContext)
+    const { alerta, mostrarAlerta } = alertasContext
+
+    const authsContext = useContext(authContext)
+    const { mensaje, autenticado, registrarUsuario } = authsContext
+
+    // En caso de que el usuario se haya autenticado o registrado o sea un registro duplicado
+    useEffect(() => {
+        if(autenticado){
+            props.history.push('/proyectos')
+        }
+
+        if(mensaje){
+            mostrarAlerta(mensaje.msg, mensaje.categoria)     
+        }
+
+    }, [mensaje, autenticado, props.history])
 
     // State para iniciar sesion
     const [ usuario, guardarUsuario ] = useState({
@@ -25,17 +47,34 @@ const NuevaCuenta = () => {
         e.preventDefault()
 
         // Validar que no haya campos vacios
+        if(nombre.trim() === '' || email.trim() === '' || password.trim() === '' || confirmar.trim() === '') {
+            mostrarAlerta('Todos los campos son obligatorios', 'alerta-error')            
+        }
 
         // Password minimo de 6 caracteres
+        if (password.length < 6) {
+            mostrarAlerta('El password debe ser de al menos 6 caracteres', 'alerta-error')
+            return
+        }
 
         // Los 2 password son iguales
+        if (password !== confirmar) {
+            mostrarAlerta('Las passwords no son iguales', 'alerta-error')
+            return
+        }
 
         // Pasarlo al action
+        registrarUsuario({
+            nombre,
+            email,
+            password,
+        })
     }
 
 
     return ( 
         <div className='form-usuario'>
+            { alerta ? ( <div className={`alerta ${alerta.categoria}`}>{ alerta.msg }</div> ) : null }
             <div className='contenedor-form sombra-dark'>
                 <h1>Obtener una cuenta</h1>
                 
