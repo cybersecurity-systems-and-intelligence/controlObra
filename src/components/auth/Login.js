@@ -1,10 +1,41 @@
+// se importan las librerias
 import React, { useState, useContext, useEffect } from 'react';
+import {
+    createMuiTheme,
+    Grid,
+    Typography,
+    Container,
+    Button,
+    CssBaseline,
+    TextField
+} from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/styles';
 import { Link } from 'react-router-dom'
 
+// se importan los context
 import alertaContext from '../../context/alertas/alertaContext'
 import authContext from '../../context/autenticacion/authContext'
 
+// se importan las imagenes o archivos
+import imagenes from '../../asets/img/imagenes';
+
+// se importan los estilos
+import { styleLogin } from '../../styles/styles'
+
+// se crea el tema
+const theme = createMuiTheme({
+    palette: {
+      secondary: {
+        main: '#b3d233',
+      },
+    },
+});
+
+// se crea el componente
 const Login = props => {
+
+    // Se importa el estilo del login
+    const classes = styleLogin();
 
     // Extraer los valores del context
     const alertasContext = useContext(alertaContext)
@@ -19,12 +50,13 @@ const Login = props => {
         password: ''
     })
 
+    // se extrae la informacion del state del usuario
     const { email, password } = usuario
 
     // En caso de que el password o usuario sean incorrectos
     useEffect(() => {
         if(autenticado){
-            props.history.push('/proyectos')
+            props.history.push('/modulos')
         }
 
         if(mensaje){
@@ -33,7 +65,7 @@ const Login = props => {
 
     }, [mensaje, autenticado, props.history])
 
-
+    // Se guardan los datos que se escriban en los input
     const handleChange = e => {
         guardarUsuario({
             ...usuario,
@@ -57,49 +89,71 @@ const Login = props => {
 
 
     return ( 
-        <div className='form-usuario'>
+        <Container component="main" maxWidth="xs">
             { alerta ? ( <div className={`alerta ${alerta.categoria}`}>{ alerta.msg }</div> ) : null }
-            <div className='contenedor-form sombra-dark'>
-                <h1>Iniciar Sesión</h1>
-                
-                <form
-                    onSubmit={handleSubmit}
+            <CssBaseline />
+            <div className={classes.paper}>
+                <div>
+                    <img style={{width: 200}} src={imagenes.imgjpg} alt='PALA' />
+                </div>
+                <Typography component="h1" variant="h5" className={classes.letra}>
+                    INICIA SESIÓN
+                    <hr className={classes.hr}/>
+                </Typography>
+                <form 
+                    className={classes.form} noValidate
+                    onSubmit={handleSubmit}   
                 >
-                    <div className='campo-form'>
-                        <label htmlFor='email'>Email:</label>
-                        <input
-                            type='email'
-                            id='email'
-                            name='email'
-                            placeholder='Tu Email'
+                    <ThemeProvider theme={theme}>
+                        <TextField
+                            color="secondary"
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Correo:"
+                            name="email"
+                            autoComplete="email"
+                            autoFocus
                             value={email}
                             onChange={handleChange}
-                        />
-                    </div>
-                    <div className='campo-form'>
-                        <label htmlFor='password'>Password:</label>
-                        <input
-                            type='password'
-                            id='password'
-                            name='password'
-                            placeholder='Tu Password'
+                        />                
+                        <TextField
+                            color="secondary"
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Contraseña:"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
                             value={password}
                             onChange={handleChange}
-                        />
-                    </div>
-                    <div className='campo-form'>
-                        <input
-                            type='submit'
-                            className='btn btn-primario btn-block'
-                            value='Iniciar Sesion'
-                        />
-                    </div>
+                        />     
+                    </ThemeProvider>           
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        className={classes.submit}
+                    >
+                        Ingresar
+                    </Button>                
+                    <Grid container>
+                        <Grid item>
+                            {/* <Link href="#" variant="body2" onClick={registarse}>
+                                {"Registrate"}
+                            </Link> */}
+                            <Link to={'/nueva-cuenta'} className='enlace-cuenta'>Crear cuenta</Link>
+                        </Grid>
+                    </Grid>
                 </form>
-                
-                <Link to={'/nueva-cuenta'} className='enlace-cuenta'>Crear cuenta</Link>
-                              
             </div>
-        </div>
+        </Container>
+        
      );
 }
  

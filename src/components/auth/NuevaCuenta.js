@@ -16,7 +16,7 @@ const NuevaCuenta = (props) => {
     // En caso de que el usuario se haya autenticado o registrado o sea un registro duplicado
     useEffect(() => {
         if(autenticado){
-            props.history.push('/proyectos')
+            props.history.push('/modulos')
         }
 
         if(mensaje){

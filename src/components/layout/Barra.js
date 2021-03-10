@@ -1,11 +1,16 @@
-import React, { useContext, useEffect } from 'react';
+// se importan las librerias
+import React, { useContext } from 'react';
+
+// se importan los context
 import authContext from '../../context/autenticacion/authContext'
 
+// se crea el componente
 const Barra = () => {
 
     // Extraer la informacion de autenticacion
     const authsContext = useContext(authContext)
     const { usuario, cerrarSesion } = authsContext    
+    
 
     return (
         <header className='app-header'>

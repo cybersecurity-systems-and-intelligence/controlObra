@@ -2,10 +2,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Login from './components/auth/Login'
 import NuevaCuenta from './components/auth/NuevaCuenta'
-import Proyectos from './components/proyectos/Proyectos'
+import Modulos from './components/rutas/Modulos'
 
-import ProyectoState from './context/proyectos/proyectoState'
-import TareaState from './context/tareas/tareaState'
 import AlertaState from './context/alertas/alertaState'
 import AuthState from './context/autenticacion/authState'
 import tokenAuth from './config/token'
@@ -21,21 +19,17 @@ if ( token ) {
 function App() {
 
   return (
-    <ProyectoState>
-      <TareaState>
-        <AlertaState>
-          <AuthState>
-            <Router>
-              <Switch>
-                <Route exact path='/' component={Login}/>
-                <Route  path='/nueva-cuenta' component={NuevaCuenta}/>
-                <RutaPrivada  path='/proyectos' component={Proyectos}/>          
-              </Switch>
-            </Router>
-          </AuthState>
-        </AlertaState>
-      </TareaState>
-    </ProyectoState>
+    <AlertaState>
+      <AuthState>
+        <Router>
+          <Switch>
+            <Route exact path='/' component={Login}/>
+            <Route  path='/nueva-cuenta' component={NuevaCuenta}/>
+            <RutaPrivada path='/modulos' component={Modulos}/>          
+          </Switch>
+        </Router>
+      </AuthState>
+    </AlertaState>
   );
 }
 
