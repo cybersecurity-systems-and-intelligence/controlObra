@@ -57,7 +57,6 @@ const Proyectos = (props) => {
 
     // Seleccion del modulo a ingresar
     const selectModule = e => {
-        alert(e.target.id);
         props.history.push('/compras')
     }
 

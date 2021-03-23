@@ -47,9 +47,7 @@ export default function Compras() {
             className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
           >
             <Menu />
-          </IconButton>
-        
-          
+          </IconButton>                  
         </Toolbar>
       </AppBar>
       <Drawer
