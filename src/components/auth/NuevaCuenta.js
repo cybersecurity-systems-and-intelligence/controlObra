@@ -1,9 +1,12 @@
+// se importan las librerias
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
+// se importan los context
 import alertaContext from '../../context/alertas/alertaContext'
 import authContext from '../../context/autenticacion/authContext'
 
+// se crea el componente
 const NuevaCuenta = (props) => {
 
     // Extraer los valores del context

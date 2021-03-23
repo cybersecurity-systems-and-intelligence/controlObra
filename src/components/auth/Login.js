@@ -58,11 +58,10 @@ const Login = props => {
         if(autenticado){
             props.history.push('/modulos')
         }
-
+        
         if(mensaje){
             mostrarAlerta(mensaje.msg, mensaje.categoria)     
         }
-
     }, [mensaje, autenticado, props.history])
 
     // Se guardan los datos que se escriban en los input
@@ -90,7 +89,7 @@ const Login = props => {
 
     return ( 
         <Container component="main" maxWidth="xs">
-            { alerta ? ( <div className={`alerta ${alerta.categoria}`}>{ alerta.msg }</div> ) : null }
+            { alerta ? ( <div className={`alerta alerta-error`}>{ alerta.msg }</div> ) : null }
             <CssBaseline />
             <div className={classes.paper}>
                 <div>

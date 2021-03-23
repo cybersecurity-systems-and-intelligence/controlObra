@@ -19,7 +19,7 @@ import {
 const AuthState = props => {
     
     const initialState = {
-        token: localStorage.getItem('accessToken'),
+        token: JSON.parse(localStorage.getItem('accessToken')),
         autenticado: null,
         usuario: null,
         mensaje: null,
@@ -30,8 +30,7 @@ const AuthState = props => {
 
     const registrarUsuario = async (datos) => {
         try{
-            const respuesta = await clienteAxios.post(`/usuarios`, datos)
-            console.log(respuesta);
+            const respuesta = await clienteAxios.post(`/usuarios`, datos)            
 
             dispatch({
                 type: REGISTRO_EXITOSO,
@@ -39,10 +38,9 @@ const AuthState = props => {
             })
 
             // Obtener el usuario
-            //usuarioAutenticado()
+            usuarioAutenticado()
 
         } catch (error) {
-            //console.log(error.response.data.msg)
 
             const alerta = {
                 msg: error.response.data.msg,
@@ -57,7 +55,8 @@ const AuthState = props => {
     }
     // Retornar el usuario autenticado
     const usuarioAutenticado = async () => {
-        const token = localStorage.getItem('accessToken')
+        
+        const token = JSON.parse(localStorage.getItem('accessToken'))
 
         if(token) {
             // TODO: Funcion para enviar el token por headers
@@ -65,15 +64,15 @@ const AuthState = props => {
         }
 
         try {
-            const respuesta = await clienteAxios.get('/auth')
-            
+            const respuesta = await api.auth()
+
             dispatch({
                 type: OBTENER_USUARIO,
                 payload: respuesta.data.usuario
             })
 
         } catch (error) {
-            console.log(error)
+            console.log('erre',error.response)
             dispatch({
                 type: LOGIN_ERROR
             })
@@ -84,9 +83,7 @@ const AuthState = props => {
     const iniciarSesion = async datos => {
         try{
     
-            const respuesta = await api.login(datos)
-
-            console.log(respuesta);
+            const respuesta = await api.login(datos) 
 
             dispatch({
                 type: LOGIN_EXITOSO,
@@ -94,10 +91,10 @@ const AuthState = props => {
             })
 
             // Obtener el usuario
-            //usuarioAutenticado()
+            usuarioAutenticado()
 
         } catch (error) {
-            console.log(error)
+            console.log('err',error)
 
             const alerta = {
                 msg: 'Correo o cotrase;a incorrectos',

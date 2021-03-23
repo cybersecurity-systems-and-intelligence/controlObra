@@ -12,7 +12,8 @@ export default (state, action) => {
     switch (action.type){
         case LOGIN_EXITOSO:
         case REGISTRO_EXITOSO:
-            localStorage.setItem('accessToken', action.payload.accessToken) 
+            localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken))
+            localStorage.setItem('refreshToken', JSON.stringify(action.payload.refreshToken))
             return {
                 ...state,
                 autenticado: true,
@@ -24,6 +25,7 @@ export default (state, action) => {
         case LOGIN_ERROR:
         case REGISTRO_ERROR:
             localStorage.removeItem('accessToken')
+            localStorage.removeItem('refreshToken')
             return {
                 ...state,
                 token: null,

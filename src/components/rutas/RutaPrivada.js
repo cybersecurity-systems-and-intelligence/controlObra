@@ -12,8 +12,6 @@ const RutaPrivada = ( { component: Component, ...props } ) => {
     const authsContext = useContext(authContext)
     const { autenticado, cargando, usuarioAutenticado } = authsContext
 
-    console.log(props.path.slice(1, 3))
-
     // Se autentica al usuario
     useEffect(() => {
         usuarioAutenticado()

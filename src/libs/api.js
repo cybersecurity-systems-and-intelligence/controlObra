@@ -35,7 +35,7 @@ clienteAxios.interceptors.response.use(
             originalRequest._retry = true
             return clienteAxios.post(`${baseUrl}/autorizacion/refreshToken`, { refreshToken: refreshToken })
                         .then((res) => {                           
-                            if (res.status === 200) {                             
+                            if (res.status === 200) {
                                 localStorage.setItem('accessToken', JSON.stringify(res.data.accessToken))                                
                                 return clienteAxios(originalRequest)
                             }
@@ -49,6 +49,9 @@ clienteAxios.interceptors.response.use(
 const api = {
     login: (body) => {
         return clienteAxios.post(`${baseUrl}/autorizacion`, { objeto: body })
+    },
+    auth: () => {
+        return clienteAxios.get(`${baseUrl}/auth`)
     },
     refreshToken: (body) => {
         return clienteAxios.post(`${baseUrl}/autorizacion/refreshToken`, body)
