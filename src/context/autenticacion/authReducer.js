@@ -4,12 +4,13 @@ import {
     OBTENER_USUARIO,
     LOGIN_EXITOSO,
     LOGIN_ERROR,
-    CERRAR_SESION
+    CERRAR_SESION,
+    SELECCIONAR_MODULO
 } from '../../types'
 
 export default (state, action) => {
 
-    switch (action.type){
+    switch (action.type){        
         case LOGIN_EXITOSO:
         case REGISTRO_EXITOSO:
             localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken))
@@ -33,6 +34,7 @@ export default (state, action) => {
                 autenticado: null,
                 mensaje: action.payload,
                 cargando: false,
+                modulo: null
             }
         case OBTENER_USUARIO:
             return {
@@ -40,6 +42,11 @@ export default (state, action) => {
                 autenticado: true,
                 usuario: action.payload,
                 cargando: false,
+            }
+        case SELECCIONAR_MODULO:
+            return {
+                ...state,
+                modulo: action.payload
             }
         default:
             return state

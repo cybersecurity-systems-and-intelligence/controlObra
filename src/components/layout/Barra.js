@@ -15,8 +15,8 @@ import { styleModulos } from '../../styles/styles'
 
 let color = randomColor();
 
-// se crea el componente
-const Barra = () => {
+// se crea y exporta el componente
+export default function Barra () {
 
     const classes = styleModulos();
 
@@ -31,9 +31,7 @@ const Barra = () => {
             let value = user.nombre_usuario.split(' ')
             word1 = value[0].slice(0,1)
             word2 = value[1].slice(0,1)
-        }catch(error){
-
-        }
+        }catch(error){}
         return  word1 + word2
         
     }
@@ -74,5 +72,3 @@ const Barra = () => {
         </header>
     );
 }
- 
-export default Barra;
