@@ -91,6 +91,12 @@ const api = {
     },
     buscarOrdenCompra: (folio_cotizacion) => {
         return clienteAxios.get(`${baseUrl}/ordenCompra/${folio_cotizacion}`)
+    },
+    consultarItems: (file) => {
+        return clienteAxios.post(`${baseUrl}/archivos/CSV`, file)
+    },
+    convertirXml: (file)=> {
+        return clienteAxios.post(`${baseUrl}/archivos/XML`, file)
     }
 }
 

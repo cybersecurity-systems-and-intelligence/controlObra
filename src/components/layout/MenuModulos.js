@@ -44,12 +44,12 @@ export default function MenuModulos() {
     return (
         <Box style={{background:'#202444'}}>
         <Drawer
-
             variant="permanent"
             classes={{
             paper: clsx(classes.drawerPaper, !barra && classes.drawerPaperClose),
             }}
             open={barra}
+            
         >
             <div style={{background:'#202444'}} >
                 <IconButton onClick={ocultarBarra} className={classes.toolbarIcon}>

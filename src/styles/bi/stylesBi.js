@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core';
-import InputBase from '@material-ui/core/InputBase';
+
+import { makeStyles, styled, withStyles createMuiTheme, InputBase } from '@material-ui/core';
 import { 
   ChevronLeft,
   ChevronRight,
@@ -182,3 +182,44 @@ input: {
   },
 },
 }))(InputBase);
+
+
+//cargaFacturas.js
+export const styleCargaFacturas = makeStyles({
+  ancho: {
+      width: '100%'
+  },
+  cardIn: {
+      width: "100%",
+      background:"#f1f8e9", 
+      paddingBottom: "10%",
+      paddingLeft: "5%", 
+      paddingRight: "5%", 
+      boxShadow: "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset"
+  }
+})
+
+export const themeCargaFacturas = createMuiTheme({
+  palette: {
+    secondary: {
+      main: '#b3d233',
+    },
+  },
+})
+
+export const ButtonCargaFacturas = styled('button')({
+  height: '40px',
+  width: '100%',
+  background: 'linear-gradient(#d4e157, #b3d233)',
+  color:'#000',
+  borderColor:'#d4e157',
+  borderRadius: '5px',
+  cursor: 'pointer',
+  fontSize:'15px',
+  textAlign: 'center',
+  marginTop: '8%',
+  '&:hover': {
+      background: 'linear-gradient(#b3d233, #d4e157)',
+      color:'white'
+  },
+})
