@@ -53,7 +53,7 @@ const Proyectos = (props) => {
         { id: 4, nombre: 'CONTROL DE OBRA', color: '#DC6969', ico: <AssignmentTurnedInTwoTone className={css.iconSize}/> },
         { id: 5, nombre: 'DASHBOARD', color: '#9076C5', ico: <DashboardTwoTone className={css.iconSize} /> },
         { id: 6, nombre: 'NOTIFY CENTER', color: '#75D69C', ico: <NotificationsActiveTwoTone className={css.iconSize}/> },
-        { id: 7, nombre: 'BI', color: '#75D69C', ico: <NotificationsActiveTwoTone className={css.iconSize}/> },
+        { id: 7, nombre: 'BI', color: '#64b5f6', ico: <NotificationsActiveTwoTone className={css.iconSize}/> },
     ]
 
     // Seleccion del modulo a ingresar

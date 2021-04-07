@@ -14,13 +14,13 @@ const ListItemsAdmin = ( { } ) => {
   }
 
   return (
-    <List>
-    <div>
+    <List style={{background:'#202444',color:'#fff'}}>
+    <div style={{background:'#202444'}}>
       <ListItem 
         button
         onClick={handleListItemClick}
       >
-        <ListItemIcon>
+        <ListItemIcon  style={{color:'#fff'}}>
           <Person />
         </ListItemIcon>
         <ListItemText primary="Perfil" />
@@ -29,7 +29,7 @@ const ListItemsAdmin = ( { } ) => {
         button
         onClick={handleListItemClick3}
       >
-        <ListItemIcon>
+        <ListItemIcon style={{color:'#fff'}}>
           <ListAlt />
         </ListItemIcon>
         <ListItemText primary="Obras Creadas" />

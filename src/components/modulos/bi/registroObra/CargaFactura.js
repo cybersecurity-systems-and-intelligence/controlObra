@@ -5,7 +5,7 @@ import { tableIcons } from '../../../../styles/bi/stylesBi'
 // se crea y exporta el componente
 export default function CargaFactura () {
     return (
-        <MaterialTable        
+        <MaterialTable
             icons={tableIcons}
             title="Partidas"
             columns={[

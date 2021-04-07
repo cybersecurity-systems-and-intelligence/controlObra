@@ -12,7 +12,7 @@ import CargaFactura from './CargaFactura'
 
 // se importan los estlos
 import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
-
+import ProgresBar from './ProgresBar'
 // se crea y exporta el componente
 export default function RegistroObra() {
     const classes = styleRegistroObra();
@@ -26,12 +26,11 @@ export default function RegistroObra() {
                         <Typography variant="h4" align="center" component='div'>
                             <h5>Registrar Obra<hr className={classes.hr}/></h5>
                         </Typography>
-                        <br/>                    
-                        <CargaFactura/>                        
+                        <br/>
+                        <ProgresBar/>
                     </Paper>
                 </Fade>
             </main>
         </Fragment>
     );
 }
- 
