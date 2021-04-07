@@ -7,14 +7,14 @@
   font-family: var(--headingFont);
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 2.2rem;
+  font-size: 15px;
   text-align: center;
   width: 100%;
 }
 @media (min-width:768px) {
   .alerta {
       width: auto;
-      top: 30px;
+      top: 100px;
       right: 10px;
       left: auto;
   }
@@ -26,5 +26,5 @@
 }
 .alerta-error {
   background-color: rgb(230, 78, 78);
-  color: var(--blanco);
+  color: #FFF;
 }

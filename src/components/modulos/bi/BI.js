@@ -1,5 +1,6 @@
 // se importan los componentes
 import RegistroObra from './registroObra/RegistroObra'
+import CargaFacturas from './cargaFacturas/CargaFacturas'
 import BarraModulos from '../../layout/BarraModulos'
 import MenuModulos from '../../layout/MenuModulos'
 
@@ -21,7 +22,7 @@ export default function BI() {
       
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <RegistroObra/>
+        <CargaFacturas/>
       </main>
     </div>
   );

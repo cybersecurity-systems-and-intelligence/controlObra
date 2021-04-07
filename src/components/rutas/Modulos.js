@@ -62,7 +62,7 @@ const Proyectos = (props) => {
         const modulo = rows.filter(value => value.id == e.target.id)
         seleccionarModulo(modulo[0].nombre)
 
-        props.history.push('/compras')
+        props.history.push('/Bi')
     }
 
     return (

@@ -40,12 +40,13 @@ export default function MenuModulos() {
     }
 
     return (
-        <Drawer
+        <Drawer            
             variant="permanent"
             classes={{
             paper: clsx(classes.drawerPaper, !barra && classes.drawerPaperClose),
             }}
             open={barra}
+            
         >
             <div className={classes.toolbarIcon}>
                 <IconButton onClick={ocultarBarra}>
