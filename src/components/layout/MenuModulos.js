@@ -1,10 +1,12 @@
 // Se importan las librerias
 import { useState, useContext } from 'react';
 import { 
+    Box,
     Drawer,
     IconButton,
 } from '@material-ui/core';
-import { ChevronLeft } from '@material-ui/icons';
+import { CancelPresentation } from '@material-ui/icons';
+
 import clsx from 'clsx';
 
 
@@ -21,7 +23,7 @@ import { styleBi } from '../../styles/bi/stylesBi'
 // se crea y exporta el componente
 export default function MenuModulos() {
 
-    const classes = styleBi() 
+    const classes = styleBi()
 
     // Extraer la informacion de la barra
     const barrasContext = useContext(barraContext)
@@ -40,7 +42,8 @@ export default function MenuModulos() {
     }
 
     return (
-        <Drawer            
+        <Box style={{background:'#202444'}}>
+        <Drawer
             variant="permanent"
             classes={{
             paper: clsx(classes.drawerPaper, !barra && classes.drawerPaperClose),
@@ -48,15 +51,16 @@ export default function MenuModulos() {
             open={barra}
             
         >
-            <div className={classes.toolbarIcon}>
-                <IconButton onClick={ocultarBarra}>
-                    <ChevronLeft />
+            <div style={{background:'#202444'}} >
+                <IconButton onClick={ocultarBarra} className={classes.toolbarIcon}>
+                    <CancelPresentation fontSize="large"/>
                 </IconButton>
 
             </div>
             {
                 menuModulo()
             }
-      </Drawer>
+    </Drawer>
+    </Box>
     );
 }

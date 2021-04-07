@@ -137,7 +137,7 @@ export default function CargaFactura () {
                         </Grid>
                 </ThemeProvider>
             </form>
-            <MaterialTable        
+            <MaterialTable    
             icons={tableIcons}
             title="Partidas"
             columns={[

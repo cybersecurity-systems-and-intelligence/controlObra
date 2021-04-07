@@ -17,7 +17,7 @@ export const styleLogin = makeStyles((theme) => ({
         height:'5px',
         borderRadius: '5px',
         marginTop:'1px',
-    }, 
+    },
     letra:{
         font: 'caption',
         marginTop:'20px',
@@ -49,36 +49,35 @@ export const styleModulos = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-    },
+},
 
     title:{
-        color:'#fff', 
-        fontSize:'27px',  
-        fontWeight:'700', 
+        color:'#fff',
+        fontSize:'27px',
+        fontWeight:'700',
         textShadow:'black 0.1em 0.1em 0.2em',
         marginTop:'15px',
-    },
+},
 
     icon:{
-        color:'#1b1b1b', 
+        color:'#1b1b1b',
         padding: '20px',
-    },
+},
 
     iconSize:{
         fontSize: 55
-    },
+},
     navUser: {
         textAlign: 'lefth',
-      },
+},
 
     navLogo:{
         textAlign: 'center',
-    },
+},
 
     navExit: {
         textAlign: 'right',
-    },
-     
+},
 
     nav: {
         background: '#f5f5f5',
