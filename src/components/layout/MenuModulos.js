@@ -27,11 +27,7 @@ export default function MenuModulos() {
 
     // Extraer la informacion de la barra
     const barrasContext = useContext(barraContext)
-    const { barra, ocultarBarra } = barrasContext
-
-    // Extraer la informacion de autenticacion
-    const authsContext = useContext(authContext)
-    const { modulo } = authsContext
+    const { barra, ocultarBarra, modulo } = barrasContext
 
 
     const menuModulo = () => {

@@ -4,7 +4,9 @@ import barraReducer from './barraReducer'
 
 import {
     MOSTRAR_BARRA,
-    OCULTAR_BARRA
+    OCULTAR_BARRA,
+    CAMBIAR_MENU,
+    SELECCIONAR_MODULO
 } from '../../types/index'
 
 
@@ -12,6 +14,9 @@ const BarraState = props => {
 
     const initialState = {
         barra: false,
+        numeroMenu: 0,
+        modulo: localStorage.getItem('modulo'),
+        color: localStorage.getItem('color')
     }
 
     // Dispatch para ejecutar las acciones
@@ -32,14 +37,38 @@ const BarraState = props => {
             type: OCULTAR_BARRA
         })
     }
+
+    const cambiarMenu = (num) => {
+        dispatch({
+            type: CAMBIAR_MENU,
+            payload: num
+        })
+    }
+
+    // guardar nombre del modulo seleccionado
+    const seleccionarModulo = (modulo, color) => {
+        const moduloObject = {
+            nombre: modulo,
+            color: color
+        }
+        dispatch({
+            type: SELECCIONAR_MODULO,
+            payload: moduloObject
+        })
+    }
         
     return (
         <barraContext.Provider
             value={{
                 barra: state.barra,
                 otra: state.otra,
+                numeroMenu: state.numeroMenu,
+                modulo: state.modulo,
+                color: state.color,
                 mostrarBarra,
-                ocultarBarra
+                ocultarBarra,
+                cambiarMenu,
+                seleccionarModulo
             }}
         >
             { props.children }

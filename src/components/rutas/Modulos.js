@@ -26,6 +26,7 @@ import Barra from '../layout/Barra'
 
 // se importan los context
 import authContext from '../../context/autenticacion/authContext'
+import barraContext from '../../context/barras/barraContext'
 
 // se importan los estilos
 import { styleModulos } from '../../styles/styles'
@@ -38,7 +39,11 @@ const Proyectos = (props) => {
 
     // Extraer la informacion de autenticacion
     const authsContext = useContext(authContext)
-    const { usuarioAutenticado, seleccionarModulo } = authsContext
+    const { usuarioAutenticado } = authsContext
+
+    // Extraer la informacion de barra
+    const barrasContext = useContext(barraContext)
+    const { seleccionarModulo } = barrasContext
 
     // se autentica el usuario
     useEffect(() => {
@@ -60,9 +65,9 @@ const Proyectos = (props) => {
     const selectModule = e => {
         
         const modulo = rows.filter(value => value.id == e.target.id)
-        seleccionarModulo(modulo[0].nombre)
+        seleccionarModulo(modulo[0].nombre, modulo[0].color)
 
-        props.history.push('/Bi')
+        props.history.push(`/${modulo[0].nombre}`)
     }
 
     return (

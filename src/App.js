@@ -35,7 +35,7 @@ function App() {
                 <RutaPrivadaLogin exact path='/' component={Login} />
                 <Route  path='/nueva-cuenta' component={NuevaCuenta} />
                 <RutaPrivada path='/modulos' component={Modulos} /> 
-                <RutaPrivada path='/Bi' component={Bi} />  
+                <RutaPrivada path='/BI' component={Bi} />  
                 <Route component={PageNotFound}/>       
               </Switch>
             </Router>

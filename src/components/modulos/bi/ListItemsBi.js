@@ -1,24 +1,22 @@
+import { useContext } from 'react';
 import { ListItem, List, ListItemIcon, ListItemText } from '@material-ui/core/';
 import { Person, ListAlt } from '@material-ui/icons';
 
+// se importan los context
+import barraContext from '../../../context/barras/barraContext'
 
 const ListItemsAdmin = ( { } ) => {
 
-  const handleListItemClick = () => {
-  }
-  
-  const handleListItemClick2 = () => {    
-  }
-
-  const handleListItemClick3 = () => {
-  }
+  // se extrae la informacion del context barra
+  const barrasContext = useContext(barraContext)
+  const { cambiarMenu } = barrasContext
 
   return (
     <List style={{background:'#202444',color:'#fff'}}>
     <div style={{background:'#202444'}}>
       <ListItem 
         button
-        onClick={handleListItemClick}
+        onClick={() => cambiarMenu(0)}
       >
         <ListItemIcon  style={{color:'#fff'}}>
           <Person />
@@ -27,7 +25,7 @@ const ListItemsAdmin = ( { } ) => {
       </ListItem>          
       <ListItem
         button
-        onClick={handleListItemClick3}
+        onClick={() => cambiarMenu(1)}
       >
         <ListItemIcon style={{color:'#fff'}}>
           <ListAlt />

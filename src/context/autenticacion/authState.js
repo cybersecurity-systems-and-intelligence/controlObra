@@ -13,8 +13,7 @@ import {
     OBTENER_USUARIO,
     LOGIN_EXITOSO,
     LOGIN_ERROR,
-    CERRAR_SESION,
-    SELECCIONAR_MODULO
+    CERRAR_SESION
 } from '../../types'
 
 const AuthState = props => {
@@ -24,8 +23,7 @@ const AuthState = props => {
         autenticado: null,
         usuario: null,
         mensaje: null,
-        cargando: true,
-        modulo: null
+        cargando: true
     }
 
     const [ state, dispatch ] = useReducer(authReducer, initialState)
@@ -117,13 +115,7 @@ const AuthState = props => {
         })
     }
 
-    // guardar nombre del modulo seleccionado
-    const seleccionarModulo = (modulo) => {
-        dispatch({
-            type: SELECCIONAR_MODULO,
-            payload: modulo
-        })
-    }
+    
 
     return (
         <authContext.Provider
@@ -133,12 +125,10 @@ const AuthState = props => {
                 usuario: state.usuario,
                 mensaje: state.mensaje,
                 cargando: state.cargando,
-                modulo: state.modulo,
                 registrarUsuario,
                 iniciarSesion,
                 usuarioAutenticado,
-                cerrarSesion,
-                seleccionarModulo
+                cerrarSesion
             }}
         >
             { props.children }

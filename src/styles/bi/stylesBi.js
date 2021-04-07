@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-import { makeStyles, styled, withStyles createMuiTheme, InputBase } from '@material-ui/core';
+import { makeStyles, styled, withStyles, createMuiTheme, InputBase } from '@material-ui/core';
 import { 
   ChevronLeft,
   ChevronRight,
@@ -16,7 +16,6 @@ const drawerWidth = 240
 export const styleBi = makeStyles((theme) => ({
     root: {
       display: 'flex',
-      background: '#ECF5FC',
     },
     toolbar: {
       paddingRight: 24, // keep right padding when drawer closed

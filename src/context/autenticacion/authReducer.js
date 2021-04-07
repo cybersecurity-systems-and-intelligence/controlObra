@@ -42,12 +42,7 @@ export default (state, action) => {
                 autenticado: true,
                 usuario: action.payload,
                 cargando: false,
-            }
-        case SELECCIONAR_MODULO:
-            return {
-                ...state,
-                modulo: action.payload
-            }
+            }        
         default:
             return state
     }

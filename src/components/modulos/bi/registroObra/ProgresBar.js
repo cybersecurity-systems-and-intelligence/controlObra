@@ -6,6 +6,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+
+import CargaFactura from './CargaFactura'
 import NuevaObra from './NuevaObra';
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +32,7 @@ function getStepContent(stepIndex) {
     case 0:
       return <NuevaObra/>;
     case 1:
-      return 'What is an ad group anyways?';
+      return <CargaFactura/>;
     case 2:
       return 'This is the bit I really care about!';
     default:
