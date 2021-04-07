@@ -9,10 +9,12 @@ export default (state, action) => {
     switch(action.type){
         case MOSTRAR_BARRA:
             return {
+                ...state,
                 barra: true
             }
         case OCULTAR_BARRA:
             return {
+                ...state,
                 barra: false
             }
         case CAMBIAR_MENU:
