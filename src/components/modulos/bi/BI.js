@@ -34,7 +34,7 @@ export default function BI() {
   }
 
   return (
-    <div className={classes.root} style={{background: color}} align="center">
+    <div className={classes.root} align="center">
       
       <BarraModulos/>
       <MenuModulos/>

@@ -5,6 +5,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Resumen from '../../bi/registroObra/Resumen';
 
 
 import CargaFactura from './CargaFactura'
@@ -34,7 +35,7 @@ function getStepContent(stepIndex) {
     case 1:
       return <CargaFactura/>;
     case 2:
-      return 'This is the bit I really care about!';
+      return <Resumen/>;
     default:
       return 'Unknown stepIndex';
   }

@@ -49,7 +49,6 @@ const Proyectos = (props) => {
     useEffect(() => {
         usuarioAutenticado()
     }, [])
-    
     // arreglo de los documentos con la informaicon de los modulos
     const rows = [
         { id: 1, nombre: 'COMPRAS', color: '#B3D233', ico: <LocalMallTwoTone className={css.iconSize}/>},
@@ -63,7 +62,6 @@ const Proyectos = (props) => {
 
     // Seleccion del modulo a ingresar
     const selectModule = e => {
-        
         const modulo = rows.filter(value => value.id == e.target.id)
         seleccionarModulo(modulo[0].nombre, modulo[0].color)
 
@@ -73,16 +71,15 @@ const Proyectos = (props) => {
     return (
         <Fragment>
             <Barra/>
-        <Container component="main">
-           
-            <CssBaseline />
-            <div className={css.paper} align='center'>
-                <Typography component="h1" variant="h5" className={css.letra}>
-                    SELECCIONA UN MODULO
-                    <hr className={css.hr}/>
-                </Typography>
-                <br/>
-                <br/>
+                <Container component="main">
+                    <CssBaseline />
+                    <div className={css.paper} align='center'>
+                        <Typography component="h1" variant="h5" className={css.letra}>
+                            SELECCIONA UN MODULO
+                                <hr className={css.hr}/>
+                        </Typography>
+                    <br/>
+                    <br/>
                 <main>
                     <Grid container spacing={5}>
                         {rows.map((row) => (
