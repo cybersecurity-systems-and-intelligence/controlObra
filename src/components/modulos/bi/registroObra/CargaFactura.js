@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form'
 import { makeStyles, Grid, Card, styled, Fab, createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
@@ -9,6 +9,51 @@ import {tableIcons} from '../../../../styles/bi/stylesBi'
 import MaterialTable from 'material-table';
 import api from '../../../../libs/api'
 
+// se importan los componentes
+import TablaPartidas from './TablaPartidas'
+
+// se importan los state
+import registroObraContext from '../../../../context/registroObra/registroObraContext'
+import alertaContext from '../../../../context/alertas/alertaContext'
+
+const theme = createMuiTheme({
+    palette: {
+    secondary: {
+        main: '#c5cae9',
+        },
+    },
+})
+
+const useStyles = makeStyles({
+    ancho: {
+        width: '100%'
+    },
+    cardIn: {
+        width: "100%",
+        background:"#f8fdff",
+        paddingBottom: "10%",
+        paddingLeft: "5%",
+        paddingRight: "5%",
+        boxShadow: "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset"
+    }
+})
+
+const ButtonComponent = styled('button')({
+    height: '40px',
+    width: '100%',
+    background: 'linear-gradient(#5e92f3, #1565c0)',
+    color:'#fff',
+    borderColor:'#64b5f6',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    fontSize:'15px',
+    textAlign: 'center',
+    marginTop: '8%',
+    '&:hover': {
+        background: '#64b5f6',
+        color:'white'
+    },
+})
 // se crea y exporta el componente
 export default function CargaFactura () {
 
@@ -17,7 +62,20 @@ export default function CargaFactura () {
     const { register, handleSubmit } = useForm()
 
     const [nombrefichero, guardarNombreFichero] = useState(`Buscar fichero...`)
-    const [rows, guardarRows] = useState([])
+    
+    // se extrae la informacion del context
+    const registroObrasContext = useContext(registroObraContext)
+    const { mensaje, guardarPartidas } = registroObrasContext
+
+    const alertasContext = useContext(alertaContext)
+    const { mostrarAlerta } = alertasContext
+
+    useEffect(() => {
+
+        if(mensaje){
+            mostrarAlerta(mensaje.msg, mensaje.categoria)
+        }
+    }, [mensaje])
 
     const cambiarTexto = e => {
         guardarNombreFichero(e.target.files[0].name);
@@ -25,30 +83,22 @@ export default function CargaFactura () {
 
 
     const onSubmitCarga = async (data) => {
+
         try{
+      
             const formData = new FormData()
 
             formData.append("file", data.file[0])
-            console.log(formData);
-            if(data.file[0].type !=='application/vnd.ms-excel'){
-                alert('formato incorrecto')
-                return
-            }
 
-            const res = await api.consultarItems(formData)
-            console.log(res);
-            if(res.data.length > 0) {
-                console.log(res.data);
-                guardarRows(res.data)
-                return
-            }else{
-                alert('Debe ingresar un archivo csv con la estructura correcta' )
+            if(data.file[0].type !=='application/vnd.ms-excel'){            
+                mostrarAlerta('Debe ingresar un archivo csv con la estructura correcta', 'alerta alerta-error')
                 return
             }
-        }catch(err){
-            alert('Debe ingresar un archivo csv con la estructura correcta' )
+            guardarPartidas(formData)          
+        } catch {
+            mostrarAlerta('Debe ingresar un archivo csv con la estructura correcta', 'alerta alerta-error')
             return
-        }
+        }                     
     }
 
     return (
@@ -99,79 +149,8 @@ export default function CargaFactura () {
                         </Grid>
                 </ThemeProvider>
             </form>
-            <MaterialTable
-            style={{background: '#E3F2FD',  marginTop: '5%', marginBottom:  '5%', border: "2px solid #ccc", borderRadius: 25,}}
-            icons={tableIcons}
-            title={<h3>PARTIDAS</h3>}
-            options={{
-                headerStyle: {
-                    border: "1px solid #ccc",
-                    textAlign: 'center'
-                }
-            }}
-            columns={[
-                {   title: 'Partida',
-                    field: 'partida',
-                    defaultGroupOrder: 0,
-                    cellStyle: {
-                        background: 'linear-gradient(#eeffff,#bbdefb)',
-                        color: '#000',
-                        width:'100%',
-                    },
-                },
-                {   title: 'Clave',
-                    field: 'clave',
-                    cellStyle: {
-                        background: 'linear-gradient(#eeffff,#bbdefb)',
-                        color: '#000',
-                        width:'10%',
-                        border: "1px solid #ccc",
-                        textAlign: 'center',
-                        fontSize: 12,
-                        fontWeight: 700
-                    },
-                },
-                {   title: 'Descripcion',
-                    field: 'descripcion',
-                    type: 'text',
-                    cellStyle: {
-                        backgroundColor: '#fff',
-                        color: '#000',
-                        width:'100%',
-                        border: "1px solid #ccc",
-                        textAlign: 'justify',
-                        fontSize: 16
-                    },
-                },
-                {   title: 'Unidad',
-                    field: 'unidad',
-                    type: 'numeric',
-                    cellStyle: {
-                        backgroundColor: '#fff',
-                        color: '#000',
-                        width:'9%',
-                        border: "1px solid #ccc",
-                        textAlign: 'center',
-                        fontSize: 18,
 
-                    },
-                },
-                {   title: 'Requeridos',
-                    field: 'requeridos',
-                    type: 'numeric',
-                    cellStyle: {
-                        backgroundColor: '#fff',
-                        color: '#000',
-                        width:'9%',
-                        border: "1px solid #ccc",
-                        textAlign: 'center',
-                        fontSize: 18,
-                        fontWeight: 600
-                    },
-                },
-            ]}
-            data={rows}
-        />
+            <TablaPartidas/>
         </Fragment>
     );
 }

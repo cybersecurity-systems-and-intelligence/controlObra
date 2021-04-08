@@ -12,6 +12,10 @@ import FormControl from '@material-ui/core/FormControl';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import MaterialTable from 'material-table';
 
+// se importan los componentes
+import TablaPartidas from './TablaPartidas'
+import NuevaObra from './NuevaObra'
+
 
 const theme = createMuiTheme({
     palette: {
@@ -25,8 +29,8 @@ const theme = createMuiTheme({
  
 
 
-export default function NuevaObra() {
-  const css = styleCargaFacturas();
+export default function Resumen() {
+
   const classes = NuevaObraStyle();
   const [rows, guardarRows] = useState([])
   const [selectedDate, setSelectedDate] = React.useState(new Date('2021-01-01T21:11:54'));
@@ -37,168 +41,8 @@ export default function NuevaObra() {
 
 return (
 <Fragment>
-    <Box className={classes.box}>
-      <ThemeProvider theme={theme}>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <Box >
-            <Grid container spacing={3}>
-              <Grid  item xs>
-                <FormControl className={classes.margin}>
-                  <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Nombre de la obra</b>
-                  </InputLabel>
-                  <BootstrapInput defaultValue="" id="bootstrap-input" />
-                </FormControl>
-              </Grid>
-
-              <Grid  item xs>
-                <FormControl className={classes.margin}>
-                  <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Monto total</b>
-                  </InputLabel>
-                  <BootstrapInput startAdornment={<InputAdornment position="start"><b>$</b></InputAdornment>} defaultValue="" id="bootstrap-input" />
-                </FormControl>
-              </Grid>
-
-              <Grid  item xs>
-                <FormControl className={classes.margin}>
-                  <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Numero de contrato</b>
-                  </InputLabel>
-                  <BootstrapInput defaultValue="" id="bootstrap-input" />
-                </FormControl>
-              </Grid>
-            </Grid>
-          </Box>
-
-          <Box>
-            <Grid container spacing={3}>
-              <Grid  item xs>
-                <FormControl className={classes.margin}>
-                  <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Fecha de contrato</b>
-                  </InputLabel>
-                  <KeyboardDatePicker
-                      margin="normal"
-                      color="secondary"
-                      id="date-picker-dialog"
-                      format="MM/dd/yyyy"
-                      value={selectedDate}
-                      onChange={handleDateChange}
-                      KeyboardButtonProps={{'aria-label': 'change date',}}
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid  item xs>
-                <FormControl className={classes.margin}>
-                  <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Inicio de obra</b>
-                  </InputLabel>
-                  <KeyboardDatePicker
-                      margin="normal"
-                      color="secondary"
-                      id="date-picker-dialog"
-                      format="MM/dd/yyyy"
-                      value={selectedDate}
-                      onChange={handleDateChange}
-                      KeyboardButtonProps={{'aria-label': 'change date',}}
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid  item xs>
-                <FormControl className={classes.margin}>
-                  <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Fin de obra</b>
-                  </InputLabel>
-                  <KeyboardDatePicker
-                      margin="normal"
-                      color="secondary"
-                      id="date-picker-dialog"
-                      format="MM/dd/yyyy"
-                      value={selectedDate}
-                      onChange={handleDateChange}
-                      KeyboardButtonProps={{'aria-label': 'change date',}}
-                  />
-                </FormControl>
-              </Grid>
-            </Grid>
-          </Box>
-        </MuiPickersUtilsProvider>
-      </ThemeProvider>
-    </Box>
-    <MaterialTable
-           style={{background: '#E3F2FD',  marginTop:5, marginBottom:5, border: "2px solid #ccc", borderRadius: 25}}
-            icons={tableIcons}
-            title={<h3>PARTIDAS</h3>}
-            /*options={{
-                rowStyle: {
-                    backgroundColor: '#000',
-                },
-                headerStyle: {
-                    maxWidth: 20, // <--- ADD THIS AND IT WILL WORK
-                    height: 10,
-                    maxHeight: 10,
-                    backgroundColor: "#82b1ff",
-                    color: "#FFF",
-                    textOverflow: "ellipsis",
-                    overflow: "hidden",
-                    position: 'relative'
-                }
-            }}*/
-            columns={[
-                {   title: 'Partida',
-                    field: 'partida',
-                    defaultGroupOrder: 0,
-                    cellStyle: {
-                        background: 'linear-gradient(#eeffff,#bbdefb)',
-                        color: '#000',
-                        width:'100%',
-                    },
-                },
-                {   title: 'Clave',
-                    field: 'clave',
-                    cellStyle: {
-                        background: 'linear-gradient(#eeffff,#bbdefb)',
-                        color: '#000',
-                        width:'15%',
-                        border: "2px solid #ccc"
-                    },
-                },
-                {   title: 'Descripcion',
-                    field: 'descripcion',
-                    type: 'text',
-                    cellStyle: {
-                        backgroundColor: '#fff',
-                        color: '#000',
-                        width:'100%',
-                        border: "2px solid #ccc"
-                    },
-                },
-                {   title: 'Unidad',
-                    field: 'unidad',
-                    type: 'numeric',
-                    cellStyle: {
-                        backgroundColor: '#fff',
-                        color: '#000',
-                        width:'9%',
-                        border: "2px solid #ccc"
-                    },
-                },
-                {   title: 'Requeridos',
-                    field: 'requeridos',
-                    type: 'numeric',
-                    cellStyle: {
-                        backgroundColor: '#fff',
-                        color: '#000',
-                        width:'9%',
-                        border: "2px solid #ccc"
-                    },
-                },
-            ]}
-            data={rows}
-        />
+    <NuevaObra/>
+    <TablaPartidas/>
   </Fragment>
     );
 }

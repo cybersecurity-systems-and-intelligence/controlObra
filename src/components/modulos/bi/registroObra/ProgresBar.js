@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -10,6 +10,10 @@ import Resumen from '../../bi/registroObra/Resumen';
 
 import CargaFactura from './CargaFactura'
 import NuevaObra from './NuevaObra';
+
+// se importan los state
+import registroObraContext from '../../../../context/registroObra/registroObraContext'
+import alertaContext from '../../../../context/alertas/alertaContext'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,35 +32,64 @@ function getSteps() {
   return ['Nueva obra', 'Cargar cotización', 'Revision de datos'];
 }
 
-function getStepContent(stepIndex) {
-  switch (stepIndex) {
-    case 0:
-      return <NuevaObra/>;
-    case 1:
-      return <CargaFactura/>;
-    case 2:
-      return <Resumen/>;
-    default:
-      return 'Unknown stepIndex';
-  }
-}
+
 
 export default function HorizontalLabelPositionBelowStepper() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
 
+  const registroObrasContext = useContext(registroObraContext)
+  const { 
+    nombreObra,
+    montoTotal,
+    numeroContrato,
+    partidas,
+    cambiarEstado
+  } = registroObrasContext
+
+  // Extraer los valores del context de alerta
+  const alertasContext = useContext(alertaContext)
+  const { mostrarAlerta } = alertasContext
+
   const handleNext = () => {
+    if (activeStep === 0 && (nombreObra.trim() === '' || montoTotal.trim() === '' || numeroContrato.trim() === '')){
+      mostrarAlerta('Debe de ingresar todos los campos', 'alerta alerta-error')
+      return
+    }
+    if (activeStep === 1 && partidas.length === 0 ){
+      mostrarAlerta('Debe ingresar un archivo csv con la estructura correcta', 'alerta alerta-error')
+      return
+    }
+    if(activeStep === 0){
+      cambiarEstado(true)
+    }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
+    if(activeStep === 1){
+      cambiarEstado(false)
+    }
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleReset = () => {
     setActiveStep(0);
   };
+  
+  const getStepContent = (stepIndex) => {
+    switch (stepIndex) {
+      case 0:
+        return <NuevaObra/>;
+      case 1:
+        return <CargaFactura/>;
+      case 2:
+        return <Resumen/>;
+      default:
+        return 'Unknown stepIndex';
+    }
+  }
 
   return (
     <div className={classes.root}>

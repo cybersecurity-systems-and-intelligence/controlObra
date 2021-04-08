@@ -9,7 +9,9 @@ import Bi from './components/modulos/bi/BI'
 import AlertaState from './context/alertas/alertaState'
 import AuthState from './context/autenticacion/authState'
 import BarraState from './context/barras/barraState'
+import RegistroObraState from './context/registroObra/registroObraState'
 import CargaFacturaState from './context/cargaFacturas/cargaFacturaState'
+
 
 import tokenAuth from './config/token'
 import RutaPrivada from './components/rutas/RutaPrivada'
@@ -29,17 +31,19 @@ function App() {
     <AlertaState>
       <AuthState>
         <BarraState>
-          <CargaFacturaState>
-            <Router>
-              <Switch>
-                <RutaPrivadaLogin exact path='/' component={Login} />
-                <Route  path='/nueva-cuenta' component={NuevaCuenta} />
-                <RutaPrivada path='/modulos' component={Modulos} /> 
-                <RutaPrivada path='/BI' component={Bi} />  
-                <Route component={PageNotFound}/>       
-              </Switch>
-            </Router>
-          </CargaFacturaState>
+          <RegistroObraState>
+            <CargaFacturaState>
+              <Router>
+                <Switch>
+                  <RutaPrivadaLogin exact path='/' component={Login} />
+                  <Route  path='/nueva-cuenta' component={NuevaCuenta} />
+                  <RutaPrivada path='/modulos' component={Modulos} /> 
+                  <RutaPrivada path='/BI' component={Bi} />  
+                  <Route component={PageNotFound}/>       
+                </Switch>
+              </Router>
+            </CargaFacturaState>
+          </RegistroObraState>
         </BarraState>
       </AuthState>
     </AlertaState>
