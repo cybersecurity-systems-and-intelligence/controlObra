@@ -127,7 +127,7 @@ export const styleRegistroObra = makeStyles((theme) => ({
       boxShadow:'rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;',
       height:'8px',
       borderRadius: '5px',
-      marginTop:'1px',
+      marginTop:'5px',
   },
 }))
 
@@ -185,41 +185,49 @@ input: {
 
 
 //cargaFacturas.js
-export const styleCargaFacturas = makeStyles({
+export const styleCargaFacturas = makeStyles((theme) => ({
   ancho: {
-      width: '100%'
-  },
-  cardIn: {
-      width: "100%",
-      background:"#f1f8e9", 
-      paddingBottom: "10%",
-      paddingLeft: "5%", 
-      paddingRight: "5%", 
-      boxShadow: "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset"
-  }
-})
+    width: '100%'
+},
+cardIn: {
+    width: "100%",
+    background:"#f8fdff",
+    paddingBottom: "10%",
+    paddingLeft: "5%",
+    paddingRight: "5%",
+    boxShadow: "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset"
+},
+box:{
+  background:'#e3f2fd',
+  border: '1px solid #64b5f6',
+  borderRadius: 16,
+  margin: theme.spacing(5),
+  padding: theme.spacing(5),
+  width: '80%'
+}
+}));
 
 export const themeCargaFacturas = createMuiTheme({
   palette: {
     secondary: {
-      main: '#b3d233',
+      main: '#c5cae9',
     },
   },
 })
 
 export const ButtonCargaFacturas = styled('button')({
   height: '40px',
-  width: '100%',
-  background: 'linear-gradient(#d4e157, #b3d233)',
-  color:'#000',
-  borderColor:'#d4e157',
-  borderRadius: '5px',
-  cursor: 'pointer',
-  fontSize:'15px',
-  textAlign: 'center',
-  marginTop: '8%',
-  '&:hover': {
-      background: 'linear-gradient(#b3d233, #d4e157)',
-      color:'white'
-  },
+    width: '100%',
+    background: 'linear-gradient(#5e92f3, #1565c0)',
+    color:'#fff',
+    borderColor:'#64b5f6',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    fontSize:'15px',
+    textAlign: 'center',
+    marginTop: '8%',
+    '&:hover': {
+        background: '#64b5f6',
+        color:'white'
+    },
 })

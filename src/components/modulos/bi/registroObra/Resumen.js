@@ -2,7 +2,7 @@ import React from 'react';
 import {  Fragment, useState  } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme, Grid, Box } from '@material-ui/core';
-import { NuevaObraStyle, BootstrapInput} from '../../../../styles/bi/stylesBi'
+import { NuevaObraStyle, BootstrapInput, styleCargaFacturas} from '../../../../styles/bi/stylesBi'
 
 import { KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import {tableIcons} from '../../../../styles/bi/stylesBi'

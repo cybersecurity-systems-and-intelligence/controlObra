@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import MaterialTable from 'material-table';
-
+import { styleCargaFacturas } from '../../../../styles/bi/stylesBi'
 import { tableIcons } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
 import cargaFacturaContext from '../../../../context/cargaFacturas/cargaFacturaContext'
 
 export default function TablaConceptos() {
-
+    const css = styleCargaFacturas()
     // Extraer los valores del context de la factura
     const cargaFacturasContext = useContext(cargaFacturaContext)
     const { informacion } = cargaFacturasContext
@@ -16,15 +16,78 @@ export default function TablaConceptos() {
 
 
     return (
-        <MaterialTable        
+        <MaterialTable
+            style={{background: '#E3F2FD',  marginTop:5, marginBottom:5, border: "2px solid #ccc", borderRadius: 25}}
             icons={tableIcons}
-            title="Partidas"
+            title={<h3>CONCEPTOS</h3>}
+            
+            options={{
+                headerStyle: {
+                    backgroundColor: "#82b1ff",
+                    color: "#FFF",
+                    border: "1px solid #000",
+                    textAlign: 'center',
+                    fontSize: 18
+                }
+            }}
+
             columns={[
-                { title: 'Cantidad', field: 'Cantidad' },
-                { title: 'Clave Unidad', field: 'ClaveUnidad' },
-                { title: 'Descripcion', field: 'Descripcion'},
-                { title: 'Valor Unitario', field: 'ValorUnitario', type: 'numeric' },
-                { title: 'Importe', field: 'Importe', type: 'numeric' },
+                {   title: 'Cantidad',
+                    field: 'Cantidad',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'10%',
+                        border: "1px solid #ccc",
+                        textAlign: 'center',
+                        fontSize: 20
+                    },
+                },
+                {   title: 'Clave Unidad',
+                    field: 'ClaveUnidad',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'10%',
+                        border: "1px solid #ccc",
+                        textAlign: 'center',
+                        fontSize: 20,
+                    },
+                },
+                {   title: 'Descripcion',
+                    field: 'Descripcion',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'100%',
+                        border: "1px solid #ccc",
+                        fontSize: 11,
+                        textAlign: 'justify'
+                    },
+                },
+                {   title: 'Valor Unitario',
+                    field: 'ValorUnitario',
+                    type: 'numeric',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'10%',
+                        border: "1px solid #ccc",
+                        textAlign: 'center',
+                        fontSize: 15
+                    },
+                },
+                {   title: 'Importe',
+                    field: 'Importe',
+                    type: 'numeric',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'10%',
+                        border: "1px solid #ccc",
+                        textAlign: 'center',
+                        fontSize: 15 },
+                },
             ]}
             data={conceptos}
         />

@@ -1,9 +1,10 @@
 import { Fragment, useState, useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form'
-import { makeStyles, Grid, Card, Input, styled, Fab, createMuiTheme } from '@material-ui/core';
+import { makeStyles, Grid, Card, styled, Fab, createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
-import { cloneDeep } from 'lodash';
-import axios from 'axios'
+import { styleCargaFacturas, themeCargaFacturas, ButtonCargaFacturas } from '../../../../styles/bi/stylesBi'
+
+
 import {tableIcons} from '../../../../styles/bi/stylesBi'
 import MaterialTable from 'material-table';
 import api from '../../../../libs/api'
@@ -53,11 +54,10 @@ const ButtonComponent = styled('button')({
         color:'white'
     },
 })
-
 // se crea y exporta el componente
 export default function CargaFactura () {
 
-    const css = useStyles()
+    const css = styleCargaFacturas()
 
     const { register, handleSubmit } = useForm()
 
@@ -104,10 +104,10 @@ export default function CargaFactura () {
     return (
         <Fragment>
             <form onSubmit={handleSubmit(onSubmitCarga)}>
-                <ThemeProvider theme={theme}>
+                <ThemeProvider theme={themeCargaFacturas}>
                     {/* <Grid container spacing={3}>
                         <Grid item xs={12} md={3}>
-                            <InputBtnComponent ref={register} type="file" name="file" accept='.csv'/>                                
+                            <InputBtnComponent ref={register} type="file" name="file" accept='.csv'/>
                         </Grid>
                         <Grid item xs={12} md={3}>
                             <ButtonComponent>Cargar</ButtonComponent>
@@ -145,10 +145,11 @@ export default function CargaFactura () {
                         </Grid>
                     </Grid>  
                     <Grid item xs={6} md={3}>
-                            <ButtonComponent>AÑADIR</ButtonComponent>
+                            <ButtonCargaFacturas>AÑADIR</ButtonCargaFacturas>
                         </Grid>
                 </ThemeProvider>
             </form>
+
             <TablaPartidas/>
         </Fragment>
     );
