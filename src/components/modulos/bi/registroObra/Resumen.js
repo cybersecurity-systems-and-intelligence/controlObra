@@ -129,22 +129,70 @@ return (
       </ThemeProvider>
     </Box>
     <MaterialTable
-            style={{}}
+            style={{background: '#E3F2FD',  marginTop: theme.spacing(5), marginBottom: theme.spacing(5), border: "2px solid #ccc", borderRadius: 25,}}
             icons={tableIcons}
-            title="Partidas"
+            title={<h3>PARTIDAS</h3>}
+            /*options={{
+                rowStyle: {
+                    backgroundColor: '#000',
+                },
+                headerStyle: {
+                    maxWidth: 20, // <--- ADD THIS AND IT WILL WORK
+                    height: 10,
+                    maxHeight: 10,
+                    backgroundColor: "#82b1ff",
+                    color: "#FFF",
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    position: 'relative'
+                }
+            }}*/
             columns={[
                 {   title: 'Partida',
                     field: 'partida',
                     defaultGroupOrder: 0,
                     cellStyle: {
-                    backgroundColor: '#039be5',
-                    color: '#FFF'},
+                        background: 'linear-gradient(#eeffff,#bbdefb)',
+                        color: '#000',
+                        width:'100%',
+                        left: '25%'
+                    },
                 },
-
-                { title: 'Clave', field: 'clave' },
-                { title: 'Descripcion', field: 'descripcion', type: 'numeric' },
-                { title: 'Unidad', field: 'unidad', type: 'numeric' },
-                { title: 'Requeridos', field: 'requeridos', type: 'numeric' },
+                {   title: 'Clave',
+                    field: 'clave',
+                    cellStyle: {
+                        background: 'linear-gradient(#eeffff,#bbdefb)',
+                        color: '#000',
+                        width:'15%'
+                    },
+                },
+                {   title: 'Descripcion',
+                    field: 'descripcion',
+                    type: 'text',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'100%'
+                    },
+                },
+                {   title: 'Unidad',
+                    field: 'unidad',
+                    type: 'numeric',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'9%'
+                    },
+                },
+                {   title: 'Requeridos',
+                    field: 'requeridos',
+                    type: 'numeric',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'9%'
+                    },
+                },
             ]}
             data={rows}
         />

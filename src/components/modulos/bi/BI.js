@@ -35,10 +35,8 @@ export default function BI() {
 
   return (
     <div className={classes.root} align="center">
-      
       <BarraModulos/>
       <MenuModulos/>
-      
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         {
