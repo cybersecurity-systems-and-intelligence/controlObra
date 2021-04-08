@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form'
 import { makeStyles, Grid, Card, Input, styled, Fab, createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
@@ -7,6 +7,13 @@ import axios from 'axios'
 import {tableIcons} from '../../../../styles/bi/stylesBi'
 import MaterialTable from 'material-table';
 import api from '../../../../libs/api'
+
+// se importan los componentes
+import TablaPartidas from './TablaPartidas'
+
+// se importan los state
+import registroObraContext from '../../../../context/registroObra/registroObraContext'
+import alertaContext from '../../../../context/alertas/alertaContext'
 
 const theme = createMuiTheme({
     palette: {
@@ -55,7 +62,20 @@ export default function CargaFactura () {
     const { register, handleSubmit } = useForm()
 
     const [nombrefichero, guardarNombreFichero] = useState(`Buscar fichero...`)
-    const [rows, guardarRows] = useState([])
+    
+    // se extrae la informacion del context
+    const registroObrasContext = useContext(registroObraContext)
+    const { mensaje, guardarPartidas } = registroObrasContext
+
+    const alertasContext = useContext(alertaContext)
+    const { mostrarAlerta } = alertasContext
+
+    useEffect(() => {
+
+        if(mensaje){
+            mostrarAlerta(mensaje.msg, mensaje.categoria)
+        }
+    }, [mensaje])
 
     const cambiarTexto = e => {
         guardarNombreFichero(e.target.files[0].name);
@@ -63,30 +83,22 @@ export default function CargaFactura () {
 
 
     const onSubmitCarga = async (data) => {
+
         try{
+      
             const formData = new FormData()
 
             formData.append("file", data.file[0])
-            console.log(formData);
-            if(data.file[0].type !=='application/vnd.ms-excel'){
-                alert('formato incorrecto')
-                return
-            }
 
-            const res = await api.consultarItems(formData)
-            console.log(res);
-            if(res.data.length > 0) {
-                console.log(res.data);
-                guardarRows(res.data)
-                return
-            }else{
-                alert('Debe ingresar un archivo csv con la estructura correcta' )
+            if(data.file[0].type !=='application/vnd.ms-excel'){            
+                mostrarAlerta('Debe ingresar un archivo csv con la estructura correcta', 'alerta alerta-error')
                 return
             }
-        }catch(err){
-            alert('Debe ingresar un archivo csv con la estructura correcta' )
+            guardarPartidas(formData)          
+        } catch {
+            mostrarAlerta('Debe ingresar un archivo csv con la estructura correcta', 'alerta alerta-error')
             return
-        }
+        }                     
     }
 
     return (
@@ -137,74 +149,7 @@ export default function CargaFactura () {
                         </Grid>
                 </ThemeProvider>
             </form>
-            <MaterialTable
-            style={{background: '#E3F2FD',  marginTop: theme.spacing(5), marginBottom: theme.spacing(5), border: "2px solid #ccc", borderRadius: 25,}}
-            icons={tableIcons}
-            title={<h3>PARTIDAS</h3>}
-            /*options={{
-                rowStyle: {
-                    backgroundColor: '#000',
-                },
-                headerStyle: {
-                    maxWidth: 20, // <--- ADD THIS AND IT WILL WORK
-                    height: 10,
-                    maxHeight: 10,
-                    backgroundColor: "#82b1ff",
-                    color: "#FFF",
-                    textOverflow: "ellipsis",
-                    overflow: "hidden",
-                    position: 'relative'
-                }
-            }}*/
-            columns={[
-                {   title: 'Partida',
-                    field: 'partida',
-                    defaultGroupOrder: 0,
-                    cellStyle: {
-                        background: 'linear-gradient(#eeffff,#bbdefb)',
-                        color: '#000',
-                        width:'100%',
-                        left: '25%'
-                    },
-                },
-                {   title: 'Clave',
-                    field: 'clave',
-                    cellStyle: {
-                        background: 'linear-gradient(#eeffff,#bbdefb)',
-                        color: '#000',
-                        width:'15%'
-                    },
-                },
-                {   title: 'Descripcion',
-                    field: 'descripcion',
-                    type: 'text',
-                    cellStyle: {
-                        backgroundColor: '#fff',
-                        color: '#000',
-                        width:'100%'
-                    },
-                },
-                {   title: 'Unidad',
-                    field: 'unidad',
-                    type: 'numeric',
-                    cellStyle: {
-                        backgroundColor: '#fff',
-                        color: '#000',
-                        width:'9%'
-                    },
-                },
-                {   title: 'Requeridos',
-                    field: 'requeridos',
-                    type: 'numeric',
-                    cellStyle: {
-                        backgroundColor: '#fff',
-                        color: '#000',
-                        width:'9%'
-                    },
-                },
-            ]}
-            data={rows}
-        />
+            <TablaPartidas/>
         </Fragment>
     );
 }

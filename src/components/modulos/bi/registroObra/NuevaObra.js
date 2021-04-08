@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import {  Fragment  } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme, Grid, Box } from '@material-ui/core';
@@ -10,6 +10,9 @@ import DateFnsUtils from '@date-io/date-fns';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import InputAdornment from '@material-ui/core/InputAdornment';
+
+// se importan los context
+import registroObraContext from '../../../../context/registroObra/registroObraContext'
 
 const theme = createMuiTheme({
     palette: {
@@ -27,11 +30,26 @@ export default function NuevaObra() {
 
   const classes = NuevaObraStyle();
 
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2021-01-01T21:11:54'));
+  const registroObrasContext = useContext(registroObraContext)
+  const { 
+    nombreObra,
+    montoTotal,
+    numeroContrato,
+    fechaContrato,
+    fechaInicio,
+    fechaFin,
+    estadoInput,
+    handleChangeDatos,
+    handleChangeFechas
+  } = registroObrasContext
 
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
+  const handleDateChange = (name, value) => {    
+    handleChangeFechas(name, value)
   };
+
+  const handleChange = e => {
+    handleChangeDatos(e)
+  }
 
 return (
 
@@ -46,7 +64,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Nombre de la obra</b>
                   </InputLabel>
-                  <BootstrapInput defaultValue="" id="bootstrap-input" />
+                  <BootstrapInput disabled={estadoInput} name='nombreObra' onChange={handleChange} value={nombreObra} />
                 </FormControl>
               </Grid>
 
@@ -55,7 +73,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Monto total</b>
                   </InputLabel>
-                  <BootstrapInput startAdornment={<InputAdornment position="start"><b>$</b></InputAdornment>} defaultValue="" id="bootstrap-input" />
+                  <BootstrapInput disabled={estadoInput} startAdornment={<InputAdornment position="start"><b>$</b></InputAdornment>} name='montoTotal' onChange={handleChange} value={montoTotal}/>
                 </FormControl>
               </Grid>
 
@@ -64,7 +82,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Numero de contrato</b>
                   </InputLabel>
-                  <BootstrapInput defaultValue="" id="bootstrap-input" />
+                  <BootstrapInput disabled={estadoInput} name='numeroContrato' onChange={handleChange} value={numeroContrato} />
                 </FormControl>
               </Grid>
             </Grid>
@@ -78,12 +96,13 @@ return (
                     <b>Fecha de contrato</b>
                   </InputLabel>
                   <KeyboardDatePicker
+                      disabled={estadoInput}
                       margin="normal"
                       color="secondary"
-                      id="date-picker-dialog"
+                      name='fechaContrato'
                       format="MM/dd/yyyy"
-                      value={selectedDate}
-                      onChange={handleDateChange}
+                      value={fechaContrato}
+                      onChange={(e) => handleDateChange( 'fechaContrato', e)}
                       KeyboardButtonProps={{'aria-label': 'change date',}}
                   />
                 </FormControl>
@@ -95,12 +114,13 @@ return (
                     <b>Inicio de obra</b>
                   </InputLabel>
                   <KeyboardDatePicker
+                      disabled={estadoInput}
                       margin="normal"
                       color="secondary"
-                      id="date-picker-dialog"
+                      name='fechaInicio'
                       format="MM/dd/yyyy"
-                      value={selectedDate}
-                      onChange={handleDateChange}
+                      value={fechaInicio}
+                      onChange={(e) => handleDateChange( 'fechaInicio', e)}
                       KeyboardButtonProps={{'aria-label': 'change date',}}
                   />
                 </FormControl>
@@ -112,12 +132,13 @@ return (
                     <b>Fin de obra</b>
                   </InputLabel>
                   <KeyboardDatePicker
+                      disabled={estadoInput}
                       margin="normal"
                       color="secondary"
-                      id="date-picker-dialog"
+                      name='fechaFin'
                       format="MM/dd/yyyy"
-                      value={selectedDate}
-                      onChange={handleDateChange}
+                      value={fechaFin}
+                      onChange={(e) => handleDateChange( 'fechaFin', e)}
                       KeyboardButtonProps={{'aria-label': 'change date',}}
                   />
                 </FormControl>
