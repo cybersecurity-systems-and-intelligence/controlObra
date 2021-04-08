@@ -33,10 +33,9 @@ export default function CargaFacturas() {
 
         if(mensaje){
             console.log(mensaje);
-            mostrarAlerta(mensaje.msg, mensaje.categoria)  
+            mostrarAlerta(mensaje.msg, mensaje.categoria)
         }
     }, [mensaje])
-    
 
     return (
         <Fragment>
