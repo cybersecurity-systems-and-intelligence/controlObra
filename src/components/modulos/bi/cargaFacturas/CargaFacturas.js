@@ -47,8 +47,8 @@ export default function CargaFacturas() {
                         <Typography variant="h4" align="center" component='div'>
                             <h5>Carga de Facturas<hr className={classes.hr}/></h5>
                         </Typography>
-                        <br/>                    
-                        <LecturaXML/>                        
+                        <br/>
+                        <LecturaXML/>
                     </Paper>
                 </Fade>
             </main>

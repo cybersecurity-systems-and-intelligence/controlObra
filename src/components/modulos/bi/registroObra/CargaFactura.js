@@ -1,56 +1,18 @@
 import { Fragment, useState } from 'react';
 import { useForm } from 'react-hook-form'
-import { makeStyles, Grid, Card, Input, styled, Fab, createMuiTheme } from '@material-ui/core';
+import { makeStyles, Grid, Card, styled, Fab, createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
-import { cloneDeep } from 'lodash';
-import axios from 'axios'
+import { styleCargaFacturas, themeCargaFacturas, ButtonCargaFacturas } from '../../../../styles/bi/stylesBi'
+
+
 import {tableIcons} from '../../../../styles/bi/stylesBi'
 import MaterialTable from 'material-table';
 import api from '../../../../libs/api'
 
-const theme = createMuiTheme({
-    palette: {
-    secondary: {
-        main: '#c5cae9',
-        },
-    },
-})
-
-const useStyles = makeStyles({
-    ancho: {
-        width: '100%'
-    },
-    cardIn: {
-        width: "100%",
-        background:"#f8fdff",
-        paddingBottom: "10%",
-        paddingLeft: "5%",
-        paddingRight: "5%",
-        boxShadow: "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset"
-    }
-})
-
-const ButtonComponent = styled('button')({
-    height: '40px',
-    width: '100%',
-    background: 'linear-gradient(#5e92f3, #1565c0)',
-    color:'#fff',
-    borderColor:'#64b5f6',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    fontSize:'15px',
-    textAlign: 'center',
-    marginTop: '8%',
-    '&:hover': {
-        background: '#64b5f6',
-        color:'white'
-    },
-})
-
 // se crea y exporta el componente
 export default function CargaFactura () {
 
-    const css = useStyles()
+    const css = styleCargaFacturas()
 
     const { register, handleSubmit } = useForm()
 
@@ -92,10 +54,10 @@ export default function CargaFactura () {
     return (
         <Fragment>
             <form onSubmit={handleSubmit(onSubmitCarga)}>
-                <ThemeProvider theme={theme}>
+                <ThemeProvider theme={themeCargaFacturas}>
                     {/* <Grid container spacing={3}>
                         <Grid item xs={12} md={3}>
-                            <InputBtnComponent ref={register} type="file" name="file" accept='.csv'/>                                
+                            <InputBtnComponent ref={register} type="file" name="file" accept='.csv'/>
                         </Grid>
                         <Grid item xs={12} md={3}>
                             <ButtonComponent>Cargar</ButtonComponent>
@@ -133,29 +95,20 @@ export default function CargaFactura () {
                         </Grid>
                     </Grid>  
                     <Grid item xs={6} md={3}>
-                            <ButtonComponent>AÑADIR</ButtonComponent>
+                            <ButtonCargaFacturas>AÑADIR</ButtonCargaFacturas>
                         </Grid>
                 </ThemeProvider>
             </form>
             <MaterialTable
-            style={{background: '#E3F2FD',  marginTop: theme.spacing(5), marginBottom: theme.spacing(5), border: "2px solid #ccc", borderRadius: 25,}}
+            style={{background: '#E3F2FD',  marginTop: '5%', marginBottom:  '5%', border: "2px solid #ccc", borderRadius: 25,}}
             icons={tableIcons}
             title={<h3>PARTIDAS</h3>}
-            /*options={{
-                rowStyle: {
-                    backgroundColor: '#000',
-                },
+            options={{
                 headerStyle: {
-                    maxWidth: 20, // <--- ADD THIS AND IT WILL WORK
-                    height: 10,
-                    maxHeight: 10,
-                    backgroundColor: "#82b1ff",
-                    color: "#FFF",
-                    textOverflow: "ellipsis",
-                    overflow: "hidden",
-                    position: 'relative'
+                    border: "1px solid #ccc",
+                    textAlign: 'center'
                 }
-            }}*/
+            }}
             columns={[
                 {   title: 'Partida',
                     field: 'partida',
@@ -164,7 +117,6 @@ export default function CargaFactura () {
                         background: 'linear-gradient(#eeffff,#bbdefb)',
                         color: '#000',
                         width:'100%',
-                        left: '25%'
                     },
                 },
                 {   title: 'Clave',
@@ -172,7 +124,11 @@ export default function CargaFactura () {
                     cellStyle: {
                         background: 'linear-gradient(#eeffff,#bbdefb)',
                         color: '#000',
-                        width:'15%'
+                        width:'10%',
+                        border: "1px solid #ccc",
+                        textAlign: 'center',
+                        fontSize: 12,
+                        fontWeight: 700
                     },
                 },
                 {   title: 'Descripcion',
@@ -181,7 +137,10 @@ export default function CargaFactura () {
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'100%'
+                        width:'100%',
+                        border: "1px solid #ccc",
+                        textAlign: 'justify',
+                        fontSize: 16
                     },
                 },
                 {   title: 'Unidad',
@@ -190,7 +149,11 @@ export default function CargaFactura () {
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'9%'
+                        width:'9%',
+                        border: "1px solid #ccc",
+                        textAlign: 'center',
+                        fontSize: 18,
+
                     },
                 },
                 {   title: 'Requeridos',
@@ -199,7 +162,11 @@ export default function CargaFactura () {
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'9%'
+                        width:'9%',
+                        border: "1px solid #ccc",
+                        textAlign: 'center',
+                        fontSize: 18,
+                        fontWeight: 600
                     },
                 },
             ]}

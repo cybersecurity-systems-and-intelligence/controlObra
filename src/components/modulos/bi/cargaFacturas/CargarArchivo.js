@@ -22,7 +22,7 @@ export default function CargarArchivo() {
 
     const { register, handleSubmit } = useForm()
 
-    const [nombrefichero, guardarNombreFichero] = useState(`Buscar fichero...`)    
+    const [nombrefichero, guardarNombreFichero] = useState(`Buscar fichero...`)
 
     const cambiarTexto = e => {
         guardarNombreFichero(e.target.files[0].name);
@@ -31,7 +31,6 @@ export default function CargarArchivo() {
     const onSubmitCarga = async (data) => {
         try{
             const formData = new FormData()
-            
             formData.append("file", data.file[0])
             console.log(data.file[0]);
             if(data.file[0].type !=='text/xml'){
@@ -42,7 +41,6 @@ export default function CargarArchivo() {
         }catch{
             mostrarAlerta('Debe ingresar un archivo xml con la estructura correcta', 'alerta alerta-error')
         }
-        
     }
 
     return (
@@ -58,11 +56,11 @@ export default function CargarArchivo() {
                             <Card className={css.cardIn}>
                             <h3>SELECCIONE UN FICHERO .XML</h3>
                                 <label>
-                                    <input 
-                                        ref={register} 
-                                        type="file" 
-                                        name="file" 
-                                        accept=".xml"  
+                                    <input
+                                        ref={register}
+                                        type="file"
+                                        name="file"
+                                        accept=".xml"
                                         onChange={cambiarTexto}
                                         style={{ display: "none" }}
                                     />
@@ -75,10 +73,10 @@ export default function CargarArchivo() {
                                     >
                                     {nombrefichero}
                                     </Fab>
-                                </label> 
-                            </Card>                      
+                                </label>
+                            </Card>
                         </Grid>
-                    </Grid>  
+                    </Grid>
                     <Grid item xs={6} md={3}>
                             <ButtonCargaFacturas>AÑADIR</ButtonCargaFacturas>
                         </Grid>

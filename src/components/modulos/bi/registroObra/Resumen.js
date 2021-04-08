@@ -2,7 +2,7 @@ import React from 'react';
 import {  Fragment, useState  } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme, Grid, Box } from '@material-ui/core';
-import { NuevaObraStyle, BootstrapInput} from '../../../../styles/bi/stylesBi'
+import { NuevaObraStyle, BootstrapInput, styleCargaFacturas} from '../../../../styles/bi/stylesBi'
 
 import { KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import {tableIcons} from '../../../../styles/bi/stylesBi'
@@ -26,7 +26,7 @@ const theme = createMuiTheme({
 
 
 export default function NuevaObra() {
-
+  const css = styleCargaFacturas();
   const classes = NuevaObraStyle();
   const [rows, guardarRows] = useState([])
   const [selectedDate, setSelectedDate] = React.useState(new Date('2021-01-01T21:11:54'));
@@ -129,7 +129,7 @@ return (
       </ThemeProvider>
     </Box>
     <MaterialTable
-            style={{background: '#E3F2FD',  marginTop: theme.spacing(5), marginBottom: theme.spacing(5), border: "2px solid #ccc", borderRadius: 25,}}
+           style={{background: '#E3F2FD',  marginTop:5, marginBottom:5, border: "2px solid #ccc", borderRadius: 25}}
             icons={tableIcons}
             title={<h3>PARTIDAS</h3>}
             /*options={{
@@ -155,7 +155,6 @@ return (
                         background: 'linear-gradient(#eeffff,#bbdefb)',
                         color: '#000',
                         width:'100%',
-                        left: '25%'
                     },
                 },
                 {   title: 'Clave',
@@ -163,7 +162,8 @@ return (
                     cellStyle: {
                         background: 'linear-gradient(#eeffff,#bbdefb)',
                         color: '#000',
-                        width:'15%'
+                        width:'15%',
+                        border: "2px solid #ccc"
                     },
                 },
                 {   title: 'Descripcion',
@@ -172,7 +172,8 @@ return (
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'100%'
+                        width:'100%',
+                        border: "2px solid #ccc"
                     },
                 },
                 {   title: 'Unidad',
@@ -181,7 +182,8 @@ return (
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'9%'
+                        width:'9%',
+                        border: "2px solid #ccc"
                     },
                 },
                 {   title: 'Requeridos',
@@ -190,7 +192,8 @@ return (
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'9%'
+                        width:'9%',
+                        border: "2px solid #ccc"
                     },
                 },
             ]}
