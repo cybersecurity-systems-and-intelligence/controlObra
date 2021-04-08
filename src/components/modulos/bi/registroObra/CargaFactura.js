@@ -10,9 +10,9 @@ import api from '../../../../libs/api'
 
 const theme = createMuiTheme({
     palette: {
-      secondary: {
-        main: '#b3d233',
-      },
+    secondary: {
+        main: '#c5cae9',
+        },
     },
 })
 
@@ -22,10 +22,10 @@ const useStyles = makeStyles({
     },
     cardIn: {
         width: "100%",
-        background:"#f1f8e9", 
+        background:"#f8fdff",
         paddingBottom: "10%",
-        paddingLeft: "5%", 
-        paddingRight: "5%", 
+        paddingLeft: "5%",
+        paddingRight: "5%",
         boxShadow: "rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset"
     }
 })
@@ -33,16 +33,16 @@ const useStyles = makeStyles({
 const ButtonComponent = styled('button')({
     height: '40px',
     width: '100%',
-    background: 'linear-gradient(#d4e157, #b3d233)',
-    color:'#000',
-    borderColor:'#d4e157',
+    background: 'linear-gradient(#5e92f3, #1565c0)',
+    color:'#fff',
+    borderColor:'#64b5f6',
     borderRadius: '5px',
     cursor: 'pointer',
     fontSize:'15px',
     textAlign: 'center',
     marginTop: '8%',
     '&:hover': {
-        background: 'linear-gradient(#b3d233, #d4e157)',
+        background: '#64b5f6',
         color:'white'
     },
 })
@@ -65,19 +65,19 @@ export default function CargaFactura () {
     const onSubmitCarga = async (data) => {
         try{
             const formData = new FormData()
-            
+
             formData.append("file", data.file[0])
             console.log(formData);
             if(data.file[0].type !=='application/vnd.ms-excel'){
                 alert('formato incorrecto')
                 return
             }
-            
+
             const res = await api.consultarItems(formData)
             console.log(res);
-            if(res.data.length > 0) {   
+            if(res.data.length > 0) {
                 console.log(res.data);
-                guardarRows(res.data)         
+                guardarRows(res.data)
                 return
             }else{
                 alert('Debe ingresar un archivo csv con la estructura correcta' )
@@ -128,8 +128,8 @@ export default function CargaFactura () {
                                     >
                                     {nombrefichero}
                                     </Fab>
-                                </label> 
-                            </Card>                      
+                                </label>
+                            </Card>
                         </Grid>
                     </Grid>  
                     <Grid item xs={6} md={3}>
@@ -137,20 +137,75 @@ export default function CargaFactura () {
                         </Grid>
                 </ThemeProvider>
             </form>
-            <MaterialTable    
+            <MaterialTable
+            style={{background: '#E3F2FD',  marginTop: theme.spacing(5), marginBottom: theme.spacing(5), border: "2px solid #ccc", borderRadius: 25,}}
             icons={tableIcons}
-            title="Partidas"
+            title={<h3>PARTIDAS</h3>}
+            /*options={{
+                rowStyle: {
+                    backgroundColor: '#000',
+                },
+                headerStyle: {
+                    maxWidth: 20, // <--- ADD THIS AND IT WILL WORK
+                    height: 10,
+                    maxHeight: 10,
+                    backgroundColor: "#82b1ff",
+                    color: "#FFF",
+                    textOverflow: "ellipsis",
+                    overflow: "hidden",
+                    position: 'relative'
+                }
+            }}*/
             columns={[
-                { title: 'Partida', field: 'partida', defaultGroupOrder: 0 },
-                { title: 'Clave', field: 'clave' },
-                { title: 'Descripcion', field: 'descripcion', type: 'numeric' },
-                { title: 'Unidad', field: 'unidad', type: 'numeric' },
-                { title: 'Requeridos', field: 'requeridos', type: 'numeric' },
+                {   title: 'Partida',
+                    field: 'partida',
+                    defaultGroupOrder: 0,
+                    cellStyle: {
+                        background: 'linear-gradient(#eeffff,#bbdefb)',
+                        color: '#000',
+                        width:'100%',
+                        left: '25%'
+                    },
+                },
+                {   title: 'Clave',
+                    field: 'clave',
+                    cellStyle: {
+                        background: 'linear-gradient(#eeffff,#bbdefb)',
+                        color: '#000',
+                        width:'15%'
+                    },
+                },
+                {   title: 'Descripcion',
+                    field: 'descripcion',
+                    type: 'text',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'100%'
+                    },
+                },
+                {   title: 'Unidad',
+                    field: 'unidad',
+                    type: 'numeric',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'9%'
+                    },
+                },
+                {   title: 'Requeridos',
+                    field: 'requeridos',
+                    type: 'numeric',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'9%'
+                    },
+                },
             ]}
             data={rows}
         />
         </Fragment>
-        
     );
 }
 
