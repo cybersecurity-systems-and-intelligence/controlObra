@@ -23,7 +23,15 @@ const TablaPartidas = () => {
         <MaterialTable
             style={{background: '#E3F2FD',  marginTop: theme.spacing(5), marginBottom: theme.spacing(5), border: "2px solid #ccc", borderRadius: 25,}}
             icons={tableIcons}
-            title={<h3>PARTIDAS</h3>}          
+            title={<h3>PARTIDAS</h3>}
+            options={{
+                headerStyle: {
+                    color: "#000",
+                    border: "1px solid #ccc",
+                    textAlign: 'center',
+                    fontSize: 18
+                }
+            }}
             columns={[
                 {   title: 'Partida',
                     field: 'partida',
@@ -32,7 +40,6 @@ const TablaPartidas = () => {
                         background: 'linear-gradient(#eeffff,#bbdefb)',
                         color: '#000',
                         width:'100%',
-                        left: '25%'
                     },
                 },
                 {   title: 'Clave',
@@ -40,7 +47,11 @@ const TablaPartidas = () => {
                     cellStyle: {
                         background: 'linear-gradient(#eeffff,#bbdefb)',
                         color: '#000',
-                        width:'15%'
+                        width:'15%',
+                        textAlign: 'center',
+                        fontSize: 16,
+                        fontWeight: 700,
+                        border: "1px solid #ccc",
                     },
                 },
                 {   title: 'Descripcion',
@@ -49,7 +60,10 @@ const TablaPartidas = () => {
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'100%'
+                        width:'100%',
+                        textAlign: 'justify',
+                        fontSize: 20,
+                        border: "1px solid #ccc"
                     },
                 },
                 {   title: 'Unidad',
@@ -58,7 +72,10 @@ const TablaPartidas = () => {
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'9%'
+                        width:'9%',
+                        textAlign: 'center',
+                        fontSize: 20,
+                        border: "1px solid #ccc"
                     },
                 },
                 {   title: 'Requeridos',
@@ -67,7 +84,10 @@ const TablaPartidas = () => {
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'9%'
+                        width:'9%',
+                        textAlign: 'center',
+                        fontSize: 20,
+                        border: "1px solid #ccc"
                     },
                 },
             ]}
@@ -75,5 +95,5 @@ const TablaPartidas = () => {
         />
     );
 }
- 
+
 export default TablaPartidas;
