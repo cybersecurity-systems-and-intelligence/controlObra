@@ -1,5 +1,5 @@
 // se importan las librerias
-import React, { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
 // se importan los context

@@ -4,6 +4,7 @@ import { Person, ListAlt } from '@material-ui/icons';
 
 // se importan los context
 import barraContext from '../../../context/barras/barraContext'
+import registroObraContext from '../../../context/registroObra/registroObraContext'
 
 const ListItemsAdmin = ( { } ) => {
 
@@ -11,21 +12,30 @@ const ListItemsAdmin = ( { } ) => {
   const barrasContext = useContext(barraContext)
   const { cambiarMenu } = barrasContext
 
+  // se extrae la informacion del context registroObra
+  const registroObrasContext = useContext(registroObraContext)
+  const { cambiarEstado } = registroObrasContext
+
+  const registroObra = () => {
+    cambiarMenu(0)
+    cambiarEstado(false)
+  }
+
   return (
     <List style={{background:'#202444',color:'#fff'}}>
     <div style={{background:'#202444'}}>
       <ListItem 
         button
-        onClick={() => cambiarMenu(0)}
+        onClick={() => registroObra(0)}
       >
         <ListItemIcon  style={{color:'#fff'}}>
           <Person />
         </ListItemIcon>
-        <ListItemText primary="Perfil" />
+        <ListItemText primary="Registro de Obra" />
       </ListItem>          
       <ListItem
         button
-        onClick={() => cambiarMenu(1)}
+        onClick={() => { cambiarMenu(1) }}
       >
         <ListItemIcon style={{color:'#fff'}}>
           <ListAlt />

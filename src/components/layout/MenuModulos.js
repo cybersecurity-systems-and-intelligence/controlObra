@@ -1,12 +1,11 @@
 // Se importan las librerias
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { 
     Box,
     Drawer,
     IconButton,
 } from '@material-ui/core';
 import { CancelPresentation } from '@material-ui/icons';
-
 import clsx from 'clsx';
 
 
@@ -15,7 +14,6 @@ import ListItemsBi from '../modulos/bi/ListItemsBi';
 
 // se importan los context
 import barraContext from '../../context/barras/barraContext'
-import authContext from '../../context/autenticacion/authContext'
 
 // Se importan los estilos
 import { styleBi } from '../../styles/bi/stylesBi'
@@ -30,6 +28,7 @@ export default function MenuModulos() {
     const { barra, ocultarBarra, modulo } = barrasContext
 
 
+    // se elige el menu segun el modulo seleccionado
     const menuModulo = () => {
         switch(modulo){
             case 'BI':

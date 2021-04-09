@@ -7,9 +7,6 @@ import {
     Paper
 } from '@material-ui/core/';
 
-// se importan los componentes
-import CargaFactura from './CargaFactura'
-
 // se importan los estlos
 import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
 import ProgresBar from './ProgresBar'

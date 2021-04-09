@@ -1,8 +1,8 @@
-import { Fragment, useState, useEffect, useContext } from 'react';
 
-import { styleCargaFacturas } from '../../../../styles/bi/stylesBi'
+// se importan las librerias y hooks
+import { Fragment } from 'react';
 
-import api from '../../../../libs/api'
+// se importan los componentes
 import DatosGenerales from './DatosGenerales'
 import TablaConceptos from './TablaConceptos'
 import CargarArchivo from './CargarArchivo'

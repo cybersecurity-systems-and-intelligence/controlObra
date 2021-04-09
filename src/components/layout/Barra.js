@@ -1,5 +1,5 @@
 // se importan las librerias
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { ExitToApp } from '@material-ui/icons/';
 import { Avatar, Grid } from '@material-ui/core';
 import randomColor from "randomcolor";

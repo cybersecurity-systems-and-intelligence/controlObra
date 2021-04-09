@@ -1,5 +1,5 @@
 // se importan las librerias
-import React, { useContext, useEffect, Fragment } from 'react';
+import { useContext, useEffect, Fragment } from 'react';
 import { 
     Grid,
     Typography,
