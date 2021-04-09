@@ -20,7 +20,7 @@ export default function TablaConceptos() {
             style={{background: '#E3F2FD',  marginTop:5, marginBottom:5, border: "2px solid #ccc", borderRadius: 25}}
             icons={tableIcons}
             title={<h3>CONCEPTOS</h3>}
-            
+
             options={{
                 headerStyle: {
                     backgroundColor: "#82b1ff",

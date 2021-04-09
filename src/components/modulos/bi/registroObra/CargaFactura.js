@@ -85,20 +85,20 @@ export default function CargaFactura () {
     const onSubmitCarga = async (data) => {
 
         try{
-      
+
             const formData = new FormData()
 
             formData.append("file", data.file[0])
 
-            if(data.file[0].type !=='application/vnd.ms-excel'){            
+            if(data.file[0].type !=='application/vnd.ms-excel'){
                 mostrarAlerta('Debe ingresar un archivo csv con la estructura correcta', 'alerta alerta-error')
                 return
             }
-            guardarPartidas(formData)          
+            guardarPartidas(formData)
         } catch {
             mostrarAlerta('Debe ingresar un archivo csv con la estructura correcta', 'alerta alerta-error')
             return
-        }                     
+        }
     }
 
     return (
@@ -123,11 +123,11 @@ export default function CargaFactura () {
                             <Card className={css.cardIn}>
                             <h3>SELECCIONE UN FICHERO .CSV</h3>
                                 <label>
-                                    <input 
-                                        ref={register} 
-                                        type="file" 
-                                        name="file" 
-                                        accept=".csv"  
+                                    <input
+                                        ref={register}
+                                        type="file"
+                                        name="file"
+                                        accept=".csv"
                                         onChange={cambiarTexto}
                                         style={{ display: "none" }}
                                     />
