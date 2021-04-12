@@ -1,8 +1,15 @@
-import React, { useState, useContext, useEffect } from 'react';
+// se importan las librerias y hooks
+import { useState, useContext } from 'react';
 import { Grid, Card, Fab} from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { useForm } from 'react-hook-form'
-import { styleCargaFacturas, themeCargaFacturas, ButtonCargaFacturas } from '../../../../styles/bi/stylesBi'
+
+// se importan los estlos
+import {
+    styleCargaFacturas,
+    themeCargaFacturas,
+    ButtonCargaFacturas
+} from '../../../../styles/bi/stylesBi'
 
 // se importan los context
 import cargaFacturaContext from '../../../../context/cargaFacturas/cargaFacturaContext'
@@ -20,19 +27,23 @@ export default function CargarArchivo() {
     const alertasContext = useContext(alertaContext)
     const { mostrarAlerta } = alertasContext
 
+    //hook para guardar el archivo
     const { register, handleSubmit } = useForm()
 
+    // hook para manejar el nombre del archivo
     const [nombrefichero, guardarNombreFichero] = useState(`Buscar fichero...`)
 
+    // se actualiza el nombre segun el archivo seleccionado
     const cambiarTexto = e => {
         guardarNombreFichero(e.target.files[0].name);
     }
 
+    // submit para cargar el archivo
     const onSubmitCarga = async (data) => {
         try{
             const formData = new FormData()
             formData.append("file", data.file[0])
-            console.log(data.file[0]);
+
             if(data.file[0].type !=='text/xml'){
                 mostrarAlerta('Debe ingresar un archivo xml con la estructura correcta', 'alerta alerta-error')
                 return

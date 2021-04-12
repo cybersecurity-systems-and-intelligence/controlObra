@@ -1,5 +1,5 @@
 // se importan las librerias
-import React, { Fragment, useContext, useEffect } from 'react';
+import { Fragment, useContext, useEffect } from 'react';
 import {
     Fade,
     CssBaseline,
@@ -34,8 +34,8 @@ export default function CargaFacturas() {
 
     useEffect(() => {
 
-        if(mensaje){
-            console.log(mensaje);
+        // si el mensaje es distinto a null se mostrará
+        if(mensaje){           
             mostrarAlerta(mensaje.msg, mensaje.categoria)
         }
     }, [mensaje])

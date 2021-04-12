@@ -1,3 +1,4 @@
+
 import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -8,27 +9,20 @@ import Typography from '@material-ui/core/Typography';
 import Resumen from '../../bi/registroObra/Resumen';
 import Copyright from '../../../layout/Copyright';
 
+// se importan los estilos
+import { styleProgressBar } from '../../../../styles/bi/stylesBi'
 
+// se importan los componentes
 import CargaFactura from './CargaFactura'
 import NuevaObra from './NuevaObra';
+import Resumen from '../../bi/registroObra/Resumen';
 
-// se importan los state
+// se importan los context
 import registroObraContext from '../../../../context/registroObra/registroObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-  },
-  backButton: {
-    marginRight: theme.spacing(1),
-  },
-  instructions: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-  },
-}));
 
+// se crean los encabezados del progress bar
 function getSteps() {
   return ['Nueva obra', 'Cargar cotización', 'Revision de datos'];
 }
@@ -36,10 +30,13 @@ function getSteps() {
 
 
 export default function HorizontalLabelPositionBelowStepper() {
-  const classes = useStyles();
+  const classes = styleProgressBar();
+
+  //state para manejar en que paso va
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
 
+  // se extrae la informacion del context
   const registroObrasContext = useContext(registroObraContext)
   const { 
     nombreObra,

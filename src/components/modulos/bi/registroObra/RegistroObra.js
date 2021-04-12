@@ -7,9 +7,11 @@ import {
     Paper
 } from '@material-ui/core/';
 
+
 // se importan los componentes
 import CargaFactura from './CargaFactura'
 import imagenes from '../../../../img/asets/imagenes';
+
 
 // se importan los estlos
 import { styleRegistroObra } from '../../../../styles/bi/stylesBi'

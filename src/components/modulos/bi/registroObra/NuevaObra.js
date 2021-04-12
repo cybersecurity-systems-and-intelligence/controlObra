@@ -1,15 +1,13 @@
-import React, { useState, useContext } from 'react';
+// se importan las librerias y hooks
+import { useContext } from 'react';
 import {  Fragment  } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme, Grid, Box } from '@material-ui/core';
-import { NuevaObraStyle, BootstrapInput} from '../../../../styles/bi/stylesBi'
-
+import { createMuiTheme, Grid, Box, InputLabel, FormControl, InputAdornment } from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
-
 import DateFnsUtils from '@date-io/date-fns';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import InputAdornment from '@material-ui/core/InputAdornment';
+
+// se importa los estilos
+import { NuevaObraStyle, BootstrapInput} from '../../../../styles/bi/stylesBi'
 
 // se importan los context
 import registroObraContext from '../../../../context/registroObra/registroObraContext'
@@ -22,14 +20,12 @@ const theme = createMuiTheme({
     },
   });
 
-
- 
-
-
+// se crea y exporta el componente
 export default function NuevaObra() {
 
   const classes = NuevaObraStyle();
 
+  // extrae la informacion del context
   const registroObrasContext = useContext(registroObraContext)
   const { 
     nombreObra,
@@ -43,10 +39,12 @@ export default function NuevaObra() {
     handleChangeFechas
   } = registroObrasContext
 
+  // guarda los cambios de las fechas
   const handleDateChange = (name, value) => {    
     handleChangeFechas(name, value)
   };
 
+  // guarda los cambios de los input
   const handleChange = e => {
     handleChangeDatos(e)
   }

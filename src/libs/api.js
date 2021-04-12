@@ -1,7 +1,7 @@
 import clienteAxios from '../config/axios'
 // import { mTokenGeneral } from '../config/config'
 
-const baseUrl = 'https://apicotizacion.herokuapp.com/api'
+const baseUrl = 'https://apipala.herokuapp.com/api'
 
 //request interceptor to add the auth token header to requests
 clienteAxios.interceptors.request.use(
@@ -33,7 +33,7 @@ clienteAxios.interceptors.response.use(
         }else if(refreshToken && !originalRequest._retry){
 
             originalRequest._retry = true
-            return clienteAxios.post(`${baseUrl}/autorizacion/refreshToken`, { refreshToken: refreshToken })
+            return clienteAxios.post(`${baseUrl}/refreshToken`, { refreshToken: refreshToken })
                         .then((res) => {                           
                             if (res.status === 200) {
                                 localStorage.setItem('accessToken', JSON.stringify(res.data.accessToken))                                
@@ -48,16 +48,16 @@ clienteAxios.interceptors.response.use(
 //Functions to make api calls
 const api = {
     login: (body) => {
-        return clienteAxios.post(`${baseUrl}/autorizacion`, { objeto: body })
+        return clienteAxios.post(`${baseUrl}/login`, { objeto: body })
     },
     auth: () => {
         return clienteAxios.get(`${baseUrl}/auth`)
     },
     refreshToken: (body) => {
-        return clienteAxios.post(`${baseUrl}/autorizacion/refreshToken`, body)
+        return clienteAxios.post(`${baseUrl}/refreshToken`, body)
     },
     logout: (body) => {
-        return clienteAxios.delete(`${baseUrl}/autorizacion/logout`, { data: body })
+        return clienteAxios.delete(`${baseUrl}/logout`, { data: body })
     },
     obrasVigentes: () => {
         return clienteAxios.get(`${baseUrl}/obras/vigentes`)

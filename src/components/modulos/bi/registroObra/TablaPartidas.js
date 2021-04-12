@@ -1,8 +1,12 @@
+// se importan las librerias y hooks
 import { useContext } from 'react';
-import {tableIcons} from '../../../../styles/bi/stylesBi'
 import { createMuiTheme } from '@material-ui/core';
 import MaterialTable from 'material-table';
-// se importan los state
+
+// se importa los estilos
+import { tableIcons } from '../../../../styles/bi/stylesBi'
+
+// se importan los context
 import registroObraContext from '../../../../context/registroObra/registroObraContext'
 
 const theme = createMuiTheme({

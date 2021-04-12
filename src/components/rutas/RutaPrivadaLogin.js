@@ -1,12 +1,9 @@
 // se importan las librerias
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom'
 
 // se importan los context
 import authContext from '../../context/autenticacion/authContext'
-
-//importar los componentes
-import PageNotFound from '../../components/rutas/PageNotFound'
 
 // se crea el componente
 const RutaPrivadaLogin = ( { component: Component, ...props } ) => {

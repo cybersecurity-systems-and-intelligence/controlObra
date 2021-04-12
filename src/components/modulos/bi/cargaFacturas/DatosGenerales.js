@@ -1,5 +1,8 @@
-import React, { Fragment, useContext } from 'react';
-import { makeStyles, Grid, Card, Input, styled, Fab, createMuiTheme, TextField,Box } from '@material-ui/core';
+// se importan las librerias y hooks
+import { Fragment, useContext } from 'react';
+import { Grid, TextField, Box } from '@material-ui/core';
+
+// se importan los estlos
 import { styleCargaFacturas } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
@@ -9,8 +12,8 @@ const DatosGenerales = () => {
 
     const css = styleCargaFacturas()
 
+    // se extrae la informacion del context
     const cargaFacturasContext = useContext(cargaFacturaContext)
-
     const { informacion } = cargaFacturasContext
 
     const { receptor, rfc, fecha, total, subtotal, moneda } = informacion

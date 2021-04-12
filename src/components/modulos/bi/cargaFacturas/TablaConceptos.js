@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+// se importan las librerias y hooks
+import { useContext } from 'react';
 import MaterialTable from 'material-table';
-import { styleCargaFacturas } from '../../../../styles/bi/stylesBi'
+
+// se importan los estilos
 import { tableIcons } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
 import cargaFacturaContext from '../../../../context/cargaFacturas/cargaFacturaContext'
 
 export default function TablaConceptos() {
-    const css = styleCargaFacturas()
+
     // Extraer los valores del context de la factura
     const cargaFacturasContext = useContext(cargaFacturaContext)
     const { informacion } = cargaFacturasContext
