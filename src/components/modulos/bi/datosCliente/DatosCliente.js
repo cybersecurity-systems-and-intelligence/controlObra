@@ -1,64 +1,48 @@
 // se importan las librerias
-import { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useContext } from 'react';
 import {
     Fade,
     CssBaseline,
     Typography,
     Paper
 } from '@material-ui/core/';
-import moduleName from 'module';
 
 // se importan los componentes
-import LecturaXML from './LecturaXML'
 import imagenes from '../../../../img/asets/imagenes';
-
 
 // se importan los estlos
 import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
+import ProgresBarCliente from '../../bi/datosCliente/PogresBarCliente'
 
-// se importan los context
-import cargaFacturaContext from '../../../../context/cargaFacturas/cargaFacturaContext'
+// se importan los state
 import alertaContext from '../../../../context/alertas/alertaContext'
 
 // se crea y exporta el componente
-export default function CargaFacturas() {
+export default function RegistroObra() {
     const classes = styleRegistroObra();
 
-    // Extraer los valores del context de la factura
-    const cargaFacturasContext = useContext(cargaFacturaContext)
-    const { mensaje } = cargaFacturasContext
-
-    // Extraer los valores del context de alerta
+    // se extrae la informacion del context
     const alertasContext = useContext(alertaContext)
-    const { alerta, mostrarAlerta } = alertasContext
-
-    useEffect(() => {
-
-        // si el mensaje es distinto a null se mostrará
-        if(mensaje){           
-            mostrarAlerta(mensaje.msg, mensaje.categoria)
-        }
-    }, [mensaje])
+    const { alerta } = alertasContext
 
     return (
         <Fragment>
             <CssBaseline />
             <main className={classes.layout}>
-                { alerta ? ( <div className={alerta.categoria}>{ alerta.msg }</div> ) : null }
+            { alerta ? ( <div className={alerta.categoria}>{ alerta.msg }</div> ) : null }
                 <Fade in={true}>
                     <Paper className={classes.paper}>
                     <div>
                         <img style={{width: 200}} src={imagenes.imgjpg} alt='PALA' />
                     </div>
                         <Typography variant="h4" align="center" component='div'>
-                            <h5>CARGAR FACTURAS<hr className={classes.hr}/></h5>
+                            <h5>DATOS DEL CLIENTE<hr className={classes.hr}/></h5>
                         </Typography>
                         <br/>
-                        <LecturaXML/>
+                        <ProgresBarCliente/>
                     </Paper>
                 </Fade>
             </main>
         </Fragment>
     );
 }
- 

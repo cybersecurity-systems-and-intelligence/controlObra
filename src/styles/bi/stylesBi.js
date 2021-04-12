@@ -148,11 +148,12 @@ export const styleRegistroObra = makeStyles((theme) => ({
 
 export const NuevaObraStyle = makeStyles((theme) => ({
   root: {
+    width: '100%',
     display: 'flex',
     flexWrap: 'wrap',
   },
   margin: {
-    margin: theme.spacing(5)
+    margin: theme.spacing(6)
   },
   box:{
     background:'#e3f2fd',
@@ -197,6 +198,22 @@ input: {
 },
 }))(InputBase);
 
+export const styleDatos = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      padding: theme.spacing(1),
+      fontSize: 20,
+    },
+  },
+  box:{
+    background:'#e3f2fd',
+    border: '1px solid #64b5f6',
+    borderRadius: 16,
+    margin: theme.spacing(3),
+    padding: theme.spacing(5),
+  }
+}));
 
 //cargaFacturas.js
 export const styleCargaFacturas = makeStyles((theme) => ({
@@ -215,9 +232,9 @@ box:{
   background:'#e3f2fd',
   border: '1px solid #64b5f6',
   borderRadius: 16,
-  margin: theme.spacing(5),
+  margin: theme.spacing(3),
   padding: theme.spacing(5),
-  width: '80%'
+  width: '90%'
 }
 }));
 

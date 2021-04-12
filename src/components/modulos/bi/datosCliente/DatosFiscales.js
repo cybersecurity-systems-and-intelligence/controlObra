@@ -1,13 +1,15 @@
-// se importan las librerias y hooks
-import { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import {  Fragment  } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme, Grid, Box, InputLabel, FormControl, InputAdornment } from '@material-ui/core';
-import { KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
-
-// se importa los estilos
+import { createMuiTheme, Grid, Box } from '@material-ui/core';
 import { NuevaObraStyle, BootstrapInput} from '../../../../styles/bi/stylesBi'
+
+import { KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
+
+import DateFnsUtils from '@date-io/date-fns';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 // se importan los context
 import registroObraContext from '../../../../context/registroObra/registroObraContext'
@@ -20,12 +22,14 @@ const theme = createMuiTheme({
     },
   });
 
-// se crea y exporta el componente
+
+ 
+
+
 export default function NuevaObra() {
 
   const classes = NuevaObraStyle();
 
-  // extrae la informacion del context
   const registroObrasContext = useContext(registroObraContext)
   const { 
     nombreObra,
@@ -39,12 +43,10 @@ export default function NuevaObra() {
     handleChangeFechas
   } = registroObrasContext
 
-  // guarda los cambios de las fechas
   const handleDateChange = (name, value) => {    
     handleChangeFechas(name, value)
   };
 
-  // guarda los cambios de los input
   const handleChange = e => {
     handleChangeDatos(e)
   }
@@ -70,7 +72,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Monto total</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estadoInput} startAdornment={<InputAdornment position="start"><b>$</b></InputAdornment>} name='montoTotal' onChange={handleChange} value={montoTotal}/>
+                  <BootstrapInput disabled={estadoInput} name='montoTotal' onChange={handleChange} value={montoTotal}/>
                 </FormControl>
               </Grid>
 
@@ -87,57 +89,30 @@ return (
 
           <Box>
             <Grid container spacing={3}>
-              <Grid  item xs>
+            <Grid  item xs>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Fecha de contrato</b>
+                    <b>Nombre de la obra</b>
                   </InputLabel>
-                  <KeyboardDatePicker
-                      disabled={estadoInput}
-                      margin="normal"
-                      color="secondary"
-                      name='fechaContrato'
-                      format="MM/dd/yyyy"
-                      value={fechaContrato}
-                      onChange={(e) => handleDateChange( 'fechaContrato', e)}
-                      KeyboardButtonProps={{'aria-label': 'change date',}}
-                  />
+                  <BootstrapInput disabled={estadoInput} name='nombreObra' onChange={handleChange} value={nombreObra} />
                 </FormControl>
               </Grid>
 
               <Grid  item xs>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Inicio de obra</b>
+                    <b>Monto total</b>
                   </InputLabel>
-                  <KeyboardDatePicker
-                      disabled={estadoInput}
-                      margin="normal"
-                      color="secondary"
-                      name='fechaInicio'
-                      format="MM/dd/yyyy"
-                      value={fechaInicio}
-                      onChange={(e) => handleDateChange( 'fechaInicio', e)}
-                      KeyboardButtonProps={{'aria-label': 'change date',}}
-                  />
+                  <BootstrapInput disabled={estadoInput} name='montoTotal' onChange={handleChange} value={montoTotal}/>
                 </FormControl>
               </Grid>
 
               <Grid  item xs>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Fin de obra</b>
+                    <b>Numero de contrato</b>
                   </InputLabel>
-                  <KeyboardDatePicker
-                      disabled={estadoInput}
-                      margin="normal"
-                      color="secondary"
-                      name='fechaFin'
-                      format="MM/dd/yyyy"
-                      value={fechaFin}
-                      onChange={(e) => handleDateChange( 'fechaFin', e)}
-                      KeyboardButtonProps={{'aria-label': 'change date',}}
-                  />
+                  <BootstrapInput disabled={estadoInput} name='numeroContrato' onChange={handleChange} value={numeroContrato} />
                 </FormControl>
               </Grid>
             </Grid>

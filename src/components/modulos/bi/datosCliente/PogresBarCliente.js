@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -6,39 +5,43 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Resumen from '../../bi/registroObra/Resumen';
 import Copyright from '../../../layout/Copyright';
 
-// se importan los estilos
-import { styleProgressBar } from '../../../../styles/bi/stylesBi'
+import DatosPersonales from './DatosPersonales';
+import DatosFiscales from './DatosFiscales';
+import DatosBancarios from './DatosBancarios';
 
-// se importan los componentes
-import CargaFactura from './CargaFactura'
-import NuevaObra from './NuevaObra';
-import Resumen from '../../bi/registroObra/Resumen';
-
-// se importan los context
+// se importan los state
 import registroObraContext from '../../../../context/registroObra/registroObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    alignItems: 'center'
+  },
+  backButton: {
+    marginRight: theme.spacing(1),
+  },
+  instructions: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  },
+}));
 
-// se crean los encabezados del progress bar
 function getSteps() {
-  return ['Nueva obra', 'Cargar cotización', 'Revision de datos'];
+  return ['Datos personales', 'Datos fiscales','Datos bancarios','Revision de datos'];
 }
 
 
 
 export default function HorizontalLabelPositionBelowStepper() {
-  const classes = styleProgressBar();
-
-  //state para manejar en que paso va
+  const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
 
-  // se extrae la informacion del context
   const registroObrasContext = useContext(registroObraContext)
-  const { 
+  const {
     nombreObra,
     montoTotal,
     numeroContrato,
@@ -75,15 +78,15 @@ export default function HorizontalLabelPositionBelowStepper() {
   const handleReset = () => {
     setActiveStep(0);
   };
-  
+
   const getStepContent = (stepIndex) => {
     switch (stepIndex) {
       case 0:
-        return <NuevaObra/>;
+        return <DatosPersonales/>;
       case 1:
-        return <CargaFactura/>;
+        return <DatosFiscales/>;
       case 2:
-        return <Resumen/>;
+        return <DatosBancarios/>;
       default:
         return 'Unknown stepIndex';
     }
