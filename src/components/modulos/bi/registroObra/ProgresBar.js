@@ -6,7 +6,6 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Resumen from '../../bi/registroObra/Resumen';
 import Copyright from '../../../layout/Copyright';
 
 // se importan los estilos
@@ -15,7 +14,7 @@ import { styleProgressBar } from '../../../../styles/bi/stylesBi'
 // se importan los componentes
 import CargaFactura from './CargaFactura'
 import NuevaObra from './NuevaObra';
-import Resumen from '../../bi/registroObra/Resumen';
+import Resumen from './Resumen';
 
 // se importan los context
 import registroObraContext from '../../../../context/registroObra/registroObraContext'
