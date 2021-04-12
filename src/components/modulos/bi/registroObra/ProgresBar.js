@@ -6,6 +6,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Resumen from '../../bi/registroObra/Resumen';
+import Copyright from '../../../layout/Copyright';
 
 
 import CargaFactura from './CargaFactura'
@@ -124,6 +125,8 @@ export default function HorizontalLabelPositionBelowStepper() {
           </div>
         )}
       </div>
+      <Copyright/>
     </div>
+    
   );
 }

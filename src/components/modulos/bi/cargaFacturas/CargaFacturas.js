@@ -6,9 +6,12 @@ import {
     Typography,
     Paper
 } from '@material-ui/core/';
+import moduleName from 'module';
 
 // se importan los componentes
 import LecturaXML from './LecturaXML'
+import imagenes from '../../../../img/asets/imagenes';
+
 
 // se importan los estlos
 import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
@@ -44,8 +47,11 @@ export default function CargaFacturas() {
                 { alerta ? ( <div className={alerta.categoria}>{ alerta.msg }</div> ) : null }
                 <Fade in={true}>
                     <Paper className={classes.paper}>
+                    <div>
+                        <img style={{width: 200}} src={imagenes.imgjpg} alt='PALA' />
+                    </div>
                         <Typography variant="h4" align="center" component='div'>
-                            <h5>Carga de Facturas<hr className={classes.hr}/></h5>
+                            <h5>CARGAR FACTURAS<hr className={classes.hr}/></h5>
                         </Typography>
                         <br/>
                         <LecturaXML/>

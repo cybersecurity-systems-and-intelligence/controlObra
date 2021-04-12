@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ListItem, List, ListItemIcon, ListItemText } from '@material-ui/core/';
-import { Person, ListAlt } from '@material-ui/icons';
+import { BorderColorTwoTone, ListAlt, ContactMailOutlined } from '@material-ui/icons';
 
 // se importan los context
 import barraContext from '../../../context/barras/barraContext'
@@ -19,19 +19,30 @@ const ListItemsAdmin = ( { } ) => {
         onClick={() => cambiarMenu(0)}
       >
         <ListItemIcon  style={{color:'#fff'}}>
-          <Person />
+          <BorderColorTwoTone />
         </ListItemIcon>
-        <ListItemText primary="Perfil" />
-      </ListItem>          
+        <ListItemText primary="Registrar obra" />
+      </ListItem>
+
       <ListItem
         button
         onClick={() => cambiarMenu(1)}
       >
-        <ListItemIcon style={{color:'#fff'}}>
+      <ListItemIcon style={{color:'#fff'}}>
           <ListAlt />
-        </ListItemIcon>
-        <ListItemText primary="Obras Creadas" />
-      </ListItem>    
+      </ListItemIcon>
+      <ListItemText primary="Obras creadas" />
+      </ListItem>
+
+      <ListItem
+        button
+        onClick={() => cambiarMenu(2)}
+      >
+      <ListItemIcon style={{color:'#fff'}}>
+          <ContactMailOutlined />
+      </ListItemIcon>
+      <ListItemText primary="Datos del cliente" />
+      </ListItem>
     </div>
     </List>
   )

@@ -1,5 +1,7 @@
 // se importan las librerias
 import React, { useContext, useEffect, Fragment } from 'react';
+import Copyright from '../../../src/components/layout/Copyright';
+
 import { 
     Grid,
     Typography,
@@ -107,7 +109,7 @@ const Proyectos = (props) => {
                         ))}
                     </Grid>
                 </main>
-               
+               <Copyright/>
             </div> 
         </Container>
         </Fragment>

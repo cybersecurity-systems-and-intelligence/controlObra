@@ -5,7 +5,7 @@ import {
     Drawer,
     IconButton,
 } from '@material-ui/core';
-import { CancelPresentation } from '@material-ui/icons';
+import { CancelPresentationTwoTone } from '@material-ui/icons';
 
 import clsx from 'clsx';
 
@@ -45,11 +45,11 @@ export default function MenuModulos() {
             paper: clsx(classes.drawerPaper, !barra && classes.drawerPaperClose),
             }}
             open={barra}
-            
+
         >
             <div style={{background:'#202444'}} >
                 <IconButton onClick={ocultarBarra} className={classes.toolbarIcon}>
-                    <CancelPresentation fontSize="large"/>
+                    <CancelPresentationTwoTone fontSize="large" style={{color:'#c48b9f'}}/>
                 </IconButton>
 
             </div>

@@ -6,6 +6,7 @@ import RegistroObra from './registroObra/RegistroObra'
 import CargaFacturas from './cargaFacturas/CargaFacturas'
 import BarraModulos from '../../layout/BarraModulos'
 import MenuModulos from '../../layout/MenuModulos'
+import DatosCliente from '../bi/datosCliente/DatosCliente';
 
 
 // Se importan los estilos
@@ -17,7 +18,7 @@ import barraContext from '../../../context/barras/barraContext'
 
 // se crea y exporta el componente
 export default function BI() {
-  
+
   const classes = styleBi() 
 
   // se extrae la informacion del context barra
@@ -30,6 +31,8 @@ export default function BI() {
         return <RegistroObra/>
       case 1:
         return <CargaFacturas/>
+      case 2:
+        return <DatosCliente/>
     }
   }
 

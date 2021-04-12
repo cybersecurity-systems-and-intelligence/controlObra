@@ -9,6 +9,7 @@ import {
 
 // se importan los componentes
 import CargaFactura from './CargaFactura'
+import imagenes from '../../../../img/asets/imagenes';
 
 // se importan los estlos
 import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
@@ -32,8 +33,11 @@ export default function RegistroObra() {
             { alerta ? ( <div className={alerta.categoria}>{ alerta.msg }</div> ) : null }
                 <Fade in={true}>
                     <Paper className={classes.paper}>
+                    <div>
+                        <img style={{width: 200}} src={imagenes.imgjpg} alt='PALA' />
+                    </div>
                         <Typography variant="h4" align="center" component='div'>
-                            <h5>Registrar Obra<hr className={classes.hr}/></h5>
+                            <h5>REGISTRAR OBRA<hr className={classes.hr}/></h5>
                         </Typography>
                         <br/>
                         <ProgresBar/>

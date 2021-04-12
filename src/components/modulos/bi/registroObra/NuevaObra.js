@@ -52,7 +52,6 @@ export default function NuevaObra() {
   }
 
 return (
-
   <Fragment>
     <Box className={classes.box}>
       <ThemeProvider theme={theme}>
