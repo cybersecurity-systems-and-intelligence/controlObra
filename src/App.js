@@ -13,6 +13,7 @@ import AuthState from './context/autenticacion/authState'
 import BarraState from './context/barras/barraState'
 import RegistroObraState from './context/controlObra/registroObra/registroObraState'
 import CargaFacturaState from './context/contabilidad/cargaFacturas/cargaFacturaState'
+import ModalState from './context/modal/modalState'
 
 
 import tokenAuth from './config/token'
@@ -35,17 +36,19 @@ function App() {
         <BarraState>
           <RegistroObraState>
             <CargaFacturaState>
-              <Router>
-                <Switch>
-                  <RutaPrivadaLogin exact path='/' component={Login} />
-                  <Route  path='/nueva-cuenta' component={NuevaCuenta} />
-                  <RutaPrivada path='/modulos' component={Modulos} /> 
-                  <RutaPrivada path='/FINANZAS' component={Bi} />  
-                  <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
-                  <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
-                  <Route component={PageNotFound}/>       
-                </Switch>
-              </Router>
+              <ModalState>
+                <Router>
+                  <Switch>
+                    <RutaPrivadaLogin exact path='/' component={Login} />
+                    <Route  path='/nueva-cuenta' component={NuevaCuenta} />
+                    <RutaPrivada path='/modulos' component={Modulos} /> 
+                    <RutaPrivada path='/FINANZAS' component={Bi} />  
+                    <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
+                    <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
+                    <Route component={PageNotFound}/>       
+                  </Switch>
+                </Router>
+              </ModalState>
             </CargaFacturaState>
           </RegistroObraState>
         </BarraState>

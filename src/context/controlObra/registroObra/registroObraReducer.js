@@ -4,7 +4,8 @@ import {
     HANDLE_CHANGE,
     HANDLE_CHANGE_FECHA,
     CARGAR_CONCEPTOS,
-    CAMBIAR_ESTADO
+    CAMBIAR_ESTADO,
+    CREAR_OBRA
 } from '../../../types'
 
 export default (state, action) => {
@@ -45,6 +46,18 @@ export default (state, action) => {
             return {
                 ...state,
                 estadoInput: action.payload
+            }
+        case CREAR_OBRA:
+            return {
+                ...state,
+                nombreObra: '',
+                montoTotal: '',
+                numeroContrato: '',
+                fechaContrato: new Date(),
+                fechaInicio: new Date(),
+                fechaFin: new Date(),
+                partidas: [],
+                mensaje: action.payload
             }
         default:
             return state

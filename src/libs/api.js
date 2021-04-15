@@ -68,8 +68,8 @@ const api = {
     perfilProv: (correo) => {
         return clienteAxios.get(`${baseUrl}/proveedores/datos_personales/${correo}`)
     },
-    crearObraAdmin: (body) => {
-        return clienteAxios.post(`${baseUrl}/obras`,{objeto:body})
+    crearObra: (body) => {
+        return clienteAxios.post(`${baseUrl}/crearObra`,{ objeto: body })
     },
     cargarObrasAdmin: () => {
         return clienteAxios.get(`${baseUrl}/obras`)

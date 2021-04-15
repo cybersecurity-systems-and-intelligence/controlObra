@@ -10,7 +10,8 @@ import {
     HANDLE_CHANGE,
     HANDLE_CHANGE_FECHA,
     CARGAR_CONCEPTOS,
-    CAMBIAR_ESTADO
+    CAMBIAR_ESTADO,
+    CREAR_OBRA
 } from '../../../types/index'
 
 
@@ -35,7 +36,6 @@ const  RegistroObraState = props => {
 
     // 
     const guardarInfoGeneral = (objeto) => {
-
         try{
             dispatch({
                 type: INFO_GENERAL,
@@ -111,6 +111,46 @@ const  RegistroObraState = props => {
         })
     }
 
+    const submitObra = async () =>{
+
+
+        try {
+
+            const objeto = {
+                nombre_obra: state.nombreObra,
+                monto_total_obra: state.montoTotal,
+                numero_contrato_obra: state.numeroContrato,
+                ubicacion_obra: 'aqui va la hubicacion',
+                fecha_contrato_obra: state.fechaContrato,
+                fecha_inicio_obra: state.fechaInicio,
+                fecha_fin_obra: state.fechaFin,
+                partidas_obra: state.partidas
+            }
+
+            const guardar = await api.crearObra(objeto)
+
+            const alerta = {
+                msg: 'La obra ha sido registrada correctamente',
+                categoria: 'alerta alerta-error'
+            }
+
+            dispatch({
+                type: CREAR_OBRA,
+                payload: alerta
+            })
+
+        } catch {
+            const alerta = {
+                msg: 'Hubo un error al registrar la obra',
+                categoria: 'alerta alerta-error'
+            }
+            dispatch({
+                type: ERROR_REGISTRO_OBRA,
+                payload: alerta
+            })
+        }
+    }
+
     return (
         <registroObraContext.Provider
             value={{
@@ -126,7 +166,8 @@ const  RegistroObraState = props => {
                 guardarPartidas,
                 handleChangeDatos,
                 handleChangeFechas,
-                cambiarEstado
+                cambiarEstado,
+                submitObra
             }}
         >
             { props.children }

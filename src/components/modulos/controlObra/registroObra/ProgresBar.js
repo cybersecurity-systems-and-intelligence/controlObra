@@ -1,6 +1,5 @@
 
 import React, { useState, useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -19,7 +18,7 @@ import Resumen from './Resumen';
 // se importan los context
 import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
-
+import modalContext from '../../../../context/modal/modalContext'
 
 // se crean los encabezados del progress bar
 function getSteps() {
@@ -49,6 +48,10 @@ export default function HorizontalLabelPositionBelowStepper() {
   const alertasContext = useContext(alertaContext)
   const { mostrarAlerta } = alertasContext
 
+  const modalsContext = useContext(modalContext)
+  const { estadoModal } = modalsContext
+
+
   const handleNext = () => {
     if (activeStep === 0 && (nombreObra.trim() === '' || montoTotal.trim() === '' || numeroContrato.trim() === '')){
       mostrarAlerta('Debe de ingresar todos los campos', 'alerta alerta-error')
@@ -60,6 +63,11 @@ export default function HorizontalLabelPositionBelowStepper() {
     }
     if(activeStep === 0){
       cambiarEstado(true)
+    }
+    
+    if(activeStep === 2){
+      estadoModal(true)
+      return
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -84,7 +92,7 @@ export default function HorizontalLabelPositionBelowStepper() {
       case 2:
         return <Resumen/>;
       default:
-        return 'Unknown stepIndex';
+        return 'guardado';
     }
   }
 
