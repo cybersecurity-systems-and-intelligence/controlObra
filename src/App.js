@@ -40,7 +40,7 @@ function App() {
                   <RutaPrivadaLogin exact path='/' component={Login} />
                   <Route  path='/nueva-cuenta' component={NuevaCuenta} />
                   <RutaPrivada path='/modulos' component={Modulos} /> 
-                  <RutaPrivada path='/BI' component={Bi} />  
+                  <RutaPrivada path='/FINANZAS' component={Bi} />  
                   <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
                   <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
                   <Route component={PageNotFound}/>       

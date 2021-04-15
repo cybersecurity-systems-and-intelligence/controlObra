@@ -1,18 +1,14 @@
-import React, { useState, useContext } from 'react';
-import {  Fragment  } from 'react';
+// se importan las librerias
+import { Fragment } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme, Grid, Box } from '@material-ui/core';
+import { createMuiTheme, Grid, Box, InputLabel, FormControl } from '@material-ui/core';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+
+// se importan los estlos
 import { NuevaObraStyle, BootstrapInput} from '../../../../styles/bi/stylesBi'
 
-import { KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
-
-import DateFnsUtils from '@date-io/date-fns';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import InputAdornment from '@material-ui/core/InputAdornment';
-
 // se importan los context
-import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
 
 const theme = createMuiTheme({
     palette: {
@@ -26,30 +22,11 @@ const theme = createMuiTheme({
  
 
 
-export default function NuevaObra() {
+export default function DatosFiscales() {
 
   const classes = NuevaObraStyle();
 
-  const registroObrasContext = useContext(registroObraContext)
-  const { 
-    nombreObra,
-    montoTotal,
-    numeroContrato,
-    fechaContrato,
-    fechaInicio,
-    fechaFin,
-    estadoInput,
-    handleChangeDatos,
-    handleChangeFechas
-  } = registroObrasContext
-
-  const handleDateChange = (name, value) => {    
-    handleChangeFechas(name, value)
-  };
-
-  const handleChange = e => {
-    handleChangeDatos(e)
-  }
+ 
 
 return (
   <Fragment>
@@ -63,7 +40,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Nombre de la obra</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estadoInput} name='nombreObra' onChange={handleChange} value={nombreObra} />
+                  <BootstrapInput name='nombreObra' />
                 </FormControl>
               </Grid>
 
@@ -72,7 +49,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Monto total</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estadoInput} name='montoTotal' onChange={handleChange} value={montoTotal}/>
+                  <BootstrapInput name='montoTotal'/>
                 </FormControl>
               </Grid>
 
@@ -81,7 +58,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Numero de contrato</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estadoInput} name='numeroContrato' onChange={handleChange} value={numeroContrato} />
+                  <BootstrapInput name='numeroContrato' />
                 </FormControl>
               </Grid>
             </Grid>
@@ -94,7 +71,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Nombre de la obra</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estadoInput} name='nombreObra' onChange={handleChange} value={nombreObra} />
+                  <BootstrapInput name='nombreObra'/>
                 </FormControl>
               </Grid>
 
@@ -103,7 +80,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Monto total</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estadoInput} name='montoTotal' onChange={handleChange} value={montoTotal}/>
+                  <BootstrapInput name='montoTotal' />
                 </FormControl>
               </Grid>
 
@@ -112,7 +89,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Numero de contrato</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estadoInput} name='numeroContrato' onChange={handleChange} value={numeroContrato} />
+                  <BootstrapInput name='numeroContrato' />
                 </FormControl>
               </Grid>
             </Grid>

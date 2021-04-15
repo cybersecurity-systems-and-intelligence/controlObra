@@ -1,5 +1,5 @@
 // se importan las librerias
-import React, { Fragment, useContext } from 'react';
+import { Fragment, useContext } from 'react';
 import {
     Fade,
     CssBaseline,
@@ -8,17 +8,19 @@ import {
 } from '@material-ui/core/';
 
 // se importan los componentes
+import ProgresBarCliente from '../../bi/datosCliente/PogresBarCliente'
+
+// se importan las imagenes
 import imagenes from '../../../../img/asets/imagenes';
 
 // se importan los estlos
 import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
-import ProgresBarCliente from '../../bi/datosCliente/PogresBarCliente'
 
-// se importan los state
+// se importan los context
 import alertaContext from '../../../../context/alertas/alertaContext'
 
 // se crea y exporta el componente
-export default function RegistroObra() {
+export default function DatosCliente() {
     const classes = styleRegistroObra();
 
     // se extrae la informacion del context

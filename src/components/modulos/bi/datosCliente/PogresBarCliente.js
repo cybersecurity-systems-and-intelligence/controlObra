@@ -1,18 +1,14 @@
-import React, { useState, useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Copyright from '../../../layout/Copyright';
+// se importan las librerias
+import { useState, useContext } from 'react';
+import { makeStyles, Stepper, Step, StepLabel, Button, Typography } from '@material-ui/core';
 
+// se importan los componentes
+import Copyright from '../../../layout/Copyright';
 import DatosPersonales from './DatosPersonales';
 import DatosFiscales from './DatosFiscales';
 import DatosBancarios from './DatosBancarios';
 
-// se importan los state
-import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
+// se importan los context
 import alertaContext from '../../../../context/alertas/alertaContext'
 
 const useStyles = makeStyles((theme) => ({
@@ -40,38 +36,15 @@ export default function HorizontalLabelPositionBelowStepper() {
   const [activeStep, setActiveStep] = useState(0);
   const steps = getSteps();
 
-  const registroObrasContext = useContext(registroObraContext)
-  const {
-    nombreObra,
-    montoTotal,
-    numeroContrato,
-    partidas,
-    cambiarEstado
-  } = registroObrasContext
-
   // Extraer los valores del context de alerta
   const alertasContext = useContext(alertaContext)
   const { mostrarAlerta } = alertasContext
 
-  const handleNext = () => {
-    if (activeStep === 0 && (nombreObra.trim() === '' || montoTotal.trim() === '' || numeroContrato.trim() === '')){
-      mostrarAlerta('Debe de ingresar todos los campos', 'alerta alerta-error')
-      return
-    }
-    if (activeStep === 1 && partidas.length === 0 ){
-      mostrarAlerta('Debe ingresar un archivo csv con la estructura correcta', 'alerta alerta-error')
-      return
-    }
-    if(activeStep === 0){
-      cambiarEstado(true)
-    }
+  const handleNext = () => {    
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const handleBack = () => {
-    if(activeStep === 1){
-      cambiarEstado(false)
-    }
+  const handleBack = () => {   
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 

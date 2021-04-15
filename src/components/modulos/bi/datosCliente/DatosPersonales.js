@@ -1,6 +1,8 @@
-import React, { Fragment } from 'react';
-import {Box,TextField} from '@material-ui/core';
-import {withStyles,} from '@material-ui/core/styles';
+// se importan las librerias
+import { Fragment } from 'react';
+import { Box, TextField, withStyles } from '@material-ui/core';
+
+// se importan los estlos
 import { styleDatos } from '../../../../styles/bi/stylesBi'
 
 

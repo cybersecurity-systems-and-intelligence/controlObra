@@ -1,6 +1,8 @@
-import React, { Fragment } from 'react';
-import {Box,TextField} from '@material-ui/core';
-import {withStyles,} from '@material-ui/core/styles';
+// se importan las librerias
+import { Fragment } from 'react';
+import { Box, TextField, withStyles } from '@material-ui/core';
+
+// Se importan los estilos
 import { styleDatos } from '../../../../styles/bi/stylesBi'
 
 
@@ -21,7 +23,7 @@ const ValidationTextField = withStyles({
     },
   })(TextField);
   
-const DatosPersonales = () => {
+const DatosBancarios = () => {
 
     const css = styleDatos()
 
@@ -65,4 +67,4 @@ const DatosPersonales = () => {
         </Fragment>
     );
 }
-export default DatosPersonales;
+export default DatosBancarios;

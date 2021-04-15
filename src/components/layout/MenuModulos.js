@@ -34,7 +34,7 @@ export default function MenuModulos() {
     // se elige el menu segun el modulo seleccionado
     const menuModulo = () => {
         switch(modulo){
-            case 'BI':
+            case 'FINANZAS':
                 return <ListBi/>
             case 'CONTROLOBRA':
                 return <ListControlObra/>
