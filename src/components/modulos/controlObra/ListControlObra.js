@@ -4,9 +4,9 @@ import { BorderColorTwoTone, ListAlt, ContactMailOutlined } from '@material-ui/i
 
 // se importan los context
 import barraContext from '../../../context/barras/barraContext'
-import registroObraContext from '../../../context/registroObra/registroObraContext'
+import registroObraContext from '../../../context/controlObra/registroObra/registroObraContext'
 
-const ListItemsAdmin = ( { } ) => {
+const ListControlObra = ( { } ) => {
 
   // se extrae la informacion del context barra
   const barrasContext = useContext(barraContext)
@@ -33,28 +33,9 @@ const ListItemsAdmin = ( { } ) => {
         </ListItemIcon>
         <ListItemText primary="Registrar obra" />
       </ListItem>
-      <ListItem
-        button
-        onClick={() => { cambiarMenu(1) }}
-      >
-      <ListItemIcon style={{color:'#fff'}}>
-          <ListAlt />
-      </ListItemIcon>
-      <ListItemText primary="Obras creadas" />
-      </ListItem>
-
-      <ListItem
-        button
-        onClick={() => cambiarMenu(2)}
-      >
-      <ListItemIcon style={{color:'#fff'}}>
-          <ContactMailOutlined />
-      </ListItemIcon>
-      <ListItemText primary="Datos del cliente" />
-      </ListItem>
     </div>
     </List>
   )
 }
 
-export default ListItemsAdmin
+export default ListControlObra

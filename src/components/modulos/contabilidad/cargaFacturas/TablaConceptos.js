@@ -6,7 +6,7 @@ import MaterialTable from 'material-table';
 import { tableIcons } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
-import cargaFacturaContext from '../../../../context/cargaFacturas/cargaFacturaContext'
+import cargaFacturaContext from '../../../../context/contabilidad/cargaFacturas/cargaFacturaContext'
 
 export default function TablaConceptos() {
 

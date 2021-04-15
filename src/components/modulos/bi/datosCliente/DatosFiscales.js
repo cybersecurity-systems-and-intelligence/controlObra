@@ -12,7 +12,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
 // se importan los context
-import registroObraContext from '../../../../context/registroObra/registroObraContext'
+import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
 
 const theme = createMuiTheme({
     palette: {

@@ -12,7 +12,7 @@ import { styleCargaFacturas, themeCargaFacturas, ButtonCargaFacturas } from '../
 import TablaPartidas from './TablaPartidas'
 
 // se importan los context
-import registroObraContext from '../../../../context/registroObra/registroObraContext'
+import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
 // se crea y exporta el componente

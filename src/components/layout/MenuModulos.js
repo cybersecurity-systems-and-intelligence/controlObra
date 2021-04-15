@@ -11,7 +11,9 @@ import clsx from 'clsx';
 
 
 // se importan los componentes
-import ListItemsBi from '../modulos/bi/ListItemsBi';
+import ListBi from '../modulos/bi/ListBi';
+import ListControlObra from '../modulos/controlObra/ListControlObra'
+import ListContabilidad from '../modulos/contabilidad/ListContabilidad'
 
 // se importan los context
 import barraContext from '../../context/barras/barraContext'
@@ -33,7 +35,11 @@ export default function MenuModulos() {
     const menuModulo = () => {
         switch(modulo){
             case 'BI':
-                return <ListItemsBi/>
+                return <ListBi/>
+            case 'CONTROLOBRA':
+                return <ListControlObra/>
+            case 'CONTABILIDAD':
+                return <ListContabilidad/>
         }
     }
 

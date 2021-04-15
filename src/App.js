@@ -4,13 +4,15 @@ import Login from './components/auth/Login'
 import NuevaCuenta from './components/auth/NuevaCuenta'
 import Modulos from './components/rutas/Modulos'
 import Bi from './components/modulos/bi/BI'
+import ControlObra from './components/modulos/controlObra/ControlObra'
+import Contabilidad from './components/modulos/contabilidad/Contabilidad'
 
 // se importan los state
 import AlertaState from './context/alertas/alertaState'
 import AuthState from './context/autenticacion/authState'
 import BarraState from './context/barras/barraState'
-import RegistroObraState from './context/registroObra/registroObraState'
-import CargaFacturaState from './context/cargaFacturas/cargaFacturaState'
+import RegistroObraState from './context/controlObra/registroObra/registroObraState'
+import CargaFacturaState from './context/contabilidad/cargaFacturas/cargaFacturaState'
 
 
 import tokenAuth from './config/token'
@@ -39,6 +41,8 @@ function App() {
                   <Route  path='/nueva-cuenta' component={NuevaCuenta} />
                   <RutaPrivada path='/modulos' component={Modulos} /> 
                   <RutaPrivada path='/BI' component={Bi} />  
+                  <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
+                  <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
                   <Route component={PageNotFound}/>       
                 </Switch>
               </Router>

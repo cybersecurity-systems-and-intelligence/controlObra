@@ -12,7 +12,7 @@ import DatosFiscales from './DatosFiscales';
 import DatosBancarios from './DatosBancarios';
 
 // se importan los state
-import registroObraContext from '../../../../context/registroObra/registroObraContext'
+import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
 const useStyles = makeStyles((theme) => ({

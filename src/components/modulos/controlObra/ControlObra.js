@@ -2,9 +2,9 @@
 import { useContext } from 'react'
 
 // se importan los componentes
+import RegistroObra from './registroObra/RegistroObra'
 import BarraModulos from '../../layout/BarraModulos'
 import MenuModulos from '../../layout/MenuModulos'
-import DatosCliente from '../bi/datosCliente/DatosCliente';
 
 
 // Se importan los estilos
@@ -15,7 +15,7 @@ import barraContext from '../../../context/barras/barraContext'
 
 
 // se crea y exporta el componente
-export default function BI() {
+export default function ControlObra() {
 
   const classes = styleBi() 
 
@@ -26,7 +26,9 @@ export default function BI() {
   const paginas = () => {
     switch(numeroMenu){
       case 0:
-        return <DatosCliente/>
+        return <RegistroObra/>
+      default:
+        return 'Error desconocido'
     }
   }
 

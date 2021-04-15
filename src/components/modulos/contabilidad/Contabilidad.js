@@ -2,6 +2,7 @@
 import { useContext } from 'react'
 
 // se importan los componentes
+import CargaFacturas from './cargaFacturas/CargaFacturas'
 import BarraModulos from '../../layout/BarraModulos'
 import MenuModulos from '../../layout/MenuModulos'
 import DatosCliente from '../bi/datosCliente/DatosCliente';
@@ -15,7 +16,7 @@ import barraContext from '../../../context/barras/barraContext'
 
 
 // se crea y exporta el componente
-export default function BI() {
+export default function Contabilidad() {
 
   const classes = styleBi() 
 
@@ -26,6 +27,8 @@ export default function BI() {
   const paginas = () => {
     switch(numeroMenu){
       case 0:
+        return <CargaFacturas/>
+      case 1:
         return <DatosCliente/>
     }
   }

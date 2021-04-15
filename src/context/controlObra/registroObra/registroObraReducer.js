@@ -5,7 +5,7 @@ import {
     HANDLE_CHANGE_FECHA,
     CARGAR_CONCEPTOS,
     CAMBIAR_ESTADO
-} from '../../types'
+} from '../../../types'
 
 export default (state, action) => {
     switch(action.type){

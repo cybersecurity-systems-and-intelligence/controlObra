@@ -6,7 +6,7 @@ import { Grid, TextField, Box } from '@material-ui/core';
 import { styleCargaFacturas } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
-import cargaFacturaContext from '../../../../context/cargaFacturas/cargaFacturaContext'
+import cargaFacturaContext from '../../../../context/contabilidad/cargaFacturas/cargaFacturaContext'
 
 const DatosGenerales = () => {
 

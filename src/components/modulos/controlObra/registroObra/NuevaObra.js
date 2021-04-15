@@ -10,7 +10,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import { NuevaObraStyle, BootstrapInput} from '../../../../styles/bi/stylesBi'
 
 // se importan los context
-import registroObraContext from '../../../../context/registroObra/registroObraContext'
+import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
 
 const theme = createMuiTheme({
     palette: {

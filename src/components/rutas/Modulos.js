@@ -54,21 +54,21 @@ const Proyectos = (props) => {
     }, [])
     // arreglo de los documentos con la informaicon de los modulos
     const rows = [
-        { id: 1, nombre: 'COMPRAS', color: '#B3D233', ico: <LocalMallTwoTone className={css.iconSize}/>},
-        { id: 2, nombre: 'INVENTARIOS', color: '#FFD180', ico: <ListAltTwoTone className={css.iconSize}/> },
-        { id: 3, nombre: 'CONTABILIDAD', color: '#969CEC', ico: <MonetizationOnTwoTone className={css.iconSize}/> },
-        { id: 4, nombre: 'CONTROL DE OBRA', color: '#DC6969', ico: <AssignmentTurnedInTwoTone className={css.iconSize}/> },
-        { id: 5, nombre: 'DASHBOARD', color: '#9076C5', ico: <DashboardTwoTone className={css.iconSize} /> },
-        { id: 6, nombre: 'NOTIFY CENTER', color: '#75D69C', ico: <NotificationsActiveTwoTone className={css.iconSize}/> },
-        { id: 7, nombre: 'BI', color: '#64b5f6', ico: <NotificationsActiveTwoTone className={css.iconSize}/> },
+        { id: 1, nombre: 'COMPRAS', rutamodulo: 'COMPRAS',color: '#B3D233', ico: <LocalMallTwoTone className={css.iconSize}/>},
+        { id: 2, nombre: 'INVENTARIOS', rutamodulo: 'INVENTARIOS', color: '#FFD180', ico: <ListAltTwoTone className={css.iconSize}/> },
+        { id: 3, nombre: 'CONTABILIDAD', rutamodulo: 'CONTABILIDAD', color: '#969CEC', ico: <MonetizationOnTwoTone className={css.iconSize}/> },
+        { id: 4, nombre: 'CONTROL DE OBRA', rutamodulo: 'CONTROLOBRA', color: '#DC6969', ico: <AssignmentTurnedInTwoTone className={css.iconSize}/> },
+        { id: 5, nombre: 'DASHBOARD', rutamodulo: 'DASHBOARD', color: '#9076C5', ico: <DashboardTwoTone className={css.iconSize} /> },
+        { id: 6, nombre: 'NOTIFY CENTER', rutamodulo: 'NOTIFYCENTER', color: '#75D69C', ico: <NotificationsActiveTwoTone className={css.iconSize}/> },
+        { id: 7, nombre: 'FINANZAS', rutamodulo: 'FINANZAS', color: '#64b5f6', ico: <NotificationsActiveTwoTone className={css.iconSize}/> },
     ]
 
     // Seleccion del modulo a ingresar
     const selectModule = e => {
         const modulo = rows.filter(value => value.id == e.target.id)
-        seleccionarModulo(modulo[0].nombre, modulo[0].color)
+        seleccionarModulo(modulo[0].rutamodulo, modulo[0].color)
 
-        props.history.push(`/${modulo[0].nombre}`)
+        props.history.push(`/${modulo[0].rutamodulo}`)
     }
 
     return (

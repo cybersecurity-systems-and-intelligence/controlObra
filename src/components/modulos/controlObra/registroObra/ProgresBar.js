@@ -17,7 +17,7 @@ import NuevaObra from './NuevaObra';
 import Resumen from './Resumen';
 
 // se importan los context
-import registroObraContext from '../../../../context/registroObra/registroObraContext'
+import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
 

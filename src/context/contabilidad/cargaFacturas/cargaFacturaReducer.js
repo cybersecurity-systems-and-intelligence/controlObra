@@ -1,7 +1,7 @@
 import {
     CONSULTAR_INFORMACION,
     CONSULTAR_ERROR
-} from '../../types'
+} from '../../../types'
 
 export default (state, action) => {
     switch(action.type){

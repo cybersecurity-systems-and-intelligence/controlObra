@@ -2,7 +2,7 @@ import { useReducer } from 'react'
 import registroObraContext from './registroObraContext'
 import registroObraReducer from './registroObraReducer'
 
-import api from '../../libs/api'
+import api from '../../../libs/api'
 
 import {
     INFO_GENERAL,
@@ -11,7 +11,7 @@ import {
     HANDLE_CHANGE_FECHA,
     CARGAR_CONCEPTOS,
     CAMBIAR_ESTADO
-} from '../../types/index'
+} from '../../../types/index'
 
 
 const  RegistroObraState = props => {

@@ -2,12 +2,12 @@ import { useReducer } from 'react'
 import cargaFacturaContext from './cargaFacturaContext'
 import cargaFacturaReducer from './cargaFacturaReducer'
 
-import api from '../../libs/api'
+import api from '../../../libs/api'
 
 import {
     CONSULTAR_INFORMACION,
     CONSULTAR_ERROR
-} from '../../types/index'
+} from '../../../types'
 
 
 const  CargaFacturaState = props => {
