@@ -9,8 +9,8 @@ export default function Resumen() {
 
   return (
     <Fragment>
-      <NuevaObra/>
-      <TablaPartidas/>
+      <NuevaObra estado={true}/>
+      <TablaPartidas estado={true}/>
     </Fragment>
   );
 }

@@ -11,7 +11,7 @@ import clsx from 'clsx';
 
 
 // se importan los componentes
-import ListBi from '../modulos/bi/ListBi';
+import ListBi from '../modulos/finanzas/ListBi';
 import ListControlObra from '../modulos/controlObra/ListControlObra'
 import ListContabilidad from '../modulos/contabilidad/ListContabilidad'
 

@@ -1,5 +1,5 @@
 // se importan las librerias
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useEffect } from 'react';
 import {
     Fade,
     CssBaseline,
@@ -8,7 +8,8 @@ import {
 } from '@material-ui/core/';
 
 // se importan los componentes
-import ProgresBarCliente from '../../bi/datosCliente/PogresBarCliente'
+import ProgresBarCliente from '../../finanzas/datosCliente/PogresBarCliente'
+import Modal from '../../Modal'
 
 // se importan las imagenes
 import imagenes from '../../../../img/asets/imagenes';
@@ -17,21 +18,37 @@ import imagenes from '../../../../img/asets/imagenes';
 import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
+import modalContext from '../../../../context/modal/modalContext'
+import datosClienteContext from '../../../../context/finanzas/datosCliente/datosClienteContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
 // se crea y exporta el componente
 export default function DatosCliente() {
     const classes = styleRegistroObra();
 
-    // se extrae la informacion del context
+    
+
+    const datosClientesContext = useContext(datosClienteContext)
+    const { mensaje } = datosClientesContext
+
+    // Extraer los valores del context de alerta
     const alertasContext = useContext(alertaContext)
-    const { alerta } = alertasContext
+    const { mostrarAlerta } = alertasContext
+
+
+    
+
+    useEffect(() => {
+        if(mensaje){
+          mostrarAlerta(mensaje.msg, mensaje.categoria)
+        }
+      }, [mensaje])
+
 
     return (
         <Fragment>
             <CssBaseline />
             <main className={classes.layout}>
-            { alerta ? ( <div className={alerta.categoria}>{ alerta.msg }</div> ) : null }
                 <Fade in={true}>
                     <Paper className={classes.paper}>
                     <div>
@@ -45,6 +62,7 @@ export default function DatosCliente() {
                     </Paper>
                 </Fade>
             </main>
+            <Modal/>
         </Fragment>
     );
 }

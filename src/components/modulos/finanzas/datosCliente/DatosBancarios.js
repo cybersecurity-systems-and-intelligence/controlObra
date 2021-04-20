@@ -1,10 +1,12 @@
 // se importan las librerias
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import { Box, TextField, withStyles } from '@material-ui/core';
 
 // Se importan los estilos
 import { styleDatos } from '../../../../styles/bi/stylesBi'
 
+// se importan los context
+import datosClienteContext from '../../../../context/finanzas/datosCliente/datosClienteContext'
 
 const ValidationTextField = withStyles({
     root: {
@@ -23,9 +25,17 @@ const ValidationTextField = withStyles({
     },
   })(TextField);
   
-const DatosBancarios = () => {
+const DatosBancarios = ({ estado }) => {
 
     const css = styleDatos()
+
+    // se extrae la informacion del context
+    const datosClientesContext = useContext(datosClienteContext)
+    const { datosBancarios, guardarDatosBancarios } = datosClientesContext
+
+    const handleDatos = (e) => {
+      guardarDatosBancarios(e.target.name, e.target.value)
+    }
 
 
     return (
@@ -33,35 +43,32 @@ const DatosBancarios = () => {
             <Box className={css.box}>
                 <form className={css.root} noValidate autoComplete="off">
                     <ValidationTextField
-                        label="Nombre de la empresa"
+                        disabled={estado}
+                        label="Numero de clave"
                         required
                         variant="outlined"
-                        id="validation-outlined-input"
+                        name='numeroClave'
+                        value={datosBancarios.numeroClave}
+                        onChange={handleDatos}
                     />
                     <ValidationTextField
-                        label="RFC"
+                        disabled={estado}
+                        label="Cuenta"
                         required
                         variant="outlined"
-                        id="validation-outlined-input"
+                        name='cuenta'
+                        value={datosBancarios.cuenta}
+                        onChange={handleDatos}
                     />
                     <ValidationTextField
-                        label="Direccion fiscal"
+                        disabled={estado}
+                        label="Razon social"
                         required
                         variant="outlined"
-                        id="validation-outlined-input"
-                    />
-                    <ValidationTextField
-                        label="Telefono movil"
-                        required
-                        variant="outlined"
-                        id="validation-outlined-input"
-                    />
-                     <ValidationTextField
-                        label="Obra"
-                        required
-                        variant="outlined"
-                        id="validation-outlined-input"
-                    />
+                        name='razonSocial'
+                        value={datosBancarios.razonSocial}
+                        onChange={handleDatos}
+                    />                   
                 </form>
             </Box>
         </Fragment>

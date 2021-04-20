@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import CargaFacturas from './cargaFacturas/CargaFacturas'
 import BarraModulos from '../../layout/BarraModulos'
 import MenuModulos from '../../layout/MenuModulos'
-import DatosCliente from '../bi/datosCliente/DatosCliente';
+import DatosCliente from '../finanzas/datosCliente/DatosCliente';
 
 
 // Se importan los estilos

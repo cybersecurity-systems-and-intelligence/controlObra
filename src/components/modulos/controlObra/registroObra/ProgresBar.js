@@ -1,5 +1,5 @@
 
-import React, { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -19,6 +19,7 @@ import Resumen from './Resumen';
 import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 import modalContext from '../../../../context/modal/modalContext'
+
 
 // se crean los encabezados del progress bar
 function getSteps() {
@@ -41,7 +42,8 @@ export default function HorizontalLabelPositionBelowStepper() {
     montoTotal,
     numeroContrato,
     partidas,
-    cambiarEstado
+    cambiarEstado,
+    submitObra
   } = registroObrasContext
 
   // Extraer los valores del context de alerta
@@ -49,7 +51,14 @@ export default function HorizontalLabelPositionBelowStepper() {
   const { mostrarAlerta } = alertasContext
 
   const modalsContext = useContext(modalContext)
-  const { estadoModal } = modalsContext
+  const { peticion, estadoModal } = modalsContext
+
+  useEffect(() => {
+    if(peticion){
+        submitObra()
+        setActiveStep(0);
+    }
+  }, [peticion])
 
 
   const handleNext = () => {
@@ -86,9 +95,9 @@ export default function HorizontalLabelPositionBelowStepper() {
   const getStepContent = (stepIndex) => {
     switch (stepIndex) {
       case 0:
-        return <NuevaObra/>;
+        return <NuevaObra estado={false}/>;
       case 1:
-        return <CargaFactura/>;
+        return <CargaFactura estado={false}/>;
       case 2:
         return <Resumen/>;
       default:

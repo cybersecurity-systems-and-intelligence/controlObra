@@ -1,9 +1,12 @@
 // se importan las librerias
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import { Box, TextField, withStyles } from '@material-ui/core';
 
 // se importan los estlos
 import { styleDatos } from '../../../../styles/bi/stylesBi'
+
+// se importan los context
+import datosClienteContext from '../../../../context/finanzas/datosCliente/datosClienteContext'
 
 
 const ValidationTextField = withStyles({
@@ -21,47 +24,60 @@ const ValidationTextField = withStyles({
         padding: '4px !important', // override inline-style
       },
     },
-  })(TextField);
-  
-const DatosPersonales = () => {
+})(TextField);
+
+const DatosPersonales = ({ estado }) => {
 
     const css = styleDatos()
 
+    // se extrae la informacion del context
+    const datosClientesContext = useContext(datosClienteContext)
+    const { datosPersonales, guardarDatosPersonales } = datosClientesContext
+
+    const handleDatos = (e) => {
+      guardarDatosPersonales(e.target.name, e.target.value)
+    }
 
     return (
         <Fragment>
             <Box className={css.box}>
                 <form className={css.root} noValidate autoComplete="off">
                     <ValidationTextField
+                        disabled={estado}
                         label="Nombre"
                         required
                         variant="outlined"
-                        id="validation-outlined-input"
+                        name='nombre'
+                        value={datosPersonales.nombre}
+                        onChange={handleDatos}
                     />
                     <ValidationTextField
+                        disabled={estado}
                         label="Correo electronico"
                         required
                         variant="outlined"
-                        id="validation-outlined-input"
+                        name='correo'
+                        value={datosPersonales.correo}
+                        onChange={handleDatos}
                     />
                     <ValidationTextField
+                        disabled={estado}
                         label="Telefono fijo"
                         required
                         variant="outlined"
-                        id="validation-outlined-input"
+                        name='telefonoFijo'
+                        value={datosPersonales.telefonoFijo}
+                        onChange={handleDatos}
                     />
                     <ValidationTextField
+                        disabled={estado}
                         label="Telefono movil"
                         required
                         variant="outlined"
-                        id="validation-outlined-input"
-                    />
-                     <ValidationTextField
-                        label="Obra"
-                        required
-                        variant="outlined"
-                        id="validation-outlined-input"
-                    />
+                        name='telefonoMovil'
+                        value={datosPersonales.telefonoMovil}
+                        onChange={handleDatos}
+                    />                     
                 </form>
             </Box>
         </Fragment>

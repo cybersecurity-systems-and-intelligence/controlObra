@@ -30,6 +30,7 @@ import Barra from '../layout/Barra'
 // se importan los context
 import authContext from '../../context/autenticacion/authContext'
 import barraContext from '../../context/barras/barraContext'
+import obrasContext from '../../context/obras/obrasContext'
 
 // se importan los estilos
 import { styleModulos } from '../../styles/styles'
@@ -48,9 +49,11 @@ const Proyectos = (props) => {
     const barrasContext = useContext(barraContext)
     const { seleccionarModulo } = barrasContext
 
+    
+
     // se autentica el usuario
     useEffect(() => {
-        usuarioAutenticado()
+        usuarioAutenticado()        
     }, [])
     // arreglo de los documentos con la informaicon de los modulos
     const rows = [

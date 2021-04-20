@@ -71,8 +71,8 @@ const api = {
     crearObra: (body) => {
         return clienteAxios.post(`${baseUrl}/crearObra`,{ objeto: body })
     },
-    cargarObrasAdmin: () => {
-        return clienteAxios.get(`${baseUrl}/obras`)
+    cargarObras: () => {
+        return clienteAxios.get(`${baseUrl}/consultaObras`)
     },
     cargarCotizacionesAdmin: (folio_obra) => {
         return clienteAxios.get(`${baseUrl}/cotizaciones/${folio_obra}`)
@@ -95,8 +95,12 @@ const api = {
     consultarItems: (file) => {
         return clienteAxios.post(`${baseUrl}/archivos/CSV`, file)
     },
-    convertirXml: (file)=> {
+    convertirXml: (file) => {
         return clienteAxios.post(`${baseUrl}/archivos/XML`, file)
+    },
+    registrarCliente: (datos) => {
+        console.log({ objeto: datos });
+        return clienteAxios.post(`${baseUrl}/registrarCliente`, {objeto: datos})
     }
 }
 

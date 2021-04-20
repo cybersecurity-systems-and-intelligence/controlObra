@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Login from './components/auth/Login'
 import NuevaCuenta from './components/auth/NuevaCuenta'
 import Modulos from './components/rutas/Modulos'
-import Bi from './components/modulos/bi/BI'
+import Finanzas from './components/modulos/finanzas/Finanzas'
 import ControlObra from './components/modulos/controlObra/ControlObra'
 import Contabilidad from './components/modulos/contabilidad/Contabilidad'
 
@@ -14,6 +14,8 @@ import BarraState from './context/barras/barraState'
 import RegistroObraState from './context/controlObra/registroObra/registroObraState'
 import CargaFacturaState from './context/contabilidad/cargaFacturas/cargaFacturaState'
 import ModalState from './context/modal/modalState'
+import ObrasState from './context/obras/obrasState'
+import DatosClienteState from './context/finanzas/datosCliente/datosClienteState'
 
 
 import tokenAuth from './config/token'
@@ -35,21 +37,25 @@ function App() {
       <AuthState>
         <BarraState>
           <RegistroObraState>
-            <CargaFacturaState>
-              <ModalState>
-                <Router>
-                  <Switch>
-                    <RutaPrivadaLogin exact path='/' component={Login} />
-                    <Route  path='/nueva-cuenta' component={NuevaCuenta} />
-                    <RutaPrivada path='/modulos' component={Modulos} /> 
-                    <RutaPrivada path='/FINANZAS' component={Bi} />  
-                    <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
-                    <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
-                    <Route component={PageNotFound}/>       
-                  </Switch>
-                </Router>
-              </ModalState>
-            </CargaFacturaState>
+            <ObrasState>
+              <CargaFacturaState>
+                <DatosClienteState>
+                  <ModalState>
+                    <Router>
+                      <Switch>
+                        <RutaPrivadaLogin exact path='/' component={Login} />
+                        <Route  path='/nueva-cuenta' component={NuevaCuenta} />
+                        <RutaPrivada path='/modulos' component={Modulos} /> 
+                        <RutaPrivada path='/FINANZAS' component={Finanzas} />  
+                        <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
+                        <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
+                        <Route component={PageNotFound}/>       
+                      </Switch>
+                    </Router>
+                  </ModalState>
+                </DatosClienteState>
+              </CargaFacturaState>
+            </ObrasState>
           </RegistroObraState>
         </BarraState>
       </AuthState>

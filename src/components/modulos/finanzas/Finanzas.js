@@ -1,27 +1,39 @@
 // se importan las librerias
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 // se importan los componentes
 import BarraModulos from '../../layout/BarraModulos'
 import MenuModulos from '../../layout/MenuModulos'
-import DatosCliente from '../bi/datosCliente/DatosCliente';
-
+import DatosCliente from './datosCliente/DatosCliente';
 
 // Se importan los estilos
 import { styleBi } from '../../../styles/bi/stylesBi'
 
 // se importan los context
 import barraContext from '../../../context/barras/barraContext'
-
+import obrasContext from '../../../context/obras/obrasContext'
+import alertaContext from '../../../context/alertas/alertaContext'
 
 // se crea y exporta el componente
-export default function BI() {
+export default function FINANZAS(props) {
 
   const classes = styleBi() 
 
   // se extrae la informacion del context barra
   const barrasContext = useContext(barraContext)
-  const { numeroMenu, color } = barrasContext
+  const { numeroMenu } = barrasContext
+
+  // Extraer los valores del context de alerta
+  const alertasContext = useContext(alertaContext)
+  const { alerta, mostrarAlerta } = alertasContext
+
+  // Extraer la informacion de obras
+  const obrassContext = useContext(obrasContext)
+  const { cargarObras } = obrassContext
+  
+  useEffect(() => {
+    cargarObras()
+  }, [])
 
   const paginas = () => {
     switch(numeroMenu){
@@ -32,6 +44,7 @@ export default function BI() {
 
   return (
     <div className={classes.root} align="center">
+      { alerta ? ( <div className={`alerta alerta-error`}>{ alerta.msg }</div> ) : null }
       <BarraModulos/>
       <MenuModulos/>
       <main className={classes.content}>

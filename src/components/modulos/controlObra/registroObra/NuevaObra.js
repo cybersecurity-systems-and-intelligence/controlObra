@@ -21,7 +21,7 @@ const theme = createMuiTheme({
   });
 
 // se crea y exporta el componente
-export default function NuevaObra() {
+export default function NuevaObra({ estado }) {
 
   const classes = NuevaObraStyle();
 
@@ -61,7 +61,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Nombre de la obra</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estadoInput} name='nombreObra' onChange={handleChange} value={nombreObra} />
+                  <BootstrapInput disabled={estado} name='nombreObra' onChange={handleChange} value={nombreObra} />
                 </FormControl>
               </Grid>
 
@@ -70,7 +70,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Monto total</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estadoInput} startAdornment={<InputAdornment position="start"><b>$</b></InputAdornment>} name='montoTotal' onChange={handleChange} value={montoTotal}/>
+                  <BootstrapInput disabled={estado} startAdornment={<InputAdornment position="start"><b>$</b></InputAdornment>} name='montoTotal' onChange={handleChange} value={montoTotal}/>
                 </FormControl>
               </Grid>
 
@@ -79,7 +79,7 @@ return (
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Numero de contrato</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estadoInput} name='numeroContrato' onChange={handleChange} value={numeroContrato} />
+                  <BootstrapInput disabled={estado} name='numeroContrato' onChange={handleChange} value={numeroContrato} />
                 </FormControl>
               </Grid>
             </Grid>
@@ -93,7 +93,7 @@ return (
                     <b>Fecha de contrato</b>
                   </InputLabel>
                   <KeyboardDatePicker
-                      disabled={estadoInput}
+                      disabled={estado}
                       margin="normal"
                       color="secondary"
                       name='fechaContrato'
@@ -111,7 +111,7 @@ return (
                     <b>Inicio de obra</b>
                   </InputLabel>
                   <KeyboardDatePicker
-                      disabled={estadoInput}
+                      disabled={estado}
                       margin="normal"
                       color="secondary"
                       name='fechaInicio'
@@ -129,7 +129,7 @@ return (
                     <b>Fin de obra</b>
                   </InputLabel>
                   <KeyboardDatePicker
-                      disabled={estadoInput}
+                      disabled={estado}
                       margin="normal"
                       color="secondary"
                       name='fechaFin'

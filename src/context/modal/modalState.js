@@ -14,7 +14,7 @@ const ModalState = props => {
 
     const initialState = {
         estado: false,
-        peticion: false
+        peticion: null
     }
 
     // Dispatch para ejecutar las acciones
@@ -31,7 +31,7 @@ const ModalState = props => {
     const realizarPeticion = (band) => {
         dispatch({
             type: REALIZAR_PETICION,
-            payload: band
+            payload: Math.random()
         })
     }
 
