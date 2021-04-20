@@ -53,7 +53,7 @@ export default function HorizontalLabelPositionBelowStepper() {
 
   useEffect(() => {
     if(peticion){
-        submitCliente() 
+        submitCliente()
         setActiveStep(0);       
     }
   }, [peticion])

@@ -13,6 +13,7 @@ import { styleBi } from '../../../styles/bi/stylesBi'
 import barraContext from '../../../context/barras/barraContext'
 import obrasContext from '../../../context/obras/obrasContext'
 import alertaContext from '../../../context/alertas/alertaContext'
+import datosClienteContext from '../../../context/finanzas/datosCliente/datosClienteContext'
 
 // se crea y exporta el componente
 export default function FINANZAS(props) {
@@ -25,15 +26,22 @@ export default function FINANZAS(props) {
 
   // Extraer los valores del context de alerta
   const alertasContext = useContext(alertaContext)
-  const { alerta, mostrarAlerta } = alertasContext
+  const { alerta } = alertasContext
 
   // Extraer la informacion de obras
   const obrassContext = useContext(obrasContext)
   const { cargarObras } = obrassContext
+
+  const datosClientesContext = useContext(datosClienteContext)
+  const { datosPersonales } = datosClientesContext
   
   useEffect(() => {
     cargarObras()
   }, [])
+  
+  useEffect(() => {
+    cargarObras()
+  }, [datosPersonales])
 
   const paginas = () => {
     switch(numeroMenu){
