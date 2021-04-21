@@ -9,7 +9,9 @@ export default function Resumen() {
 
   return (
     <Fragment>
+      <h1>Datos de la obra</h1>
       <NuevaObra estado={true}/>
+      <h1>Partidas</h1>
       <TablaPartidas estado={true}/>
     </Fragment>
   );
