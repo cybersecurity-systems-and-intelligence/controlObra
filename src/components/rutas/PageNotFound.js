@@ -1,7 +1,12 @@
+import imagenes from '../../img/asets/imagenes';
 
 const PageNotFound = () => (
-  <>		
-    <p>Uy, llegaste a un mundo desconocido. Mejor regresa al inicio.</p>
+  <>
+  <center>
+    <div>
+      <img style={{width:'90%', height:'auto'}} src={imagenes.img3} alt='PALA' />
+    </div>
+    </center>
   </>
 )
 export default PageNotFound
