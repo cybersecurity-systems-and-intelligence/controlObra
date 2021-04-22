@@ -20,7 +20,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 // se importan los context
 import obrasContext from '../../../../context/obras/obrasContext'
-import datosClienteContext from '../../../../context/finanzas/datosCliente/datosClienteContext'
+import datosClienteContext from '../../../../context/general/datosCliente/datosClienteContext'
 
 const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),

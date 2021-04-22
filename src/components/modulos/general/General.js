@@ -13,10 +13,10 @@ import { styleBi } from '../../../styles/bi/stylesBi'
 import barraContext from '../../../context/barras/barraContext'
 import obrasContext from '../../../context/obras/obrasContext'
 import alertaContext from '../../../context/alertas/alertaContext'
-import datosClienteContext from '../../../context/finanzas/datosCliente/datosClienteContext'
+import datosClienteContext from '../../../context/general/datosCliente/datosClienteContext'
 
 // se crea y exporta el componente
-export default function FINANZAS() {
+export default function General() {
 
   const classes = styleBi() 
 

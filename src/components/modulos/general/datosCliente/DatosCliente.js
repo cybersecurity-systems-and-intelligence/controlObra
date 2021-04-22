@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core/';
 
 // se importan los componentes
-import ProgresBarCliente from '../../finanzas/datosCliente/PogresBarCliente'
+import ProgresBarCliente from '../../general/datosCliente/PogresBarCliente'
 import Modal from '../../Modal'
 
 // se importan las imagenes
@@ -19,7 +19,7 @@ import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
 import modalContext from '../../../../context/modal/modalContext'
-import datosClienteContext from '../../../../context/finanzas/datosCliente/datosClienteContext'
+import datosClienteContext from '../../../../context/general/datosCliente/datosClienteContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
 // se crea y exporta el componente

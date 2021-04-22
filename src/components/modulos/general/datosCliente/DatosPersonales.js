@@ -2,11 +2,12 @@
 import { Fragment, useContext } from 'react';
 import { Box, TextField, withStyles } from '@material-ui/core';
 
-// Se importan los estilos
+// se importan los estlos
 import { styleDatos } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
-import datosClienteContext from '../../../../context/finanzas/datosCliente/datosClienteContext'
+import datosClienteContext from '../../../../context/general/datosCliente/datosClienteContext'
+
 
 const ValidationTextField = withStyles({
     root: {
@@ -20,23 +21,22 @@ const ValidationTextField = withStyles({
       },
       '& input:valid:focus + fieldset': {
         borderLeftWidth: 5,
-        padding: '4px !important',
+        padding: '4px !important', // override inline-style
       },
     },
-  })(TextField);
-  
-const DatosBancarios = ({ estado }) => {
+})(TextField);
+
+const DatosPersonales = ({ estado }) => {
 
     const css = styleDatos()
 
     // se extrae la informacion del context
     const datosClientesContext = useContext(datosClienteContext)
-    const { datosBancarios, guardarDatosBancarios } = datosClientesContext
+    const { datosPersonales, guardarDatosPersonales } = datosClientesContext
 
     const handleDatos = (e) => {
-      guardarDatosBancarios(e.target.name, e.target.value)
+      guardarDatosPersonales(e.target.name, e.target.value)
     }
-
 
     return (
         <Fragment>
@@ -44,34 +44,43 @@ const DatosBancarios = ({ estado }) => {
                 <form className={css.root} noValidate autoComplete="off">
                     <ValidationTextField
                         disabled={estado}
-                        label="Numero de clave"
+                        label="Nombre"
                         required
                         variant="outlined"
-                        name='numeroClave'
-                        value={datosBancarios.numeroClave}
+                        name='nombre'
+                        value={datosPersonales.nombre}
                         onChange={handleDatos}
                     />
                     <ValidationTextField
                         disabled={estado}
-                        label="Cuenta"
+                        label="Correo electronico"
                         required
                         variant="outlined"
-                        name='cuenta'
-                        value={datosBancarios.cuenta}
+                        name='correo'
+                        value={datosPersonales.correo}
                         onChange={handleDatos}
                     />
                     <ValidationTextField
                         disabled={estado}
-                        label="Razon social"
+                        label="Telefono fijo"
                         required
                         variant="outlined"
-                        name='razonSocial'
-                        value={datosBancarios.razonSocial}
+                        name='telefonoFijo'
+                        value={datosPersonales.telefonoFijo}
                         onChange={handleDatos}
-                    />                   
+                    />
+                    <ValidationTextField
+                        disabled={estado}
+                        label="Telefono movil"
+                        required
+                        variant="outlined"
+                        name='telefonoMovil'
+                        value={datosPersonales.telefonoMovil}
+                        onChange={handleDatos}
+                    />                     
                 </form>
             </Box>
         </Fragment>
     );
 }
-export default DatosBancarios;
+export default DatosPersonales;

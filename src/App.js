@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Login from './components/auth/Login'
 import NuevaCuenta from './components/auth/NuevaCuenta'
 import Modulos from './components/rutas/Modulos'
-import Finanzas from './components/modulos/finanzas/Finanzas'
+import General from './components/modulos/general/General'
 import ControlObra from './components/modulos/controlObra/ControlObra'
 import Contabilidad from './components/modulos/contabilidad/Contabilidad'
 
@@ -15,7 +15,7 @@ import RegistroObraState from './context/controlObra/registroObra/registroObraSt
 import CargaFacturaState from './context/contabilidad/cargaFacturas/cargaFacturaState'
 import ModalState from './context/modal/modalState'
 import ObrasState from './context/obras/obrasState'
-import DatosClienteState from './context/finanzas/datosCliente/datosClienteState'
+import DatosClienteState from './context/general/datosCliente/datosClienteState'
 
 
 import tokenAuth from './config/token'
@@ -46,7 +46,7 @@ function App() {
                         <RutaPrivadaLogin exact path='/' component={Login} />
                         <Route  path='/nueva-cuenta' component={NuevaCuenta} />
                         <RutaPrivada path='/modulos' component={Modulos} /> 
-                        <RutaPrivada path='/FINANZAS' component={Finanzas} />  
+                        <RutaPrivada path='/GENERAL' component={General} />  
                         <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
                         <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
                         <Route component={PageNotFound}/>       

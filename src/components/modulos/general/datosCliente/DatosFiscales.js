@@ -9,7 +9,7 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { NuevaObraStyle, BootstrapInput} from '../../../../styles/bi/stylesBi'
 
 // se importan los context
-import datosClienteContext from '../../../../context/finanzas/datosCliente/datosClienteContext'
+import datosClienteContext from '../../../../context/general/datosCliente/datosClienteContext'
 
 const theme = createMuiTheme({
     palette: {

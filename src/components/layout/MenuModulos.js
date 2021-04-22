@@ -11,7 +11,7 @@ import clsx from 'clsx';
 
 
 // se importan los componentes
-import ListBi from '../modulos/finanzas/ListBi';
+import ListGeneral from '../modulos/general/ListGeneral';
 import ListControlObra from '../modulos/controlObra/ListControlObra'
 import ListContabilidad from '../modulos/contabilidad/ListContabilidad'
 
@@ -34,8 +34,8 @@ export default function MenuModulos() {
     // se elige el menu segun el modulo seleccionado
     const menuModulo = () => {
         switch(modulo){
-            case 'FINANZAS':
-                return <ListBi/>
+            case 'GENERAL':
+                return <ListGeneral/>
             case 'CONTROLOBRA':
                 return <ListControlObra/>
             case 'CONTABILIDAD':

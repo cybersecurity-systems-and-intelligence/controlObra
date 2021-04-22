@@ -12,7 +12,7 @@ import Resumen from './Resumen'
 
 // se importan los context
 import alertaContext from '../../../../context/alertas/alertaContext'
-import datosClienteContext from '../../../../context/finanzas/datosCliente/datosClienteContext'
+import datosClienteContext from '../../../../context/general/datosCliente/datosClienteContext'
 import modalContext from '../../../../context/modal/modalContext'
 
 const useStyles = makeStyles((theme) => ({
