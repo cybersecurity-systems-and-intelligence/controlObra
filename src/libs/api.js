@@ -99,8 +99,10 @@ const api = {
         return clienteAxios.post(`${baseUrl}/archivos/XML`, file)
     },
     registrarCliente: (datos) => {
-        console.log({ objeto: datos });
         return clienteAxios.post(`${baseUrl}/registrarCliente`, {objeto: datos})
+    },
+    registrarFactura: (datos) => {
+        return clienteAxios.post(`${baseUrl}/archivos/subirFactura`, { objeto: datos })
     }
 }
 

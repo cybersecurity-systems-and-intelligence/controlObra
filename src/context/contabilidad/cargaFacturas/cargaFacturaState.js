@@ -6,7 +6,9 @@ import api from '../../../libs/api'
 
 import {
     CONSULTAR_INFORMACION,
-    CONSULTAR_ERROR
+    CONSULTAR_ERROR,
+    SUBMIT_FACTURA,
+    ERROR_REGISTRO_FACTURA
 } from '../../../types'
 
 
@@ -14,6 +16,7 @@ const  CargaFacturaState = props => {
 
     const initialState = {
         informacion: {
+            folioFiscal: '',
             receptor: '',
             rfc: '',
             fecha: '',
@@ -65,6 +68,42 @@ const  CargaFacturaState = props => {
         }
         
     }
+
+    // guardar factura
+    const guardarFactura = async() => {
+        try{
+            const objeto = {
+                total: state.informacion.total,
+                subtotal: state.informacion.subtotal,
+                moneda: state.informacion.moneda,
+                fecha: state.informacion.fecha,
+                folioFiscal: state.informacion.folioFiscal,
+                receptor: {
+                    rfc: state.informacion.rfc,
+                    nombre: state.informacion.receptor
+                },
+                conceptos: state.informacion.conceptos
+            }
+            console.log(objeto);
+            const res = await api.registrarFactura(objeto)
+            dispatch({
+                type: SUBMIT_FACTURA,
+                payload: res.data
+            })
+
+        } catch(error) {
+            console.log(error.response.data.Error);
+            const alerta = {
+                msg: error.response.data.Error,
+                categoria: 'alerta alerta-error'
+            }
+
+            dispatch({
+                type: ERROR_REGISTRO_FACTURA,
+                payload: alerta
+            })
+        }
+    }
         
     return (
         <cargaFacturaContext.Provider
@@ -72,6 +111,7 @@ const  CargaFacturaState = props => {
                 informacion: state.informacion,
                 mensaje: state.mensaje,
                 consultarInformacion,
+                guardarFactura
             }}
         >
             { props.children }

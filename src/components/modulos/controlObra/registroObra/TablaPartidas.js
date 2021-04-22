@@ -29,6 +29,7 @@ const TablaPartidas = () => {
             icons={tableIcons}
             title={<h3>PARTIDAS</h3>}
             options={{
+                pageSize: 25,
                 headerStyle: {
                     color: "#000",
                     border: "1px solid #ccc",
@@ -60,7 +61,6 @@ const TablaPartidas = () => {
                 },
                 {   title: 'Descripcion',
                     field: 'descripcion',
-                    type: 'text',
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
@@ -72,7 +72,6 @@ const TablaPartidas = () => {
                 },
                 {   title: 'Unidad',
                     field: 'unidad',
-                    type: 'numeric',
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
@@ -83,8 +82,29 @@ const TablaPartidas = () => {
                     },
                 },
                 {   title: 'Requeridos',
-                    field: 'requeridos',
-                    type: 'numeric',
+                    field: 'cantidad',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'9%',
+                        textAlign: 'center',
+                        fontSize: 20,
+                        border: "1px solid #ccc"
+                    },
+                },
+                {   title: 'Precio unitario',
+                    field: 'precioUnitario',
+                    cellStyle: {
+                        backgroundColor: '#fff',
+                        color: '#000',
+                        width:'9%',
+                        textAlign: 'center',
+                        fontSize: 20,
+                        border: "1px solid #ccc"
+                    },
+                },
+                {   title: 'Total',
+                    field: 'total',
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
