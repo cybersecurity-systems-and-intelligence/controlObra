@@ -117,7 +117,7 @@ export const styleProgressBar = makeStyles((theme) => ({
 export const styleRegistroObra = makeStyles((theme) => ({
 
   layout: {
-    width: 'auto',
+    width: '80%',
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
   },

@@ -16,7 +16,7 @@ import alertaContext from '../../../context/alertas/alertaContext'
 import datosClienteContext from '../../../context/finanzas/datosCliente/datosClienteContext'
 
 // se crea y exporta el componente
-export default function FINANZAS(props) {
+export default function FINANZAS() {
 
   const classes = styleBi() 
 

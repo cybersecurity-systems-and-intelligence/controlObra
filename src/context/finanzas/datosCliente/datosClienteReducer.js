@@ -41,6 +41,7 @@ export default (state, action) => {
         case SUBMIT_CLIENTE:
             return {
                 ...state,
+                obraSeleccionada: {},
                 datosPersonales: {
                     nombre: '',
                     correo: '',
