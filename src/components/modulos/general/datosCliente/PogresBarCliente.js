@@ -133,8 +133,8 @@ export default function HorizontalLabelPositionBelowStepper() {
       <div>
         {activeStep === steps.length ? (
           <div>
-            <Typography className={classes.instructions}>All steps completed</Typography>
-            <Button onClick={handleReset}>Reset</Button>
+            <Typography className={classes.instructions}>Todos los pasos completados</Typography>
+            <Button onClick={handleReset}>Volver al inicio</Button>
           </div>
         ) : (
           <div>
@@ -145,10 +145,10 @@ export default function HorizontalLabelPositionBelowStepper() {
                 onClick={handleBack}
                 className={classes.backButton}
               >
-                Back
+                Atras
               </Button>
               <Button variant="contained" color="primary" onClick={handleNext}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
               </Button>
             </div>
           </div>

@@ -28,7 +28,7 @@ const ModalState = props => {
         })
     }
 
-    const realizarPeticion = (band) => {
+    const realizarPeticion = () => {
         dispatch({
             type: REALIZAR_PETICION,
             payload: Math.random()

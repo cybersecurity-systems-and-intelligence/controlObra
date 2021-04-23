@@ -34,13 +34,11 @@ export default function Modal() {
   const { estado, estadoModal, realizarPeticion } = modalsContext
 
   const handleClose = () => {
-    realizarPeticion(false)
-    estadoModal(false);
-    
+    estadoModal(false);    
   };
 
   const handleAcept = () => {
-    realizarPeticion(true)
+    realizarPeticion()
     estadoModal(false);
   };
 
