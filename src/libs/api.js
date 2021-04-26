@@ -57,7 +57,7 @@ const api = {
         return clienteAxios.post(`${baseUrl}/refreshToken`, body)
     },
     logout: (body) => {
-        return clienteAxios.delete(`${baseUrl}/logout`, { data: body })
+        return clienteAxios.delete(`${baseUrl}/logout/${body}`)
     },
     obrasVigentes: () => {
         return clienteAxios.get(`${baseUrl}/obras/vigentes`)

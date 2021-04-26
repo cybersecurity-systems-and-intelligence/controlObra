@@ -13,7 +13,8 @@ import {
     OBTENER_USUARIO,
     LOGIN_EXITOSO,
     LOGIN_ERROR,
-    CERRAR_SESION
+    CERRAR_SESION,
+    ERROR_CERRAR_SESION
 } from '../../types'
 
 const AuthState = props => {
@@ -109,12 +110,21 @@ const AuthState = props => {
     }
 
     // Cierra la sesion del usuario
-    const cerrarSesion = () => {
-        dispatch({
-            type: CERRAR_SESION
-        })
-    }
+    const cerrarSesion = async () => {
+        try{
+            const refreshToken = JSON.parse(localStorage.getItem('refreshToken'))
+            const res = await api.logout(refreshToken)
+            dispatch({
+                type: CERRAR_SESION
+            })
 
+        } catch(error){
+            dispatch({
+                type: CERRAR_SESION
+            })
+        }
+        
+    }
     
 
     return (
