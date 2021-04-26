@@ -13,7 +13,8 @@ import {
 const ObrasState = props => {
 
     const initialState = {
-        obras: [],
+        obrasContrato: [],
+        obrasCreadas: [],
         mensaje: null
     }
 
@@ -23,9 +24,8 @@ const ObrasState = props => {
     // Serie de funciones
     const cargarObras = async () => {
         try {
-            const obras = await api.cargarObras()
+            const obras = await api.cargarObras()            
             console.log(obras);
-
             dispatch({
                 type: CARGAR_OBRAS,
                 payload: obras.data
@@ -46,7 +46,8 @@ const ObrasState = props => {
     return (
         <obrasContext.Provider
             value={{
-                obras: state.obras,
+                obrasContrato: state.obrasContrato,
+                obrasCreadas: state.obrasCreadas,
                 cargarObras    
             }}
         >

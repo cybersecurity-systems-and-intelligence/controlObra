@@ -8,13 +8,15 @@ export default (state, action) => {
         case CARGAR_OBRAS:
             return {
                 ...state,
-                obras: action.payload,
+                obrasContrato: [...action.payload.filter(v => v.contrato_obra === false)],
+                obrasCreadas: action.payload,
                 mensaje: null
             }
         case ERROR_CARGAR_OBRAS:
             return {
                 ...state,
-                obras: [],
+                obrasContrato: [],
+                obrasCreadas: [],
                 mensaje: action.payload               
             }
         default:

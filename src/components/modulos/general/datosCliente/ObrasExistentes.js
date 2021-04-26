@@ -46,13 +46,13 @@ const ObrasExistentes = () => {
 
     // extraer la informacion de la obra
     const obrassContext = useContext(obrasContext)
-    const { obras } = obrassContext
+    const { obrasContrato } = obrassContext
 
     const datosClientesContext = useContext(datosClienteContext)
     const { obraSeleccionada, seleccionarObra } = datosClientesContext
 
     const handleObra = (folio) => {
-        const obraselect = obras.find(e => e.folio_obra === folio)
+        const obraselect = obrasContrato.find(e => e.folio_obra === folio)
         seleccionarObra(obraselect)
     }
 
@@ -67,7 +67,7 @@ const ObrasExistentes = () => {
                     { title: 'Nombre', field: 'nombre_obra' },
                     { title: 'Direccion', field: 'ubicacion_obra' },                   
                 ]}
-                data={obras}
+                data={obrasContrato}
                 actions={[
                     {
                         icon: ArrowForwardIosIcon,

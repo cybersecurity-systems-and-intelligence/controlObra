@@ -43,8 +43,7 @@ export default function CargaFacturas() {
     return (
         <Fragment>
             <CssBaseline />
-            <main className={classes.layout}>
-                { alerta ? ( <div className={alerta.categoria}>{ alerta.msg }</div> ) : null }
+            <main className={classes.layout}>                
                 <Fade in={true}>
                     <Paper className={classes.paper}>
                     <div>

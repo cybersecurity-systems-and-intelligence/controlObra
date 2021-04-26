@@ -9,6 +9,7 @@ import CargarArchivo from './CargarArchivo'
 
 // se importan los context
 import cargaFacturaContext from '../../../../context/contabilidad/cargaFacturas/cargaFacturaContext'
+import alertaContext from '../../../../context/alertas/alertaContext'
 
 // se crea y exporta el componente
 export default function LecturaXML () {
@@ -17,10 +18,13 @@ export default function LecturaXML () {
     const cargaFacturasContext = useContext(cargaFacturaContext)
     const { guardarFactura, informacion } = cargaFacturasContext
 
+    const alertasContext = useContext(alertaContext)
+    const { mostrarAlerta } = alertasContext
+
     const handleSubmit = e => {
         e.preventDefault()
         if(informacion.folioFiscal === ''){
-            alert('error')
+            mostrarAlerta('Carga una factura con formato XML', 'alerta-error')
             return
         }
         guardarFactura()

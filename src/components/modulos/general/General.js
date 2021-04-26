@@ -5,6 +5,7 @@ import { useContext, useEffect } from 'react'
 import BarraModulos from '../../layout/BarraModulos'
 import MenuModulos from '../../layout/MenuModulos'
 import DatosCliente from './datosCliente/DatosCliente';
+import ObrasCreadas from './obrasCreadas/ObrasCreadas'
 
 // Se importan los estilos
 import { styleBi } from '../../../styles/bi/stylesBi'
@@ -47,6 +48,8 @@ export default function General() {
     switch(numeroMenu){
       case 0:
         return <DatosCliente/>
+      case 1:
+        return <ObrasCreadas/>
     }
   }
 
@@ -61,6 +64,7 @@ export default function General() {
           paginas()
         }
       </main>
+      
     </div>
   );
 }

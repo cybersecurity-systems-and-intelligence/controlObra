@@ -21,7 +21,7 @@ export default function ControlObra() {
 
   // se extrae la informacion del context barra
   const barrasContext = useContext(barraContext)
-  const { numeroMenu, color } = barrasContext
+  const { numeroMenu } = barrasContext
 
   const paginas = () => {
     switch(numeroMenu){

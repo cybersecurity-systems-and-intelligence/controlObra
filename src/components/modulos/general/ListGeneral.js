@@ -25,6 +25,24 @@ const ListBi = ( { } ) => {
       </ListItemIcon>
       <ListItemText primary="Datos del cliente" />
       </ListItem>
+      <ListItem
+        button
+        onClick={() => cambiarMenu(1)}
+      >
+      <ListItemIcon style={{color:'#fff'}}>
+          <ContactMailOutlined />
+      </ListItemIcon>
+      <ListItemText primary="Obras" />
+      </ListItem>
+      <ListItem
+        button
+        onClick={() => cambiarMenu(2)}
+      >
+      <ListItemIcon style={{color:'#fff'}}>
+          <ContactMailOutlined />
+      </ListItemIcon>
+      <ListItemText primary="Contratos" />
+      </ListItem>
     </div>
     </List>
   )

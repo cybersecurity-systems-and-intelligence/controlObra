@@ -13,7 +13,7 @@ import { styleBi } from '../../../styles/bi/stylesBi'
 
 // se importan los context
 import barraContext from '../../../context/barras/barraContext'
-
+import alertaContext from '../../../context/alertas/alertaContext'
 
 // se crea y exporta el componente
 export default function Contabilidad() {
@@ -24,17 +24,19 @@ export default function Contabilidad() {
   const barrasContext = useContext(barraContext)
   const { numeroMenu, color } = barrasContext
 
+  const alertasContext = useContext(alertaContext)
+  const { alerta } = alertasContext
+
   const paginas = () => {
     switch(numeroMenu){
       case 0:
         return <CargaFacturas/>
-      case 1:
-        return <DatosCliente/>
     }
   }
 
   return (
     <div className={classes.root} align="center">
+      { alerta ? ( <div className={`alerta alerta-error`}>{ alerta.msg }</div> ) : null }
       <BarraModulos/>
       <MenuModulos/>
       <main className={classes.content}>

@@ -146,5 +146,5 @@ return (
       </ThemeProvider>
     </Box>
   </Fragment>
-        );
+  );
 }

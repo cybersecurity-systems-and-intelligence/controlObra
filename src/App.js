@@ -11,12 +11,18 @@ import Contabilidad from './components/modulos/contabilidad/Contabilidad'
 import AlertaState from './context/alertas/alertaState'
 import AuthState from './context/autenticacion/authState'
 import BarraState from './context/barras/barraState'
-import RegistroObraState from './context/controlObra/registroObra/registroObraState'
-import CargaFacturaState from './context/contabilidad/cargaFacturas/cargaFacturaState'
 import ModalState from './context/modal/modalState'
 import ObrasState from './context/obras/obrasState'
-import DatosClienteState from './context/general/datosCliente/datosClienteState'
 
+// modulo CONTROL DE OBRA
+import RegistroObraState from './context/controlObra/registroObra/registroObraState'
+
+// modulo CONTABILIDAD
+import CargaFacturaState from './context/contabilidad/cargaFacturas/cargaFacturaState'
+
+// modulo GENERAL
+import DatosClienteState from './context/general/datosCliente/datosClienteState'
+import ObrasCreadasState from './context/general/obrasCreadas/obrasCreadasState'
 
 import tokenAuth from './config/token'
 import RutaPrivada from './components/rutas/RutaPrivada'
@@ -40,19 +46,21 @@ function App() {
             <ObrasState>
               <CargaFacturaState>
                 <DatosClienteState>
-                  <ModalState>
-                    <Router>
-                      <Switch>
-                        <RutaPrivadaLogin exact path='/' component={Login} />
-                        <Route  path='/nueva-cuenta' component={NuevaCuenta} />
-                        <RutaPrivada path='/modulos' component={Modulos} /> 
-                        <RutaPrivada path='/GENERAL' component={General} />  
-                        <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
-                        <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
-                        <Route component={PageNotFound}/>       
-                      </Switch>
-                    </Router>
-                  </ModalState>
+                  <ObrasCreadasState>
+                    <ModalState>
+                      <Router>
+                        <Switch>
+                          <RutaPrivadaLogin exact path='/' component={Login} />
+                          <Route  path='/nueva-cuenta' component={NuevaCuenta} />
+                          <RutaPrivada path='/modulos' component={Modulos} /> 
+                          <RutaPrivada path='/GENERAL' component={General} />  
+                          <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
+                          <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
+                          <Route component={PageNotFound}/>       
+                        </Switch>
+                      </Router>
+                    </ModalState>
+                  </ObrasCreadasState>
                 </DatosClienteState>
               </CargaFacturaState>
             </ObrasState>
