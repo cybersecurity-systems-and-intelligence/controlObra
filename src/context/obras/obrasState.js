@@ -8,6 +8,7 @@ import {
     CARGAR_OBRAS,
     CARGAR_CONTRATOS,
     ERROR_CARGAR_OBRAS,
+    ERROR_CARGAR_CONTRATOS
 } from '../../types/index'
 
 
@@ -27,7 +28,7 @@ const ObrasState = props => {
     const cargarObras = async () => {
         try {
             const obras = await api.cargarObras()            
-            console.log(obras);
+           
             dispatch({
                 type: CARGAR_OBRAS,
                 payload: obras.data
@@ -48,7 +49,8 @@ const ObrasState = props => {
 
     const cargarContratos = async () => {
         try {
-            const contratos = await api.cargarContratos()           
+            const contratos = await api.cargarContratos()     
+            console.log(contratos.data);      
             dispatch({
                 type: CARGAR_CONTRATOS,
                 payload: contratos.data
@@ -60,7 +62,7 @@ const ObrasState = props => {
                 categoria: 'alerta alerta-error'
             }
             dispatch({
-                type: ERROR_CARGAR_OBRAS,
+                type: ERROR_CARGAR_CONTRATOS,
                 payload: alerta
             })
         }

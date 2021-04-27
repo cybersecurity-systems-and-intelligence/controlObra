@@ -45,7 +45,6 @@ export default function General() {
   useEffect(() => {
     console.log(mensaje);
     if(mensaje){
-      alert('hola')
       mostrarAlerta(mensaje.msg, 'alerta alerta-error')
     }
   }, [mensaje])

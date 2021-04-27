@@ -1,7 +1,8 @@
 import {
     CARGAR_OBRAS,
     CARGAR_CONTRATOS,
-    ERROR_CARGAR_OBRAS
+    ERROR_CARGAR_OBRAS,
+    ERROR_CARGAR_CONTRATOS
 } from '../../types'
 
 export default (state, action) => {
@@ -21,8 +22,13 @@ export default (state, action) => {
         case ERROR_CARGAR_OBRAS:
             return {
                 ...state,
-                obrasContrato: [],
                 obrasCreadas: [],
+                mensaje: action.payload               
+            }
+        case ERROR_CARGAR_CONTRATOS:
+            return {
+                ...state,
+                contratosObras: [],
                 mensaje: action.payload               
             }
         default:
