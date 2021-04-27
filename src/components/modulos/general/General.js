@@ -6,6 +6,7 @@ import BarraModulos from '../../layout/BarraModulos'
 import MenuModulos from '../../layout/MenuModulos'
 import DatosCliente from './datosCliente/DatosCliente';
 import ObrasCreadas from './obrasCreadas/ObrasCreadas'
+import ContratosObras from './contratos/ContratosObras'
 
 // Se importan los estilos
 import { styleBi } from '../../../styles/bi/stylesBi'
@@ -27,21 +28,31 @@ export default function General() {
 
   // Extraer los valores del context de alerta
   const alertasContext = useContext(alertaContext)
-  const { alerta } = alertasContext
+  const { alerta, mostrarAlerta } = alertasContext
 
   // Extraer la informacion de obras
   const obrassContext = useContext(obrasContext)
-  const { cargarObras } = obrassContext
+  const { mensaje, cargarObras, cargarContratos } = obrassContext
 
   const datosClientesContext = useContext(datosClienteContext)
   const { datosPersonales } = datosClientesContext
   
   useEffect(() => {
     cargarObras()
+    cargarContratos()
   }, [])
+
+  useEffect(() => {
+    console.log(mensaje);
+    if(mensaje){
+      alert('hola')
+      mostrarAlerta(mensaje.msg, 'alerta alerta-error')
+    }
+  }, [mensaje])
   
   useEffect(() => {
     cargarObras()
+    cargarContratos()
   }, [datosPersonales])
 
   const paginas = () => {
@@ -50,6 +61,8 @@ export default function General() {
         return <DatosCliente/>
       case 1:
         return <ObrasCreadas/>
+      case 2:
+        return <ContratosObras/>
     }
   }
 

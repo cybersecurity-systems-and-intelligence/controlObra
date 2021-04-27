@@ -7,7 +7,8 @@ import api from '../../../libs/api'
 
 import {  
     CAMBIAR_OPCION,
-    SELECCIONAR_OBRA
+    SELECCIONAR_OBRA,
+    FILTRO_OBRAS
 } from '../../../types/index'
 
 
@@ -15,7 +16,8 @@ const ObrasCreadasState = props => {
 
     const initialState = {
         opcion: 0,
-        obraSeleccionada: {}
+        obraSeleccionada: {},
+        obrasFiltro: []
     }
 
     // Dispatch para ejecutar las acciones
@@ -35,6 +37,23 @@ const ObrasCreadasState = props => {
             payload: obra
         })
     }
+
+    const filtrarObras = (tipo, array) => {
+
+        let filtroArray = []
+        if (tipo === 'todos'){            
+            filtroArray = [...array]
+        }else if ( tipo === 'contrato'){
+            filtroArray = [...array.filter(v => v.contrato_obra === true)]
+        }else if (tipo === 'vigentes'){
+            filtroArray = [...array.filter(v => v.estado_obra === true)]
+        }
+
+        dispatch({
+            type: FILTRO_OBRAS,
+            payload: filtroArray
+        })
+    }
    
         
     return (
@@ -42,8 +61,10 @@ const ObrasCreadasState = props => {
             value={{
                 opcion: state.opcion,
                 obraSeleccionada: state.obraSeleccionada,
+                obrasFiltro: state.obrasFiltro,
                 cambiarOpcion,
-                seleccionarObra
+                seleccionarObra,
+                filtrarObras
             }}
         >
             { props.children }

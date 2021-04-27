@@ -6,6 +6,7 @@ import api from '../../libs/api'
 
 import {
     CARGAR_OBRAS,
+    CARGAR_CONTRATOS,
     ERROR_CARGAR_OBRAS,
 } from '../../types/index'
 
@@ -15,6 +16,7 @@ const ObrasState = props => {
     const initialState = {
         obrasContrato: [],
         obrasCreadas: [],
+        contratosObras: [],
         mensaje: null
     }
 
@@ -34,6 +36,27 @@ const ObrasState = props => {
         } catch {
             const alerta = {
                 msg: 'Hubo un error al cargar las obras',
+                categoria: 'alerta alerta-error',
+                rand: Math.random()
+            }
+            dispatch({
+                type: ERROR_CARGAR_OBRAS,
+                payload: alerta
+            })
+        }
+    }
+
+    const cargarContratos = async () => {
+        try {
+            const contratos = await api.cargarContratos()           
+            dispatch({
+                type: CARGAR_CONTRATOS,
+                payload: contratos.data
+            })
+
+        } catch {
+            const alerta = {
+                msg: 'Hubo un error al cargar los contratos',
                 categoria: 'alerta alerta-error'
             }
             dispatch({
@@ -48,7 +71,10 @@ const ObrasState = props => {
             value={{
                 obrasContrato: state.obrasContrato,
                 obrasCreadas: state.obrasCreadas,
-                cargarObras    
+                contratosObras: state.contratosObras,
+                mensaje: state.mensaje,
+                cargarObras,
+                cargarContratos
             }}
         >
             { props.children }

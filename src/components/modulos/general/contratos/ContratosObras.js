@@ -9,9 +9,9 @@ import {
 
 
 // se importan los componentes
-import InformacionObra from './informacionObra/InformacionObra'
+import InformacionContrato from './informacionContrato/InformacionContrato'
 import imagenes from '../../../../img/asets/imagenes';
-import TablaObras from './TablaObras'
+import TablaContratos from './TablaContratos'
 
 // se importan los estlos
 import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
@@ -21,7 +21,7 @@ import obrasCreadasContext from '../../../../context/general/obrasCreadas/obrasC
 import obrasContext from '../../../../context/obras/obrasContext'
 
 // se crea y exporta el componente
-export default function ObrasCreadas() {
+export default function ContratosObras() {
     const classes = styleRegistroObra();
 
     // se extrae la informacion del context
@@ -38,9 +38,9 @@ export default function ObrasCreadas() {
     const paginas = () => {
         switch(opcion){
             case 0:
-                return <TablaObras/>
+                return <TablaContratos/>
             case 1:
-                return <InformacionObra/>
+                return <InformacionContrato/>
             default:
                 return 'Error desconocido'
         }
@@ -56,7 +56,7 @@ export default function ObrasCreadas() {
                         <img style={{width: 200}} src={imagenes.imgjpg} alt='PALA' />
                     </div>
                         <Typography variant="h4" align="center" component='div'>
-                            <h5>OBRAS<hr className={classes.hr}/></h5>
+                            <h5>CONTRATOS<hr className={classes.hr}/></h5>
                         </Typography>
                         <br/>
                         {

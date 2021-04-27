@@ -103,6 +103,9 @@ const api = {
     },
     registrarFactura: (datos) => {
         return clienteAxios.post(`${baseUrl}/archivos/subirFactura`, { objeto: datos })
+    },
+    cargarContratos: () => {
+        return clienteAxios.get(`${baseUrl}/consultarContrato`)
     }
 }
 

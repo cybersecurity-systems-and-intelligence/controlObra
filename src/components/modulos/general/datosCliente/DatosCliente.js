@@ -40,7 +40,7 @@ export default function DatosCliente() {
 
     useEffect(() => {
         if(mensaje){
-          mostrarAlerta(mensaje.msg, mensaje.categoria)
+          mostrarAlerta(mensaje.msg, 'alerta alerta-error')
         }
       }, [mensaje])
 

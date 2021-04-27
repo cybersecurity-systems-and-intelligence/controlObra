@@ -8,7 +8,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { tableIcons } from '../../../../styles/bi/stylesBi'
 
 // se importan los componentes
-import FiltroObras from './FiltroObras'
+import FiltroContratos from './FiltroContratos'
 
 // se importan los context
 import obrasContext from '../../../../context/obras/obrasContext'
@@ -27,7 +27,7 @@ const TablaObras = ({ estadoModal }) => {
 
     // se extrae la informacion del context
     const obrassContext = useContext(obrasContext)
-    const { obrasCreadas } = obrassContext
+    const { contratosObras, obrasCreadas } = obrassContext
 
     const obrasCreadassContext = useContext(obrasCreadasContext)
     const { cambiarOpcion, obrasFiltro, seleccionarObra } = obrasCreadassContext
@@ -40,7 +40,7 @@ const TablaObras = ({ estadoModal }) => {
 
     return (
         <Fragment>
-            <FiltroObras/>
+            <FiltroContratos/>
             <MaterialTable
                 style={{background: '#E3F2FD',  marginTop:5, marginBottom:5, border: "2px solid #ccc", borderRadius: 25}}
                 icons={tableIcons}
@@ -57,8 +57,8 @@ const TablaObras = ({ estadoModal }) => {
                 }}
 
                 columns={[
-                    {   title: 'Folio',
-                        field: 'folio_obra',
+                    {   title: 'Folio Obra',
+                        field: 'folioObra',
                         cellStyle: {
                             backgroundColor: '#fff',
                             color: '#000',
@@ -68,8 +68,8 @@ const TablaObras = ({ estadoModal }) => {
                             fontSize: 20
                         },
                     },
-                    {   title: 'Nombre',
-                        field: 'nombre_obra',
+                    {   title: 'Folio Contrato',
+                        field: 'folio_contrato',
                         cellStyle: {
                             backgroundColor: '#fff',
                             color: '#000',
@@ -78,46 +78,9 @@ const TablaObras = ({ estadoModal }) => {
                             textAlign: 'center',
                             fontSize: 20,
                         },
-                    },
-                    {   title: 'Total',
-                        field: 'monto_total_obra',
-                        cellStyle: {
-                            backgroundColor: '#fff',
-                            color: '#000',
-                            width:'100%',
-                            border: "1px solid #ccc",
-                            fontSize: 11,
-                            textAlign: 'justify'
-                        },
-                    },
-                    {   title: 'Contrato',
-                        field: 'contrato_obra',
-                        //type: 'boolean',
-                        render: rowData => rowData.contrato_obra ? <div style={{ width: '100px', height: '100px' ,background: 'green'}}/> : <div style={{ width: '100px', height: '100px' ,background: 'red'}}/>,
-                        cellStyle: {
-                            //backgroundColor: rowData => rowData.contrato_obra ? '#fff' : '#000',
-                            color: '#000',
-                            width:'10%',
-                            border: "1px solid #ccc",
-                            textAlign: 'center',
-                            fontSize: 15
-                        },
-                    },
-                    {   title: 'Vigente',
-                        field: 'estado_obra',
-                        //type: 'boolean',
-                        render: rowData => rowData.estado_obra ? <div style={{ width: '100px', height: '100px' ,background: 'green'}}/> : <div style={{ width: '100px', height: '100px' ,background: 'red'}}/>,
-                        cellStyle: {
-                            //backgroundColor: rowData => rowData.contrato_obra ? '#fff' : '#000',
-                            color: '#000',
-                            width:'10%',
-                            border: "1px solid #ccc",
-                            textAlign: 'center',
-                            fontSize: 15
-                        },
                     }
                 ]}
-                data={obrasFiltro}
+                data={contratosObras}
                 actions={[
                     {
                         icon: ArrowForwardIosIcon,

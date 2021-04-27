@@ -36,8 +36,10 @@ export default function Modal() {
   const obrasCreadassContext = useContext(obrasCreadasContext)
   const { cambiarOpcion } = obrasCreadassContext
 
+  
+
   return (
-    <div >
+    <div >      
       <DetallesObra/>
       <TablaPartidas/>
       <button onClick={e => cambiarOpcion(0)}>Atras</button>
