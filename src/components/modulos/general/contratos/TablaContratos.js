@@ -12,7 +12,7 @@ import FiltroContratos from './FiltroContratos'
 
 // se importan los context
 import obrasContext from '../../../../context/obras/obrasContext'
-import obrasCreadasContext from '../../../../context/general/obrasCreadas/obrasCreadasContext'
+import contratosObrasContext from '../../../../context/general/contratosObras/contratosObrasContext'
 
 const theme = createMuiTheme({
     palette: {
@@ -27,14 +27,14 @@ const TablaObras = ({ estadoModal }) => {
 
     // se extrae la informacion del context
     const obrassContext = useContext(obrasContext)
-    const { contratosObras, obrasCreadas } = obrassContext
+    const { contratosObras } = obrassContext
 
-    const obrasCreadassContext = useContext(obrasCreadasContext)
-    const { cambiarOpcion, obrasFiltro, seleccionarObra } = obrasCreadassContext
+    const contratosObrassContext = useContext(contratosObrasContext)
+    const { cambiarOpcion } = contratosObrassContext
 
     const handleObra = (folio) => {
-        const obraselect = obrasCreadas.find(e => e.folio_obra === folio)
-        seleccionarObra(obraselect)
+        // const obraselect = obrasCreadas.find(e => e.folio_obra === folio)
+        // seleccionarObra(obraselect)
         cambiarOpcion(1)
     }
 

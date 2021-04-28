@@ -23,6 +23,7 @@ import CargaFacturaState from './context/contabilidad/cargaFacturas/cargaFactura
 // modulo GENERAL
 import DatosClienteState from './context/general/datosCliente/datosClienteState'
 import ObrasCreadasState from './context/general/obrasCreadas/obrasCreadasState'
+import ContratosObrasState from './context/general/contratosObras/contratosObrasState'
 
 import tokenAuth from './config/token'
 import RutaPrivada from './components/rutas/RutaPrivada'
@@ -47,19 +48,21 @@ function App() {
               <CargaFacturaState>
                 <DatosClienteState>
                   <ObrasCreadasState>
-                    <ModalState>
-                      <Router>
-                        <Switch>
-                          <RutaPrivadaLogin exact path='/' component={Login} />
-                          <Route  path='/nueva-cuenta' component={NuevaCuenta} />
-                          <RutaPrivada path='/modulos' component={Modulos} /> 
-                          <RutaPrivada path='/GENERAL' component={General} />  
-                          <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
-                          <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
-                          <Route component={PageNotFound}/>       
-                        </Switch>
-                      </Router>
-                    </ModalState>
+                    <ContratosObrasState>
+                      <ModalState>
+                        <Router>
+                          <Switch>
+                            <RutaPrivadaLogin exact path='/' component={Login} />
+                            <Route  path='/nueva-cuenta' component={NuevaCuenta} />
+                            <RutaPrivada path='/modulos' component={Modulos} /> 
+                            <RutaPrivada path='/GENERAL' component={General} />  
+                            <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
+                            <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
+                            <Route component={PageNotFound}/>       
+                          </Switch>
+                        </Router>
+                      </ModalState>
+                    </ContratosObrasState>
                   </ObrasCreadasState>
                 </DatosClienteState>
               </CargaFacturaState>

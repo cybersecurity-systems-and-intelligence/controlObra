@@ -17,23 +17,15 @@ import TablaContratos from './TablaContratos'
 import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
-import obrasCreadasContext from '../../../../context/general/obrasCreadas/obrasCreadasContext'
-import obrasContext from '../../../../context/obras/obrasContext'
+import contratosObrasContext from '../../../../context/general/contratosObras/contratosObrasContext'
 
 // se crea y exporta el componente
 export default function ContratosObras() {
     const classes = styleRegistroObra();
 
     // se extrae la informacion del context
-    const obrasCreadassContext = useContext(obrasCreadasContext)
-    const { opcion, filtrarObras } = obrasCreadassContext
-
-    const obrassContext = useContext(obrasContext)
-    const { obrasCreadas } = obrassContext
-
-    useEffect(() => {
-        filtrarObras('todos', obrasCreadas)
-    }, [])
+    const contratosObrassContext = useContext(contratosObrasContext)
+    const { opcion } = contratosObrassContext
 
     const paginas = () => {
         switch(opcion){
