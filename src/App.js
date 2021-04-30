@@ -18,7 +18,7 @@ import ObrasState from './context/obras/obrasState'
 import RegistroObraState from './context/controlObra/registroObra/registroObraState'
 
 // modulo CONTABILIDAD
-import CargaFacturaState from './context/contabilidad/cargaFacturas/cargaFacturaState'
+import AnticipoObraState from './context/contabilidad/anticipoObra/anticipoObraState'
 
 // modulo GENERAL
 import DatosClienteState from './context/general/datosCliente/datosClienteState'
@@ -45,7 +45,7 @@ function App() {
         <BarraState>
           <RegistroObraState>
             <ObrasState>
-              <CargaFacturaState>
+              <AnticipoObraState>
                 <DatosClienteState>
                   <ObrasCreadasState>
                     <ContratosObrasState>
@@ -65,7 +65,7 @@ function App() {
                     </ContratosObrasState>
                   </ObrasCreadasState>
                 </DatosClienteState>
-              </CargaFacturaState>
+              </AnticipoObraState>
             </ObrasState>
           </RegistroObraState>
         </BarraState>

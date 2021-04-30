@@ -6,15 +6,15 @@ import { Grid, TextField, Box } from '@material-ui/core';
 import { styleCargaFacturas } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
-import cargaFacturaContext from '../../../../context/contabilidad/cargaFacturas/cargaFacturaContext'
+import anticipoObraContext from '../../../../context/contabilidad/anticipoObra/anticipoObraContext'
 
 const DatosGenerales = () => {
 
     const css = styleCargaFacturas()
 
     // se extrae la informacion del context
-    const cargaFacturasContext = useContext(cargaFacturaContext)
-    const { informacion } = cargaFacturasContext
+    const anticipoObrasContext = useContext(anticipoObraContext)
+    const { informacion } = anticipoObrasContext
 
     const { folioFiscal, receptor, rfc, fecha, total, subtotal, moneda } = informacion
 

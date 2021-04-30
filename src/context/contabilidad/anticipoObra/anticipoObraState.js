@@ -1,6 +1,6 @@
 import { useReducer } from 'react'
-import cargaFacturaContext from './cargaFacturaContext'
-import cargaFacturaReducer from './cargaFacturaReducer'
+import anticipoObraContext from './anticipoObraContext'
+import anticipoObraReducer from './anticipoObraReducer'
 
 import api from '../../../libs/api'
 
@@ -8,11 +8,12 @@ import {
     CONSULTAR_INFORMACION,
     CONSULTAR_ERROR,
     SUBMIT_FACTURA,
-    ERROR_REGISTRO_FACTURA
+    ERROR_REGISTRO_FACTURA,
+    SELECC_OBRA_ANTICIPO
 } from '../../../types'
 
 
-const  CargaFacturaState = props => {
+const  AnticipoObraState = props => {
 
     const initialState = {
         informacion: {
@@ -25,11 +26,12 @@ const  CargaFacturaState = props => {
             moneda: '',
             conceptos: []
         },
+        obraSeleccionada: [],
         mensaje: null
     }
 
     // Dispatch para ejecutar las acciones
-    const [ state, dispatch ] = useReducer(cargaFacturaReducer, initialState)
+    const [ state, dispatch ] = useReducer(anticipoObraReducer, initialState)
 
     // Serie de funciones
 
@@ -84,7 +86,6 @@ const  CargaFacturaState = props => {
                 },
                 conceptos: state.informacion.conceptos
             }
-            console.log(objeto);
             const res = await api.registrarFactura(objeto)
             dispatch({
                 type: SUBMIT_FACTURA,
@@ -92,10 +93,10 @@ const  CargaFacturaState = props => {
             })
 
         } catch(error) {
-            console.log(error.response.data.Error);
             const alerta = {
                 msg: error.response.data.Error,
-                categoria: 'alerta alerta-error'
+                categoria: 'alerta alerta-error',
+                rand: Math.random()
             }
 
             dispatch({
@@ -104,19 +105,28 @@ const  CargaFacturaState = props => {
             })
         }
     }
+
+    const seleccionarObra = obra => {
+        dispatch({
+            type: SELECC_OBRA_ANTICIPO,
+            payload: obra
+        })
+    }
         
     return (
-        <cargaFacturaContext.Provider
+        <anticipoObraContext.Provider
             value={{
                 informacion: state.informacion,
                 mensaje: state.mensaje,
+                obraSeleccionada: state.obraSeleccionada,
                 consultarInformacion,
-                guardarFactura
+                guardarFactura,
+                seleccionarObra
             }}
         >
             { props.children }
-        </cargaFacturaContext.Provider>
+        </anticipoObraContext.Provider>
     )
 }
 
-export default  CargaFacturaState
+export default  AnticipoObraState

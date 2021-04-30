@@ -12,7 +12,7 @@ import {
 } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
-import cargaFacturaContext from '../../../../context/contabilidad/cargaFacturas/cargaFacturaContext'
+import anticipoObraContext from '../../../../context/contabilidad/anticipoObra/anticipoObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
 export default function CargarArchivo() {
@@ -20,8 +20,8 @@ export default function CargarArchivo() {
     const css = styleCargaFacturas()
 
     // Extraer los valores del context de la factura
-    const cargaFacturasContext = useContext(cargaFacturaContext)
-    const { consultarInformacion } = cargaFacturasContext
+    const anticipoObrasContext = useContext(anticipoObraContext)
+    const { consultarInformacion } = anticipoObrasContext
 
     // Extraer los valores del context de alerta
     const alertasContext = useContext(alertaContext)

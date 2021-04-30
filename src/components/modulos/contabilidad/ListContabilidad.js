@@ -21,7 +21,7 @@ const ListContabilidad = ( { } ) => {
       <ListItemIcon style={{color:'#fff'}}>
           <ListAlt />
       </ListItemIcon>
-      <ListItemText primary="Cargar Facturas" />
+      <ListItemText primary="Anticipo de obra" />
       </ListItem>
     </div>
     </List>

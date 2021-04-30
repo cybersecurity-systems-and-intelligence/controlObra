@@ -1,8 +1,8 @@
 // se importan las librerias
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 // se importan los componentes
-import CargaFacturas from './cargaFacturas/CargaFacturas'
+import CargaFacturas from './anticipoObra/CargaFacturas'
 import BarraModulos from '../../layout/BarraModulos'
 import MenuModulos from '../../layout/MenuModulos'
 import DatosCliente from '../general/datosCliente/DatosCliente';
@@ -14,6 +14,7 @@ import { styleBi } from '../../../styles/bi/stylesBi'
 // se importan los context
 import barraContext from '../../../context/barras/barraContext'
 import alertaContext from '../../../context/alertas/alertaContext'
+import obrasContext from '../../../context/obras/obrasContext'
 
 // se crea y exporta el componente
 export default function Contabilidad() {
@@ -22,10 +23,23 @@ export default function Contabilidad() {
 
   // se extrae la informacion del context barra
   const barrasContext = useContext(barraContext)
-  const { numeroMenu, color } = barrasContext
+  const { numeroMenu } = barrasContext
 
   const alertasContext = useContext(alertaContext)
-  const { alerta } = alertasContext
+  const { alerta, mostrarAlerta } = alertasContext
+
+  const obrassContext = useContext(obrasContext)
+  const { mensaje, cargarObras } = obrassContext
+
+  useEffect(() => {
+    cargarObras()
+  }, [])
+
+  useEffect(() => {
+    if(mensaje){
+      mostrarAlerta(mensaje.msg, 'alerta alerta-error')
+    }
+  }, [mensaje])
 
   const paginas = () => {
     switch(numeroMenu){

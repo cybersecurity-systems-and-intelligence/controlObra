@@ -18,6 +18,7 @@ const ObrasState = props => {
         obrasContrato: [],
         obrasCreadas: [],
         contratosObras: [],
+        obrasActivas: [],
         mensaje: null
     }
 
@@ -49,8 +50,7 @@ const ObrasState = props => {
 
     const cargarContratos = async () => {
         try {
-            const contratos = await api.cargarContratos()     
-            console.log(contratos.data);      
+            const contratos = await api.cargarContratos() 
             dispatch({
                 type: CARGAR_CONTRATOS,
                 payload: contratos.data
@@ -59,7 +59,8 @@ const ObrasState = props => {
         } catch {
             const alerta = {
                 msg: 'Hubo un error al cargar los contratos',
-                categoria: 'alerta alerta-error'
+                categoria: 'alerta alerta-error',
+                rand: Math.random()
             }
             dispatch({
                 type: ERROR_CARGAR_CONTRATOS,

@@ -6,13 +6,13 @@ import MaterialTable from 'material-table';
 import { tableIcons } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
-import cargaFacturaContext from '../../../../context/contabilidad/cargaFacturas/cargaFacturaContext'
+import anticipoObraContext from '../../../../context/contabilidad/anticipoObra/anticipoObraContext'
 
 export default function TablaConceptos() {
 
     // Extraer los valores del context de la factura
-    const cargaFacturasContext = useContext(cargaFacturaContext)
-    const { informacion } = cargaFacturasContext
+    const anticipoObrasContext = useContext(anticipoObraContext)
+    const { informacion } = anticipoObrasContext
 
     const { conceptos } = informacion
 

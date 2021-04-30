@@ -1,6 +1,6 @@
 
 // se importan las librerias y hooks
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useEffect } from 'react';
 
 // se importan los componentes
 import DatosGenerales from './DatosGenerales'
@@ -8,27 +8,35 @@ import TablaConceptos from './TablaConceptos'
 import CargarArchivo from './CargarArchivo'
 
 // se importan los context
-import cargaFacturaContext from '../../../../context/contabilidad/cargaFacturas/cargaFacturaContext'
+import anticipoObraContext from '../../../../context/contabilidad/anticipoObra/anticipoObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
+import modalContext from '../../../../context/modal/modalContext'
 
 // se crea y exporta el componente
 export default function LecturaXML () {
 
     // se extrae la informacion de cargaFacturaContext
-    const cargaFacturasContext = useContext(cargaFacturaContext)
-    const { guardarFactura, informacion } = cargaFacturasContext
+    const anticipoObrasContext = useContext(anticipoObraContext)
+    const { guardarFactura, informacion } = anticipoObrasContext
 
     const alertasContext = useContext(alertaContext)
     const { mostrarAlerta } = alertasContext
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        if(informacion.folioFiscal === ''){
-            mostrarAlerta('Carga una factura con formato XML', 'alerta-error')
-            return
-        }
-        guardarFactura()
-    }
+    const modalsContext = useContext(modalContext)
+    const { peticion, estadoModal } = modalsContext
+
+    // useEffect(() => {
+    //     guardarFactura()
+    // }, [peticion])
+
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //     if(informacion.folioFiscal === ''){
+    //         mostrarAlerta('Carga una factura con formato XML', 'alerta-error')
+    //         return
+    //     }
+    //     estadoModal(true)
+    // }
 
     return (
         <Fragment>            
@@ -36,14 +44,14 @@ export default function LecturaXML () {
             <DatosGenerales/>
             <br/>
             <TablaConceptos/>
-            <form
+            {/* <form
                 onSubmit={handleSubmit}
             >
                 <input
                     type='submit'
                     value='Registrar'
                 />
-            </form>
+            </form> */}
         </Fragment>
         
     );

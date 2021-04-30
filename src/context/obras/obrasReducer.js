@@ -12,6 +12,7 @@ export default (state, action) => {
                 ...state,
                 obrasContrato: [...action.payload.filter(v => v.contrato_obra === false)],
                 obrasCreadas: action.payload,
+                obrasActivas: [...action.payload.filter(v => v.estado_obra === true)],
                 mensaje: null
             }
         case CARGAR_CONTRATOS:

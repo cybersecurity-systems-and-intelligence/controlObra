@@ -11,13 +11,15 @@ import moduleName from 'module';
 // se importan los componentes
 import LecturaXML from './LecturaXML'
 import imagenes from '../../../../img/asets/imagenes';
+import Modal from '../../Modal'
+import PogresBarAnticipo from './PogresBarAnticipo'
 
 
 // se importan los estlos
 import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
 
 // se importan los context
-import cargaFacturaContext from '../../../../context/contabilidad/cargaFacturas/cargaFacturaContext'
+import anticipoObraContext from '../../../../context/contabilidad/anticipoObra/anticipoObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
 // se crea y exporta el componente
@@ -25,8 +27,8 @@ export default function CargaFacturas() {
     const classes = styleRegistroObra();
 
     // Extraer los valores del context de la factura
-    const cargaFacturasContext = useContext(cargaFacturaContext)
-    const { mensaje } = cargaFacturasContext
+    const anticipoObrasContext = useContext(anticipoObraContext)
+    const { mensaje } = anticipoObrasContext
 
     // Extraer los valores del context de alerta
     const alertasContext = useContext(alertaContext)
@@ -50,13 +52,14 @@ export default function CargaFacturas() {
                         <img style={{width: 200}} src={imagenes.imgjpg} alt='PALA' />
                     </div>
                         <Typography variant="h4" align="center" component='div'>
-                            <h5>CARGAR FACTURAS<hr className={classes.hr}/></h5>
+                            <h5>ANTICIPO DE OBRA<hr className={classes.hr}/></h5>
                         </Typography>
                         <br/>
-                        <LecturaXML/>
+                        <PogresBarAnticipo/>
                     </Paper>
                 </Fade>
             </main>
+            <Modal/>
         </Fragment>
     );
 }
