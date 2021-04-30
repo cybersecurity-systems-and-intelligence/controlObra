@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Fragment  } from 'react';
+import {  Fragment, useContext  } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme, Grid, Box, InputLabel, FormControl, InputAdornment } from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
@@ -7,6 +7,9 @@ import DateFnsUtils from '@date-io/date-fns';
 
 // se importa los estilos
 import { NuevaObraStyle, BootstrapInput, styleTitle} from '../../../../../../styles/bi/stylesBi'
+
+// se importan los context
+import contratosObrasContext from '../../../../../../context/general/contratosObras/contratosObrasContext'
 
 const theme = createMuiTheme({
     palette: {
@@ -19,9 +22,16 @@ const theme = createMuiTheme({
 const DatosPrincipales = () => {
     const classes = NuevaObraStyle();
     const title = styleTitle()
+
+    const contratosObrassContext = useContext(contratosObrasContext)
+    const { contratoSeleccionado } = contratosObrassContext
+
+    const { obraSeleccionada } = contratoSeleccionado
+    const { folio, ubicacion, monto_total, numero_contrato, nombre, fecha_contrato, fecha_inicio, fecha_fin } = obraSeleccionada
+
     return (
         <Fragment>
-            <h3 className={title.title}>DATOS PRINCIPALES</h3>
+            <h3 className={title.title}>DATOS PRINCIPALES OBRA</h3>
             <Box className={classes.box}>
                 <ThemeProvider theme={theme}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -34,7 +44,9 @@ const DatosPrincipales = () => {
                                         </InputLabel>
                                         <BootstrapInput
                                             disabled={true}
-                                            name='nombreObra'/>
+                                            name='folio'
+                                            value={folio}
+                                            />
                                     </FormControl>
                                 </Grid>
 
@@ -44,9 +56,10 @@ const DatosPrincipales = () => {
                                             <b>Ubicacion</b>
                                         </InputLabel>
                                         <BootstrapInput
-                                            disabled={true}
-                                            startAdornment={<InputAdornment position="start"><b>$</b></InputAdornment>}
-                                            name='montoTotal' />
+                                            disabled={true}                                   
+                                            name='ubicacion'
+                                            value={ubicacion}
+                                            />
                                     </FormControl>
                                 </Grid>
                             </Grid>
@@ -60,6 +73,7 @@ const DatosPrincipales = () => {
                                         <BootstrapInput
                                             disabled={true}
                                             name='nombreObra'
+                                            value={nombre}
                                         />
                                     </FormControl>
                                 </Grid>
@@ -72,7 +86,9 @@ const DatosPrincipales = () => {
                                         <BootstrapInput
                                             disabled={true}
                                             startAdornment={<InputAdornment position="start"><b>$</b></InputAdornment>}
-                                            name='montoTotal' />
+                                            name='montoTotal'
+                                            value={monto_total}
+                                            />
                                     </FormControl>
                                 </Grid>
 
@@ -84,6 +100,7 @@ const DatosPrincipales = () => {
                                         <BootstrapInput
                                             disabled={true}
                                             name='numeroContrato'
+                                            value={numero_contrato}
                                         />
                                     </FormControl>
                                 </Grid>
@@ -103,6 +120,7 @@ const DatosPrincipales = () => {
                                             color="secondary"
                                             name='fechaContrato'
                                             format="MM/dd/yyyy"
+                                            value={fecha_contrato}
                                             KeyboardButtonProps={{'aria-label': 'change date',}}
                                         />
                                     </FormControl>
@@ -119,6 +137,7 @@ const DatosPrincipales = () => {
                                             color="secondary"
                                             name='fechaInicio'
                                             format="MM/dd/yyyy"
+                                            value={fecha_inicio}
                                             KeyboardButtonProps={{'aria-label': 'change date',}}
                                         />
                                     </FormControl>
@@ -135,6 +154,7 @@ const DatosPrincipales = () => {
                                             color="secondary"
                                             name='fechaFin'
                                             format="MM/dd/yyyy"
+                                            value={fecha_fin}
                                             KeyboardButtonProps={{'aria-label': 'change date',}}
                                         />
                                     </FormControl>

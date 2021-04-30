@@ -30,11 +30,11 @@ const TablaObras = ({ estadoModal }) => {
     const { contratosObras } = obrassContext
 
     const contratosObrassContext = useContext(contratosObrasContext)
-    const { cambiarOpcion } = contratosObrassContext
+    const { cambiarOpcion, seleccionarContrato } = contratosObrassContext
 
     const handleObra = (folio) => {
-        // const obraselect = obrasCreadas.find(e => e.folio_obra === folio)
-        // seleccionarObra(obraselect)
+        const contratoSelect = contratosObras.find(e => e.folio_contrato === folio)
+        seleccionarContrato(contratoSelect)
         cambiarOpcion(1)
     }
 
@@ -87,7 +87,7 @@ const TablaObras = ({ estadoModal }) => {
                     {
                         icon: ArrowForwardIosIcon,
                         tooltip: 'Ver obra',
-                        onClick: (event, rowData) => handleObra(rowData.folio_obra)
+                        onClick: (event, rowData) => handleObra(rowData.folio_contrato)
                     },
                 ]}
                 options={{

@@ -6,14 +6,16 @@ import contratosObrasReducer from './contratosObrasReducer'
 import api from '../../../libs/api'
 
 import {
-    CAMBIAR_OPCION_CONTRATO
+    CAMBIAR_OPCION_CONTRATO,
+    SELECT_CONTRATO
 } from '../../../types/index'
 
 
 const ContratosObrasState = props => {
 
     const initialState = {
-        opcion: 0,       
+        opcion: 0,
+        contratoSeleccionado: {}       
     }
 
     // Dispatch para ejecutar las acciones
@@ -26,13 +28,22 @@ const ContratosObrasState = props => {
             payload: opcion
         })
     }    
+
+    const seleccionarContrato = contrato => {
+        dispatch({
+            type: SELECT_CONTRATO,
+            payload: contrato
+        })
+    }
    
         
     return (
         <contratosObrasContext.Provider
             value={{
                 opcion: state.opcion,
-                cambiarOpcion
+                contratoSeleccionado: state.contratoSeleccionado,
+                cambiarOpcion,
+                seleccionarContrato
             }}
         >
             { props.children }

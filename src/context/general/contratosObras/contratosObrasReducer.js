@@ -1,5 +1,6 @@
 import {
-    CAMBIAR_OPCION_CONTRATO
+    CAMBIAR_OPCION_CONTRATO,
+    SELECT_CONTRATO
 } from '../../../types'
 
 export default (state, action) => {
@@ -9,7 +10,11 @@ export default (state, action) => {
                 ...state,
                 opcion: action.payload
             }
-        
+        case SELECT_CONTRATO:
+            return {
+                ...state,
+                contratoSeleccionado: action.payload
+            }
         default:
             return state
     }

@@ -2,13 +2,13 @@ import { Fragment } from 'react';
 
 // se importan los componentes
 import DatosPrincipales from './DatosPrincipales'
-import Partidas from './Partidas'
+import TablaPartidas from './TablaPartidas'
 
 const DatosObra = () => {
     return (
         <Fragment>
             <DatosPrincipales/>
-            <Partidas/>
+            <TablaPartidas/>
         </Fragment>
     );
 }
