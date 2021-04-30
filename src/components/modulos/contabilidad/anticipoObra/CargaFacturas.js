@@ -32,7 +32,7 @@ export default function CargaFacturas() {
 
     // Extraer los valores del context de alerta
     const alertasContext = useContext(alertaContext)
-    const { alerta, mostrarAlerta } = alertasContext
+    const { mostrarAlerta } = alertasContext
 
     useEffect(() => {
 
