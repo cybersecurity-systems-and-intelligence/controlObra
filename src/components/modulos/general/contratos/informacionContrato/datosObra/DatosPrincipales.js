@@ -21,7 +21,7 @@ const DatosPrincipales = () => {
     const title = styleTitle()
     return (
         <Fragment>
-            <h3 className={title.title}>DATOS FISCALES</h3>
+            <h3 className={title.title}>DATOS PRINCIPALES</h3>
             <Box className={classes.box}>
                 <ThemeProvider theme={theme}>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
