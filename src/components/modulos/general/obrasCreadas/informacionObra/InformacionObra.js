@@ -13,7 +13,7 @@ import obrasCreadasContext from '../../../../../context/general/obrasCreadas/obr
 
 const useStyles = makeStyles({
   md:{
-    background:'#f1f8e9',
+    background:'#73ADD1',
     boxShadow: 'rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 10px 0px',
   }
 })
@@ -42,7 +42,7 @@ export default function Modal() {
     <div >      
       <DetallesObra/>
       <TablaPartidas/>
-      <button onClick={e => cambiarOpcion(0)}>Atras</button>
+      <Button onClick={e => cambiarOpcion(0)} variant="contained" color="primary" disableElevation>Atras</Button>
     </div>
   );
 }

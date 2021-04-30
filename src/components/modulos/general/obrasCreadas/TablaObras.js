@@ -3,7 +3,9 @@ import { Fragment, useContext } from 'react';
 import { createMuiTheme } from '@material-ui/core';
 import MaterialTable from 'material-table';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-
+import AssistantPhotoIcon from '@material-ui/icons/AssistantPhoto';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 // se importa los estilos
 import { tableIcons } from '../../../../styles/bi/stylesBi'
 
@@ -49,7 +51,7 @@ const TablaObras = ({ estadoModal }) => {
                 options={{
                     headerStyle: {
                         backgroundColor: "#82b1ff",
-                        color: "#FFF",
+                        color: "#ccc",
                         border: "1px solid #000",
                         textAlign: 'center',
                         fontSize: 18
@@ -60,60 +62,65 @@ const TablaObras = ({ estadoModal }) => {
                     {   title: 'Folio',
                         field: 'folio_obra',
                         cellStyle: {
-                            backgroundColor: '#fff',
-                            color: '#000',
-                            width:'10%',
-                            border: "1px solid #ccc",
+                            background: 'linear-gradient(#eeffff,#bbdefb)',
+                            color: '#01465C',
+                            width:'18%',
                             textAlign: 'center',
-                            fontSize: 20
+                            fontSize: 16,
+                            fontWeight: 700,
+                            border: "1px solid #ccc",
                         },
                     },
                     {   title: 'Nombre',
                         field: 'nombre_obra',
                         cellStyle: {
-                            backgroundColor: '#fff',
-                            color: '#000',
-                            width:'10%',
-                            border: "1px solid #ccc",
+                            background: 'linear-gradient(#eeffff,#bbdefb)',
+                            color: '#01465C',
+                            width:'50%',
                             textAlign: 'center',
-                            fontSize: 20,
+                            fontSize: 16,
+                            fontWeight: 700,
+                            border: "1px solid #ccc",
                         },
                     },
                     {   title: 'Total',
                         field: 'monto_total_obra',
                         cellStyle: {
-                            backgroundColor: '#fff',
-                            color: '#000',
-                            width:'100%',
+                            background: 'linear-gradient(#eeffff,#bbdefb)',
+                            color: '#01465C',
+                            width:'18%',
+                            textAlign: 'center',
+                            fontSize: 16,
+                            fontWeight: 700,
                             border: "1px solid #ccc",
-                            fontSize: 11,
-                            textAlign: 'justify'
                         },
                     },
                     {   title: 'Contrato',
                         field: 'contrato_obra',
                         //type: 'boolean',
-                        render: rowData => rowData.contrato_obra ? <div style={{ width: '100px', height: '100px' ,background: 'green'}}/> : <div style={{ width: '100px', height: '100px' ,background: 'red'}}/>,
+                        render: rowData => rowData.contrato_obra ?  <div ><ThumbUpIcon style={{color:'#B1D839', fontSize: 35}}/></div> : <div ><ThumbDownIcon style={{color:'#FF5317', fontSize: 35}}/></div>,
                         cellStyle: {
-                            //backgroundColor: rowData => rowData.contrato_obra ? '#fff' : '#000',
-                            color: '#000',
-                            width:'10%',
-                            border: "1px solid #ccc",
+                            background: '#ffff',
+                            color: '#01465C',
+                            width:'auto',
                             textAlign: 'center',
-                            fontSize: 15
+                            fontSize: 16,
+                            fontWeight: 700,
+                            border: "1px solid #ccc",
                         },
                     },
                     {   title: 'Vigente',
                         field: 'estado_obra',
                         //type: 'boolean',
-                        render: rowData => rowData.estado_obra ? <div style={{ width: '100px', height: '100px' ,background: 'green'}}/> : <div style={{ width: '100px', height: '100px' ,background: 'red'}}/>,
+                        render: rowData => rowData.estado_obra ?<div ><ThumbUpIcon style={{color:'#B1D839', fontSize: 35}}/></div> : <div ><ThumbDownIcon style={{color:'#FF5317', fontSize: 35}}/></div>,
                         cellStyle: {
-                            //backgroundColor: rowData => rowData.contrato_obra ? '#fff' : '#000',
-                            color: '#000',
-                            width:'10%',
-                            border: "1px solid #ccc",
+                            background: '#fff',
+                            color: '#01465C',
+                            width:'auto',
                             textAlign: 'center',
-                            fontSize: 15
+                            fontSize: 16,
+                            fontWeight: 700,
+                            border: "1px solid #ccc",
                         },
                     }
                 ]}
@@ -123,12 +130,11 @@ const TablaObras = ({ estadoModal }) => {
                         icon: ArrowForwardIosIcon,
                         tooltip: 'Ver obra',
                         onClick: (event, rowData) => handleObra(rowData.folio_obra)
-                    },                    
+                    },
                 ]}
                 options={{
                     actionsColumnIndex: -1
                 }}
-            
             />
         </Fragment>
     );

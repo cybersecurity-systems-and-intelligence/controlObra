@@ -1,30 +1,15 @@
 // se importan las librerias
 import { Fragment, useContext } from 'react';
 import { Box, TextField, withStyles } from '@material-ui/core';
-
+import { Grid, InputLabel, FormControl } from '@material-ui/core';
+import { BootstrapInput } from '../../../../styles/bi/stylesBi'
 // se importan los estlos
 import { styleDatos } from '../../../../styles/bi/stylesBi'
+
 
 // se importan los context
 import datosClienteContext from '../../../../context/general/datosCliente/datosClienteContext'
 
-
-const ValidationTextField = withStyles({
-    root: {
-      '& input:valid + fieldset': {
-        borderColor: '#1565c0',
-        borderWidth: 2,
-      },
-      '& input:invalid + fieldset': {
-        borderColor: '#64b5f6',
-        borderWidth: 1,
-      },
-      '& input:valid:focus + fieldset': {
-        borderLeftWidth: 5,
-        padding: '4px !important', // override inline-style
-      },
-    },
-})(TextField);
 
 const DatosPersonales = ({ estado }) => {
 
@@ -40,9 +25,19 @@ const DatosPersonales = ({ estado }) => {
 
     return (
         <Fragment>
-            <Box className={css.box}>
-                <form className={css.root} noValidate autoComplete="off">
-                    <ValidationTextField
+
+          <Box className={css.box}>
+            <form className={css.root} noValidate autoComplete="off">
+              <Box>
+                <Grid container spacing={3} justify="center">
+                  <Grid  item xs={12} sm={16} md={14} lg={3}>
+                    <FormControl className={css.margin}>
+                      <InputLabel shrink htmlFor="bootstrap-input">
+                        <b style={{fontSize:20, color:'#388CBD'}}>Nombre</b>
+                      </InputLabel>
+
+                      <BootstrapInput
+                        style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}}
                         disabled={estado}
                         label="Nombre"
                         required
@@ -50,8 +45,18 @@ const DatosPersonales = ({ estado }) => {
                         name='nombre'
                         value={datosPersonales.nombre}
                         onChange={handleDatos}
-                    />
-                    <ValidationTextField
+                      />
+                    </FormControl>
+                  </Grid>
+
+                  <Grid  item xs={12} sm={6} md={4} lg={3}>
+                    <FormControl className={css.margin}>
+                      <InputLabel shrink htmlFor="bootstrap-input">
+                        <b style={{fontSize:20, color:'#388CBD'}}>Correo electronico</b>
+                      </InputLabel>
+
+                      <BootstrapInput
+                        style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}}
                         disabled={estado}
                         label="Correo electronico"
                         required
@@ -59,25 +64,47 @@ const DatosPersonales = ({ estado }) => {
                         name='correo'
                         value={datosPersonales.correo}
                         onChange={handleDatos}
-                    />
-                    <ValidationTextField
-                        disabled={estado}
-                        label="Telefono fijo"
-                        required
-                        variant="outlined"
-                        name='telefonoFijo'
-                        value={datosPersonales.telefonoFijo}
-                        onChange={handleDatos}
-                    />
-                    <ValidationTextField
-                        disabled={estado}
-                        label="Telefono movil"
-                        required
-                        variant="outlined"
-                        name='telefonoMovil'
-                        value={datosPersonales.telefonoMovil}
-                        onChange={handleDatos}
-                    />                     
+                      />
+                </FormControl>
+              </Grid>
+
+              <Grid  item xs={12} sm={6} md={4} lg={3}>
+                <FormControl className={css.margin}>
+                  <InputLabel shrink htmlFor="bootstrap-input">
+                    <b style={{fontSize:20, color:'#388CBD'}}>Telefono fijo</b>
+                  </InputLabel>
+                  <BootstrapInput
+                  style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}}
+                  disabled={estado}
+                  label="Telefono fijo"
+                  required
+                  variant="outlined"
+                  name='telefonoFijo'
+                  value={datosPersonales.telefonoFijo}
+                  onChange={handleDatos}
+                  />
+                </FormControl>
+              </Grid>
+
+              <Grid  item xs={12} sm={6} md={4} lg={3}>
+                <FormControl className={css.margin}>
+                  <InputLabel shrink htmlFor="bootstrap-input">
+                    <b style={{fontSize:20, color:'#388CBD'}}>Telefono movil</b>
+                  </InputLabel>
+                  <BootstrapInput
+                  style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}}
+                  disabled={estado}
+                  label="Telefono movil"
+                  required
+                  variant="outlined"
+                  name='telefonoMovil'
+                  value={datosPersonales.telefonoMovil}
+                  onChange={handleDatos}
+                  />
+                </FormControl>
+              </Grid>
+              </Grid>
+              </Box>
                 </form>
             </Box>
         </Fragment>

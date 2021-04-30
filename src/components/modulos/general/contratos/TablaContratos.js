@@ -60,23 +60,25 @@ const TablaObras = ({ estadoModal }) => {
                     {   title: 'Folio Obra',
                         field: 'folioObra',
                         cellStyle: {
-                            backgroundColor: '#fff',
-                            color: '#000',
-                            width:'10%',
-                            border: "1px solid #ccc",
+                            background: 'linear-gradient(#eeffff,#bbdefb)',
+                            color: '#01465C',
+                            width:'18%',
                             textAlign: 'center',
-                            fontSize: 20
+                            fontSize: 16,
+                            fontWeight: 700,
+                            border: "1px solid #ccc",
                         },
                     },
                     {   title: 'Folio Contrato',
                         field: 'folio_contrato',
                         cellStyle: {
-                            backgroundColor: '#fff',
-                            color: '#000',
-                            width:'10%',
-                            border: "1px solid #ccc",
+                            background: 'linear-gradient(#eeffff,#bbdefb)',
+                            color: '#01465C',
+                            width:'18%',
                             textAlign: 'center',
-                            fontSize: 20,
+                            fontSize: 16,
+                            fontWeight: 700,
+                            border: "1px solid #ccc",
                         },
                     }
                 ]}
@@ -86,12 +88,11 @@ const TablaObras = ({ estadoModal }) => {
                         icon: ArrowForwardIosIcon,
                         tooltip: 'Ver obra',
                         onClick: (event, rowData) => handleObra(rowData.folio_obra)
-                    },                    
+                    },
                 ]}
                 options={{
                     actionsColumnIndex: -1
                 }}
-            
             />
         </Fragment>
     );

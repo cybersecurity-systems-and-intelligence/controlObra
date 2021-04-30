@@ -54,7 +54,7 @@ const TablaPartidas = () => {
                     cellStyle: {
                         background: 'linear-gradient(#eeffff,#bbdefb)',
                         color: '#000',
-                        width:'15%',
+                        width:'25%',
                         textAlign: 'center',
                         fontSize: 16,
                         fontWeight: 700,

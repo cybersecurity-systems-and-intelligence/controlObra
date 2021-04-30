@@ -40,110 +40,106 @@ return (
     <Box className={classes.box}>
       <ThemeProvider theme={theme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <Box >
-            <Grid container spacing={3}>
-              <Grid  item xs>
+          <Box>
+            <Grid container spacing={16} justify="flex-start">
+              <Grid  item xs={12} sm={6} md={4} lg={4}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Nombre de Empresa o Persona Fisica</b>
+                    <b style={{fontSize:20, color:'#388CBD'}}>Empresa | Persona Fisica</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estado} name='nombreEmpresa' value={datosFiscales.nombreEmpresa} onChange={handleDatos} />
+                  <BootstrapInput
+                  style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}}
+                  disabled={estado} name='nombreEmpresa' value={datosFiscales.nombreEmpresa} onChange={handleDatos} />
                 </FormControl>
               </Grid>
 
-              <Grid  item xs>
+              <Grid  item xs={12} sm={6} md={4} lg={4}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>RFC</b>
+                    <b style={{fontSize:20, color:'#388CBD'}}>RFC</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estado} name='rfc' value={datosFiscales.rfc} onChange={handleDatos}/>
+                  <BootstrapInput style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}} disabled={estado} name='rfc' value={datosFiscales.rfc} onChange={handleDatos}/>
                 </FormControl>
               </Grid>
 
-              <Grid  item xs>
+              <Grid  item xs={12} sm={6} md={4} lg={4}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Direccion Fiscal</b>
+                    <b style={{fontSize:20, color:'#388CBD'}}>Direccion Fiscal</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estado} name='direccionFiscal' value={datosFiscales.direccionFiscal} onChange={handleDatos}/>
+                  <BootstrapInput style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}} disabled={estado} name='direccionFiscal' value={datosFiscales.direccionFiscal} onChange={handleDatos}/>
+                </FormControl>
+            </Grid>
+
+              <Grid  item xs={12} sm={6} md={4} lg={4}>
+                <FormControl className={classes.margin}>
+                  <InputLabel shrink htmlFor="bootstrap-input">
+                    <b style={{fontSize:20, color:'#388CBD'}}>Direccion Oficina</b>
+                  </InputLabel>
+                  <BootstrapInput style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}} disabled={estado} name='direccionOficina' value={datosFiscales.direccionOficina} onChange={handleDatos}/>
+                </FormControl>
+              </Grid>
+
+              <Grid  item xs={12} sm={6} md={4} lg={4}>
+                <FormControl className={classes.margin}>
+                  <InputLabel shrink htmlFor="bootstrap-input">
+                    <b style={{fontSize:20, color:'#388CBD'}}>Calle Referencia 1</b>
+                  </InputLabel>
+                  <BootstrapInput style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}} disabled={estado} name='calleReferencia1' value={datosFiscales.calleReferencia1} onChange={handleDatos}/>
+                </FormControl>
+              </Grid>
+
+              <Grid  item xs={12} sm={6} md={4} lg={4}>
+                <FormControl className={classes.margin}>
+                  <InputLabel shrink htmlFor="bootstrap-input">
+                    <b style={{fontSize:20, color:'#388CBD'}}>Calle Referencia 2</b>
+                  </InputLabel>
+                  <BootstrapInput style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}} disabled={estado} name='calleReferencia2' value={datosFiscales.calleReferencia2} onChange={handleDatos}/>
                 </FormControl>
               </Grid>
             </Grid>
           </Box>
 
-          <Box>
-            <Grid container spacing={3}>
-            <Grid  item xs>
-                <FormControl className={classes.margin}>
-                  <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Direccion Oficina</b>
-                  </InputLabel>
-                  <BootstrapInput disabled={estado} name='direccionOficina' value={datosFiscales.direccionOficina} onChange={handleDatos}/>
-                </FormControl>
-              </Grid>
-
-              <Grid  item xs>
-                <FormControl className={classes.margin}>
-                  <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Calle Referencia 1</b>
-                  </InputLabel>
-                  <BootstrapInput disabled={estado} name='calleReferencia1' value={datosFiscales.calleReferencia1} onChange={handleDatos}/>
-                </FormControl>
-              </Grid>
-
-              <Grid  item xs>
-                <FormControl className={classes.margin}>
-                  <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Calle Referencia 2</b>
-                  </InputLabel>
-                  <BootstrapInput disabled={estado} name='calleReferencia2' value={datosFiscales.calleReferencia2} onChange={handleDatos}/>
-                </FormControl>
-              </Grid>
-            </Grid>
-          </Box>
 
           <Box>
-            <Grid container spacing={3}>
-            <Grid  item xs>
+          <Grid container spacing={16} justify="flex-start">
+
+            <Grid  item xs={12} sm={6} md={4} lg={4}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Codigo Postal</b>
+                    <b style={{fontSize:20, color:'#388CBD'}}>Codigo Postal</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estado} name='cp' value={datosFiscales.cp} onChange={handleDatos}/>
+                  <BootstrapInput style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}} disabled={estado} name='cp' value={datosFiscales.cp} onChange={handleDatos}/>
                 </FormControl>
               </Grid>
 
-              <Grid  item xs>
+              <Grid  item xs={12} sm={6} md={4} lg={4}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Colonia</b>
+                    <b style={{fontSize:20, color:'#388CBD'}}>Colonia</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estado} name='colonia' value={datosFiscales.colonia} onChange={handleDatos}/>
+                  <BootstrapInput style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}} disabled={estado} name='colonia' value={datosFiscales.colonia} onChange={handleDatos}/>
                 </FormControl>
               </Grid>
 
-              <Grid  item xs>
+              <Grid  item xs={12} sm={6} md={4} lg={4}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Ciudad</b>
+                    <b style={{fontSize:20, color:'#388CBD'}}>Ciudad</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estado} name='ciudad' value={datosFiscales.ciudad} onChange={handleDatos}/>
+                  <BootstrapInput style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}} disabled={estado} name='ciudad' value={datosFiscales.ciudad} onChange={handleDatos}/>
                 </FormControl>
               </Grid>
-            </Grid>
-          </Box>
 
-          <Box>
-            <Grid container spacing={3}>
-            <Grid  item xs>
+            <Grid  item xs={12} sm={6} md={4} lg={4}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
-                    <b>Estado</b>
+                    <b style={{fontSize:20, color:'#388CBD'}}>Estado</b>
                   </InputLabel>
-                  <BootstrapInput disabled={estado} name='estado' value={datosFiscales.estado} onChange={handleDatos}/>
+                  <BootstrapInput style={{fontSize:100, color:'#73ADD1', fontWeight:'bold'}} disabled={estado} name='estado' value={datosFiscales.estado} onChange={handleDatos}/>
                 </FormControl>
-              </Grid>            
-            </Grid>
+              </Grid>
+              </Grid>
           </Box>
         </MuiPickersUtilsProvider>
       </ThemeProvider>

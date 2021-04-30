@@ -54,14 +54,14 @@ export default function HorizontalLabelPositionBelowStepper() {
   useEffect(() => {
     if(peticion){
         submitCliente()
-        setActiveStep(0);       
+        setActiveStep(0);
     }
   }, [peticion])
 
   const handleNext = () => {
-    
+
     console.log(obraSeleccionada.folio_obra)
-    
+
     if (activeStep === 0 && obraSeleccionada.folio_obra === undefined) {
       mostrarAlerta('Selecciona una obra', 'alerta-error')
       return
@@ -96,7 +96,7 @@ export default function HorizontalLabelPositionBelowStepper() {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const handleBack = () => {   
+  const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
@@ -156,6 +156,5 @@ export default function HorizontalLabelPositionBelowStepper() {
       </div>
       <Copyright/>
     </div>
-    
   );
 }

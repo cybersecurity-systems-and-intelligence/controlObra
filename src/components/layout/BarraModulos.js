@@ -57,8 +57,8 @@ export default function BarraModulos() {
                         onClick={mostrarBarra}
                         className={clsx(classes.menuButton, barra && classes.menuButtonHidden)}
                     >
-                        <Avatar style={{background:color}}>{ usuario ? <b>{ inicialesNombre(usuario) }</b> : null }</Avatar>   
-                    </IconButton>   
+                        <Avatar style={{background:color}}>{ usuario ? <b>{ inicialesNombre(usuario) }</b> : null }</Avatar>
+                    </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" align="center" noWrap className={classes.title}>
                         {
                             usuario ? <b>{ usuario.nombre_usuario }</b> : null
@@ -68,9 +68,9 @@ export default function BarraModulos() {
                         <Badge color="secondary">
                             <ExitToApp onClick={() => cerrarSesion()}/>
                         </Badge>
-                    </IconButton>               
+                    </IconButton>
                 </Toolbar>
             </AppBar>
-      </Fragment>
+        </Fragment>
     );
 }
