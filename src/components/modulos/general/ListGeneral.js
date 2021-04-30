@@ -1,8 +1,7 @@
 // se importan las librerias
 import { useContext } from 'react';
 import { ListItem, List, ListItemIcon, ListItemText } from '@material-ui/core/';
-import { ContactMailOutlined } from '@material-ui/icons';
-
+import { ContactMailOutlined,AssignmentTurnedIn,Bookmark } from '@material-ui/icons';
 // se importan los context
 import barraContext from '../../../context/barras/barraContext'
 
@@ -15,7 +14,7 @@ const ListBi = ( { } ) => {
 
   return (
     <List style={{background:'#202444',color:'#fff'}}>
-    <div style={{background:'#202444'}}>            
+    <div style={{background:'#202444'}}>
       <ListItem
         button
         onClick={() => cambiarMenu(0)}
@@ -30,7 +29,7 @@ const ListBi = ( { } ) => {
         onClick={() => cambiarMenu(1)}
       >
       <ListItemIcon style={{color:'#fff'}}>
-          <ContactMailOutlined />
+          <AssignmentTurnedIn />
       </ListItemIcon>
       <ListItemText primary="Obras" />
       </ListItem>
@@ -39,7 +38,7 @@ const ListBi = ( { } ) => {
         onClick={() => cambiarMenu(2)}
       >
       <ListItemIcon style={{color:'#fff'}}>
-          <ContactMailOutlined />
+          <Bookmark />
       </ListItemIcon>
       <ListItemText primary="Contratos" />
       </ListItem>

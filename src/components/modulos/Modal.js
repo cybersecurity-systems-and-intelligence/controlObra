@@ -9,7 +9,7 @@ import modalContext from '../../context/modal/modalContext'
 
 const useStyles = makeStyles({
   md:{
-    background:'#f1f8e9',
+    background:'#73ADD1',
     boxShadow: 'rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 10px 0px',
   }
 })
@@ -58,10 +58,10 @@ export default function Modal() {
 
         <ThemeProvider theme={theme}>
         <DialogActions >
-          <Button onClick={handleClose} color="secondary">
+          <Button onClick={handleClose} color="secondary" style={{fontSize:19,fontWeight:'bold'}}>
             Cancelar
           </Button>
-          <Button onClick={handleAcept} color="primary" autoFocus>
+          <Button onClick={handleAcept} color="primary" style={{fontSize:20, fontWeight:'bold'}} autoFocus>
             Aceptar
           </Button>
         </DialogActions>

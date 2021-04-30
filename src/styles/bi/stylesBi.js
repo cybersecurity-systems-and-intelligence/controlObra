@@ -25,7 +25,7 @@ const drawerWidth = 240
 export const styleBi = makeStyles((theme) => ({
     root: {
       display: 'flex',
-      background: '#e3f2fd'
+      background: 'linear-gradient(50deg, #e3f2fd 0%, rgba(237,237,237,0.3295693277310925) 88%)'
     },
     toolbar: {
       paddingRight: 24, // keep right padding when drawer closed
@@ -43,7 +43,6 @@ export const styleBi = makeStyles((theme) => ({
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      background: '#cddc39',
       color: 'black'
     },
     appBarShift: {
@@ -172,14 +171,15 @@ export const NuevaObraStyle = makeStyles((theme) => ({
     flexWrap: 'wrap',
   },
   margin: {
-    margin: theme.spacing(6)
+    margin: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   box:{
     background:'#e3f2fd',
     border: '1px solid #64b5f6',
     borderRadius: 16,
     marginBottom: theme.spacing(5)
-  }
+  },
 }));
 
 export const BootstrapInput = withStyles((theme) => ({
@@ -224,14 +224,18 @@ export const styleDatos = makeStyles((theme) => ({
       padding: theme.spacing(1),
       fontSize: 20,
     },
+    margin:{
+        margin: theme.spacing(2),
+        marginTop: theme.spacing(2)
+
+    },
   },
-  box:{
+   box:{
     background:'#e3f2fd',
     border: '1px solid #64b5f6',
     borderRadius: 16,
-    margin: theme.spacing(3),
-    padding: theme.spacing(5),
-  }
+    marginBottom: theme.spacing(5)
+  },
 }));
 
 //cargaFacturas.js
@@ -281,3 +285,17 @@ export const ButtonCargaFacturas = styled('button')({
         color:'white'
     },
 })
+
+export const styleTitle = makeStyles((theme) => ({
+  title:{
+
+    background: 'linear-gradient(#eeffff,#bbdefb)',
+                    width:'auto',
+                    borderTopLeftRadius: 20,
+                    borderTopRightRadius: 20,
+                    color:'#01465C',
+                    border: "1px solid #ccc",
+                    boxShadow: 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;'
+
+  }
+}));

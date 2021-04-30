@@ -17,7 +17,7 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-
+import { styleTitle } from '../../../../../src/styles/bi/stylesBi'
 // se importan los context
 import obrasContext from '../../../../context/obras/obrasContext'
 import datosClienteContext from '../../../../context/general/datosCliente/datosClienteContext'
@@ -43,6 +43,7 @@ const tableIcons = {
 };
 
 const ObrasExistentes = () => {
+    const css = styleTitle()
 
     // extraer la informacion de la obra
     const obrassContext = useContext(obrasContext)
@@ -58,22 +59,62 @@ const ObrasExistentes = () => {
 
     return (
         <Fragment>
-            <h1>Obra seleccionada: { obraSeleccionada.folio_obra ? obraSeleccionada.folio_obra : null} </h1>
+            <h3 className={css.title} > OBRA SELECCIONADA: 
+                    { obraSeleccionada.folio_obra ? obraSeleccionada.folio_obra : null} </h3>
             <MaterialTable
+                style={{background: '#EAF9F7',  marginTop:5, marginBottom:5, border: "2px solid #ccc"}}
                 icons={tableIcons}
                 title="Selecciona una obra"
                 columns={[
-                    { title: 'Folio', field: 'folio_obra' },
-                    { title: 'Nombre', field: 'nombre_obra' },
-                    { title: 'Direccion', field: 'ubicacion_obra' },                   
+                    {
+                        title: 'Folio',
+                        field: 'folio_obra',
+                        cellStyle: {
+                            background: 'linear-gradient(#eeffff,#bbdefb)',
+                            color: '#01465C',
+                            width:'18%',
+                            textAlign: 'center',
+                            fontSize: 16,
+                            fontWeight: 700,
+                            border: "1px solid #ccc",
+                        },
+                    },
+
+                    {
+                        title: 'Nombre',
+                        field: 'nombre_obra',
+                        cellStyle: {
+                            background: 'linear-gradient(#eeffff,#bbdefb)',
+                            color: '#01465C',
+                            width:'50s%',
+                            textAlign: 'center',
+                            fontSize: 16,
+                            fontWeight: 700,
+                            border: "1px solid #ccc",
+                        },
+                    },
+
+                    {
+                        title: 'Direccion',
+                        field: 'ubicacion_obra',
+                        cellStyle: {
+                            background: 'linear-gradient(#eeffff,#bbdefb)',
+                            color: '#01465C',
+                            width:'50s%',
+                            textAlign: 'center',
+                            fontSize: 16,
+                            fontWeight: 700,
+                            border: "1px solid #ccc",
+                        },
+                    },
                 ]}
                 data={obrasContrato}
                 actions={[
                     {
                         icon: ArrowForwardIosIcon,
                         tooltip: 'Save User',
-                        onClick: (event, rowData) => handleObra(rowData.folio_obra)
-                    },                    
+                        onClick: (event, rowData) => handleObra(rowData.folio_obra),
+                    },
                 ]}
                 options={{
                     actionsColumnIndex: -1
@@ -82,5 +123,5 @@ const ObrasExistentes = () => {
         </Fragment>
     );
 }
- 
+
 export default ObrasExistentes;

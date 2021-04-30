@@ -5,6 +5,9 @@ import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme, Grid, Box, InputLabel, FormControl, InputAdornment } from '@material-ui/core';
 import { KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+
 
 // se importa los estilos
 import { NuevaObraStyle, BootstrapInput} from '../../../../../styles/bi/stylesBi'
@@ -36,12 +39,12 @@ export default function DetallesObra() {
                 <Box >
                 <Grid container spacing={3}>
                     <Grid  item xs>
-                    <h1>Contrato: { contrato_obra ? <div style={{ width: '50px', height:'50px' ,background: 'green'}}/> : <div style={{ width: '50px', height:'50px' ,background: 'red'}}/> }</h1>
+                        <h2>Contrato: { contrato_obra ? <div ><ThumbUpIcon style={{color:'#B1D839', fontSize: 30}}/></div> : <div ><ThumbDownIcon style={{color:'#FF5317', fontSize: 30}}/></div> }</h2>
                     </Grid>
-      
-                    <Grid  item xs>                      
-                        <h1>Activa: { estado_obra ? <div style={{ width: '50px', height:'50px' ,background: 'green'}}/> : <div style={{ width: '50px', height:'50px' ,background: 'red'}}/> }</h1>
-                    </Grid>                    
+
+                    <Grid  item xs>
+                        <h2>Activa: { estado_obra ? <div ><ThumbUpIcon style={{color:'#B1D839', fontSize: 30}}/></div> : <div ><ThumbDownIcon style={{color:'#FF5317', fontSize: 30}}/></div> }</h2>
+                    </Grid>
                   </Grid>
                 <Grid container spacing={3}>
                     <Grid  item xs>
@@ -60,9 +63,9 @@ export default function DetallesObra() {
                         </InputLabel>
                         <BootstrapInput disabled={true} startAdornment={<InputAdornment position="start"><b>$</b></InputAdornment>} name='montoTotal' value={ubicacion_obra}/>
                       </FormControl>
-                    </Grid>                    
+                    </Grid>
                   </Grid>
-                
+
                   <Grid container spacing={3}>
                     <Grid  item xs>
                       <FormControl className={classes.margin}>
@@ -128,7 +131,7 @@ export default function DetallesObra() {
                         />
                       </FormControl>
                     </Grid>
-      
+
                     <Grid  item xs>
                       <FormControl className={classes.margin}>
                         <InputLabel shrink htmlFor="bootstrap-input">

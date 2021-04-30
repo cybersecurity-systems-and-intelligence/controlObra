@@ -49,7 +49,7 @@ export default function ContratosObras() {
     return (
         <Fragment>
             <CssBaseline />
-            <main className={classes.layout}>            
+            <main className={classes.layout}>
                 <Fade in={true}>
                     <Paper className={classes.paper}>
                     <div>
@@ -64,7 +64,7 @@ export default function ContratosObras() {
                         }
                     </Paper>
                 </Fade>
-            </main>            
+            </main>
         </Fragment>
     );
 }
