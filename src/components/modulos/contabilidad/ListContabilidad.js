@@ -18,10 +18,19 @@ const ListContabilidad = ( { } ) => {
         button
         onClick={() => { cambiarMenu(0) }}
       >
-      <ListItemIcon style={{color:'#fff'}}>
-          <ListAlt />
-      </ListItemIcon>
-      <ListItemText primary="Anticipo de obra" />
+        <ListItemIcon style={{color:'#fff'}}>
+            <ListAlt />
+        </ListItemIcon>
+        <ListItemText primary="Anticipo de obra" />
+      </ListItem>
+      <ListItem
+        button
+        onClick={() => { cambiarMenu(1) }}
+      >
+        <ListItemIcon style={{color:'#fff'}}>
+            <ListAlt />
+        </ListItemIcon>
+        <ListItemText primary="Facturas registradas"/>
       </ListItem>
     </div>
     </List>

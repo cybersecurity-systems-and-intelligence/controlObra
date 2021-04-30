@@ -2,10 +2,11 @@
 import { useContext, useEffect } from 'react'
 
 // se importan los componentes
-import CargaFacturas from './anticipoObra/CargaFacturas'
+import AnticipoObra from './anticipoObra/AnticipoObra'
 import BarraModulos from '../../layout/BarraModulos'
 import MenuModulos from '../../layout/MenuModulos'
 import DatosCliente from '../general/datosCliente/DatosCliente';
+import FacturasObras from './facturasObras/FacturasObras'
 
 
 // Se importan los estilos
@@ -44,7 +45,9 @@ export default function Contabilidad() {
   const paginas = () => {
     switch(numeroMenu){
       case 0:
-        return <CargaFacturas/>
+        return <AnticipoObra/>
+      case 1:
+        return <FacturasObras/>
     }
   }
 
