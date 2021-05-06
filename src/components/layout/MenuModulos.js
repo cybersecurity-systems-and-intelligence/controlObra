@@ -11,9 +11,7 @@ import clsx from 'clsx';
 
 
 // se importan los componentes
-import ListGeneral from '../modulos/general/ListGeneral';
 import ListControlObra from '../modulos/controlObra/ListControlObra'
-import ListContabilidad from '../modulos/contabilidad/ListContabilidad'
 
 // se importan los context
 import barraContext from '../../context/barras/barraContext'
@@ -33,14 +31,9 @@ export default function MenuModulos() {
 
     // se elige el menu segun el modulo seleccionado
     const menuModulo = () => {
-        switch(modulo){
-            case 'GENERAL':
-                return <ListGeneral/>
-            case 'CONTROLOBRA':
-                return <ListControlObra/>
-            case 'CONTABILIDAD':
-                return <ListContabilidad/>
-        }
+       
+        return <ListControlObra/>
+        
     }
 
     return (

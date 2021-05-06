@@ -22,7 +22,7 @@ const RutaPrivadaLogin = ( { component: Component, ...props } ) => {
 
     return (
         <Route {...props} render={props => autenticado ? (            
-            <Redirect to='/modulos'/>
+            <Redirect to='/CONTROLOBRA'/>
         ) : (
             <Component {...props}/>
         ) } />

@@ -58,3 +58,8 @@ export const FILTRO_OBRAS = 'FILTRO_OBRAS'
 //contratoObras
 export const CAMBIAR_OPCION_CONTRATO = 'CAMBIAR_OPCION_CONTRATO'
 export const SELECT_CONTRATO = 'SELECT_CONTRATO'
+
+//nuevosItems
+export const AGREGAR_ITEMS = 'AGREGAR_ITEMS'
+export const SUBMIT_ITEMS = 'SUBMIT_ITEMS'
+export const ERROR = 'ERROR'

@@ -16,8 +16,8 @@ const ListControlObra = ( { } ) => {
   const registroObrasContext = useContext(registroObraContext)
   const { cambiarEstado } = registroObrasContext
 
-  const registroObra = () => {
-    cambiarMenu(0)
+  const registroObra = (opcion) => {
+    cambiarMenu(opcion)
     cambiarEstado(false)
   }
 
@@ -32,6 +32,24 @@ const ListControlObra = ( { } ) => {
           <BorderColorTwoTone />
         </ListItemIcon>
         <ListItemText primary="Registrar obra" />
+      </ListItem>
+      <ListItem 
+        button
+        onClick={() => registroObra(1)}
+      >
+        <ListItemIcon  style={{color:'#fff'}}>
+          <BorderColorTwoTone />
+        </ListItemIcon>
+        <ListItemText primary="Obras creadas" />
+      </ListItem>
+      <ListItem 
+        button
+        onClick={() => registroObra(2)}
+      >
+        <ListItemIcon  style={{color:'#fff'}}>
+          <BorderColorTwoTone />
+        </ListItemIcon>
+        <ListItemText primary="Nuevos Items" />
       </ListItem>
     </div>
     </List>

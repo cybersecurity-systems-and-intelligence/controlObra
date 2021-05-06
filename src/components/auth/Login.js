@@ -56,7 +56,7 @@ const Login = props => {
     // En caso de que el password o usuario sean incorrectos
     useEffect(() => {
         if(autenticado){
-            props.history.push('/modulos')
+            props.history.push('/CONTROLOBRA')
         }
         
         if(mensaje){

@@ -19,7 +19,7 @@ import Resumen from './Resumen';
 import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 import modalContext from '../../../../context/modal/modalContext'
-
+import obrasContext from '../../../../context/obras/obrasContext'
 
 // se crean los encabezados del progress bar
 function getSteps() {
@@ -53,12 +53,22 @@ export default function HorizontalLabelPositionBelowStepper() {
   const modalsContext = useContext(modalContext)
   const { peticion, estadoModal } = modalsContext
 
+  const obrassContext = useContext(obrasContext)
+  const { cargarObras } = obrassContext
+
   useEffect(() => {
     if(peticion){
         submitObra()
+        
         setActiveStep(0);
     }
   }, [peticion])
+
+  useEffect(() => {
+    if(nombreObra === ''){
+      cargarObras()
+    }
+  }, [nombreObra])
 
 
   const handleNext = () => {

@@ -1,11 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Login from './components/auth/Login'
-import NuevaCuenta from './components/auth/NuevaCuenta'
-import Modulos from './components/rutas/Modulos'
-import General from './components/modulos/general/General'
 import ControlObra from './components/modulos/controlObra/ControlObra'
-import Contabilidad from './components/modulos/contabilidad/Contabilidad'
 
 // se importan los state
 import AlertaState from './context/alertas/alertaState'
@@ -16,6 +12,7 @@ import ObrasState from './context/obras/obrasState'
 
 // modulo CONTROL DE OBRA
 import RegistroObraState from './context/controlObra/registroObra/registroObraState'
+import NuevosItemsState from './context/controlObra/nuevosItems/nuevosItemsState'
 
 // modulo CONTABILIDAD
 import AnticipoObraState from './context/contabilidad/anticipoObra/anticipoObraState'
@@ -49,19 +46,17 @@ function App() {
                 <DatosClienteState>
                   <ObrasCreadasState>
                     <ContratosObrasState>
-                      <ModalState>
-                        <Router>
-                          <Switch>
-                            <RutaPrivadaLogin exact path='/' component={Login} />
-                            <Route  path='/nueva-cuenta' component={NuevaCuenta} />
-                            <RutaPrivada path='/modulos' component={Modulos} /> 
-                            <RutaPrivada path='/GENERAL' component={General} />  
-                            <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
-                            <RutaPrivada path='/CONTABILIDAD' component={Contabilidad}/>
-                            <Route component={PageNotFound}/>       
-                          </Switch>
-                        </Router>
-                      </ModalState>
+                      <NuevosItemsState>
+                        <ModalState>
+                          <Router>
+                            <Switch>
+                              <RutaPrivadaLogin exact path='/' component={Login} />
+                              <RutaPrivada path='/CONTROLOBRA' component={ControlObra}/>
+                              <Route component={PageNotFound}/>       
+                            </Switch>
+                          </Router>
+                        </ModalState>
+                      </NuevosItemsState>
                     </ContratosObrasState>
                   </ObrasCreadasState>
                 </DatosClienteState>
