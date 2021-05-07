@@ -1,5 +1,5 @@
 
-import { Fragment, useContext, useEffect } from 'react';
+import { Fragment, useContext, useEffect,forwardRef } from 'react';
 import { Box} from '@material-ui/core';
 import { Grid, InputLabel, FormControl } from '@material-ui/core';
 import { BootstrapInput } from '../../../../styles/bi/stylesBi'
@@ -11,8 +11,43 @@ import nuevosItemsContext from '../../../../context/controlObra/nuevosItems/nuev
 import modalContext from '../../../../context/modal/modalContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
-const Formulario = () => {
+import AddBox from '@material-ui/icons/AddBox';
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
+import Check from '@material-ui/icons/Check';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
+import ChevronRight from '@material-ui/icons/ChevronRight';
+import Clear from '@material-ui/icons/Clear';
+import DeleteOutline from '@material-ui/icons/DeleteOutline';
+import Edit from '@material-ui/icons/Edit';
+import FilterList from '@material-ui/icons/FilterList';
+import FirstPage from '@material-ui/icons/FirstPage';
+import LastPage from '@material-ui/icons/LastPage';
+import Remove from '@material-ui/icons/Remove';
+import SaveAlt from '@material-ui/icons/SaveAlt';
+import Search from '@material-ui/icons/Search';
+import ViewColumn from '@material-ui/icons/ViewColumn';
 
+const tableIcons = {
+    Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
+    Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
+    Clear: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
+    Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
+    DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
+    Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
+    Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref} />),
+    Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref} />),
+    FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
+    LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
+    NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
+    PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref} />),
+    ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
+    Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
+    SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
+    ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
+    ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
+};
+
+const Formulario = () => {
     // se extrae la informacion del item
     const nuevosItemssContext = useContext(nuevosItemsContext)
     const { clave, descripcion, unidad, items, handleChangeDatos, agregarItems, submitItems } = nuevosItemssContext
@@ -49,7 +84,6 @@ const { mostrarAlerta } = alertasContext
     }
   }, [peticion])
   
-
     return (
         <Fragment>
         <Box style={{margin:25}}>
@@ -113,14 +147,15 @@ const { mostrarAlerta } = alertasContext
             </Box>
 
             <MaterialTable
-                style={{background: '#EAF9F7',  marginTop:5, marginBottom:5, border: "2px solid #ccc"}}
+                style={{background: '#EAF9F7',  marginTop:5, marginBottom:5, border: "2px solid #ccc", textAlign: 'center'}}
                 title="DATOS GUARDADOS:"
+                icons={tableIcons}
                 columns={[
                     {
                         title: 'Clave',
                         field: 'clave',
                         cellStyle: {
-                            background: 'linear-gradient(#eeffff,#bbdefb)',
+                            background: '#eeffff',
                             color: '#01465C',
                             width:'18%',
                             textAlign: 'center',
@@ -134,10 +169,10 @@ const { mostrarAlerta } = alertasContext
                         title: 'Descripción',
                         field: 'descripcion',
                         cellStyle: {
-                            background: 'linear-gradient(#eeffff,#bbdefb)',
-                            color: '#01465C',
+                            background: '#ffff',
+                            color: '#000',
                             width:'50%',
-                            textAlign: 'center',
+                            textAlign: 'center', 
                             fontSize: 16,
                             fontWeight: 700,
                             border: "1px solid #ccc",
@@ -148,8 +183,8 @@ const { mostrarAlerta } = alertasContext
                         title: 'Unidad',
                         field: 'unidad',
                         cellStyle: {
-                            background: 'linear-gradient(#eeffff,#bbdefb)',
-                            color: '#01465C',
+                            background: '#ffff',
+                            color: '#000',
                             width:'50%',
                             textAlign: 'center',
                             fontSize: 16,
@@ -158,14 +193,19 @@ const { mostrarAlerta } = alertasContext
                         },
                     },
                 ]}
+                options={{
+                    headerStyle: {
+                        border: "1px solid #ccc",
+                        background: 'linear-gradient(#eeffff,#bbdefb)',
+                        color: '#000',
+                        textAlign: 'center'
+                    }}}
                 data={items}
                 />
                 <form
                     onSubmit={submitItemsForm}
                 >
-                    <input
-                        type='submit'
-                    />
+                <Button type='submit' style={{margin:25}} variant="contained" color="Primary" onClick={agregarATabla}> GUARDAR </Button>
                 </form>
         </Fragment>
     );
