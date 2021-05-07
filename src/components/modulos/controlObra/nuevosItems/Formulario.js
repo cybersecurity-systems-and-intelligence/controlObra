@@ -114,7 +114,7 @@ const { mostrarAlerta } = alertasContext
 
             <MaterialTable
                 style={{background: '#EAF9F7',  marginTop:5, marginBottom:5, border: "2px solid #ccc"}}
-                title="DATOS GUARDADOS:"
+                title="DATOS CARGADOS:"
                 columns={[
                     {
                         title: 'Clave',

@@ -7,6 +7,7 @@ import ObrasCreadas from './obrasCreadas/ObrasCreadas'
 import BarraModulos from '../../layout/BarraModulos'
 import MenuModulos from '../../layout/MenuModulos'
 import NuevosItems from './nuevosItems/NuevosItems'
+import AnticipoObra from './anticipoObra/AnticipoObra'
 import Modal from '../Modal'
 
 // Se importan los estilos
@@ -44,6 +45,8 @@ export default function ControlObra() {
         return <ObrasCreadas/>
       case 2:
         return <NuevosItems/>
+      case 3:
+        return <AnticipoObra/>
       default:
         return 'Error desconocido'
     }
