@@ -46,13 +46,12 @@ export default function NuevosItems() {
                         <img style={{width: 200}} src={imagenes.imgjpg} alt='PALA' />
                     </div>
                         <Typography variant="h4" align="center" component='div'>
-                            <h5>Nuevos Items<hr className={classes.hr}/></h5>
+                            <h5>AGREGAR NUEVOS ITEMS<hr className={classes.hr}/></h5>
                         </Typography>
-                        <br/>            
-                        <Formulario/>        
+                        <br/>
+                        <Formulario/>
                     </Paper>
                 </Fade>
-                
             </main>
         </Fragment>
     );

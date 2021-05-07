@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ListItem, List, ListItemIcon, ListItemText } from '@material-ui/core/';
-import { BorderColorTwoTone, ListAlt, ContactMailOutlined } from '@material-ui/icons';
+import { BorderColorTwoTone, AddBox, AssignmentTurnedIn } from '@material-ui/icons';
 
 // se importan los context
 import barraContext from '../../../context/barras/barraContext'
@@ -38,7 +38,7 @@ const ListControlObra = ( { } ) => {
         onClick={() => registroObra(1)}
       >
         <ListItemIcon  style={{color:'#fff'}}>
-          <BorderColorTwoTone />
+          <AssignmentTurnedIn />
         </ListItemIcon>
         <ListItemText primary="Obras creadas" />
       </ListItem>
@@ -47,7 +47,7 @@ const ListControlObra = ( { } ) => {
         onClick={() => registroObra(2)}
       >
         <ListItemIcon  style={{color:'#fff'}}>
-          <BorderColorTwoTone />
+          <AddBox />
         </ListItemIcon>
         <ListItemText primary="Nuevos Items" />
       </ListItem>
