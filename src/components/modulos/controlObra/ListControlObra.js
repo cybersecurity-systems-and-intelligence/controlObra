@@ -51,6 +51,15 @@ const ListControlObra = ( { } ) => {
         </ListItemIcon>
         <ListItemText primary="Nuevos Items" />
       </ListItem>
+      <ListItem 
+        button
+        onClick={() => registroObra(3)}
+      >
+        <ListItemIcon  style={{color:'#fff'}}>
+          <BorderColorTwoTone />
+        </ListItemIcon>
+        <ListItemText primary="Anticipo de obra" />
+      </ListItem>
     </div>
     </List>
   )
