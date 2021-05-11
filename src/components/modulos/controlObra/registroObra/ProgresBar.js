@@ -21,6 +21,8 @@ import alertaContext from '../../../../context/alertas/alertaContext'
 import modalContext from '../../../../context/modal/modalContext'
 import obrasContext from '../../../../context/obras/obrasContext'
 
+
+
 // se crean los encabezados del progress bar
 function getSteps() {
   return ['Nueva obra', 'Cargar cotización', 'Revision de datos'];
@@ -43,7 +45,8 @@ export default function HorizontalLabelPositionBelowStepper() {
     numeroContrato,
     partidas,
     cambiarEstado,
-    submitObra
+    submitObra,
+    items_no_found
   } = registroObrasContext
 
   // Extraer los valores del context de alerta
@@ -51,7 +54,7 @@ export default function HorizontalLabelPositionBelowStepper() {
   const { mostrarAlerta } = alertasContext
 
   const modalsContext = useContext(modalContext)
-  const { peticion, estadoModal } = modalsContext
+  const { peticion, estadoModal, cancelarPeticion } = modalsContext
 
   const obrassContext = useContext(obrasContext)
   const { cargarObras } = obrassContext
@@ -61,6 +64,7 @@ export default function HorizontalLabelPositionBelowStepper() {
         submitObra()
         
         setActiveStep(0);
+        cancelarPeticion()
     }
   }, [peticion])
 

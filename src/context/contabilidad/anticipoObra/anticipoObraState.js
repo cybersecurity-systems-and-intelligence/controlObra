@@ -27,7 +27,7 @@ const  AnticipoObraState = props => {
             conceptos: []
         },
         obraSeleccionada: [],
-        mensaje: null
+        mensaje_anticipo_obra: null
     }
 
     // Dispatch para ejecutar las acciones
@@ -117,7 +117,7 @@ const  AnticipoObraState = props => {
         <anticipoObraContext.Provider
             value={{
                 informacion: state.informacion,
-                mensaje: state.mensaje,
+                mensaje_anticipo_obra: state.mensaje_anticipo_obra,
                 obraSeleccionada: state.obraSeleccionada,
                 consultarInformacion,
                 guardarFactura,

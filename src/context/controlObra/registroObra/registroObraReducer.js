@@ -19,12 +19,12 @@ export default (state, action) => {
                 fechaContrato: action.payload.fechaContrato,
                 fechaInicio: action.payload.fechaInicio,
                 fechaFin: action.payload.fechaFin,
-                mensaje: null
+                mensaje_registro_obra: null
             }
         case ERROR_REGISTRO_OBRA:
             return {
                 ...state,
-                mensaje: action.payload
+                mensaje_registro_obra: action.payload
             }
         case HANDLE_CHANGE:
             return {
@@ -39,8 +39,9 @@ export default (state, action) => {
         case CARGAR_CONCEPTOS:
             return {
                 ...state,
-                mensaje: null,
-                partidas: action.payload
+                mensaje_registro_obra: null,
+                partidas: action.payload.Items_Encontrados,
+                items_no_found: action.payload.Items_No_Encontrados
             }
         case CAMBIAR_ESTADO:
             return {
@@ -57,7 +58,7 @@ export default (state, action) => {
                 fechaInicio: new Date(),
                 fechaFin: new Date(),
                 partidas: [],
-                mensaje: action.payload
+                mensaje_registro_obra: action.payload
             }
         default:
             return state

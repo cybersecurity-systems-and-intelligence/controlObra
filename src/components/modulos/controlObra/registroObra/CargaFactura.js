@@ -15,6 +15,9 @@ import TablaPartidas from './TablaPartidas'
 import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
+// se importan las librerias
+import { createPDF } from '../../../../libs/createPdf'
+
 // se crea y exporta el componente
 export default function CargaFactura () {
 
@@ -28,23 +31,23 @@ export default function CargaFactura () {
     
     // se extrae la informacion del context
     const registroObrasContext = useContext(registroObraContext)
-    const { mensaje, guardarPartidas } = registroObrasContext
+    const { mensaje_registro_obra, guardarPartidas, items_no_found } = registroObrasContext
 
     const alertasContext = useContext(alertaContext)
-    const { mostrarAlerta } = alertasContext
-
-    useEffect(() => {
-
-        // si el mensaje es distinto a null se mostrará
-        if(mensaje){
-            mostrarAlerta(mensaje.msg, mensaje.categoria)
-        }
-    }, [mensaje])
+    const { mostrarAlerta } = alertasContext    
 
     // se actualiza el nombre segun el archivo seleccionado
     const cambiarTexto = e => {
         guardarNombreFichero(e.target.files[0].name);
     }
+
+    useEffect(() => {
+        console.log(items_no_found)
+        if(items_no_found.length != 0) {
+            alert('d')
+            createPDF(items_no_found)
+        }
+    }, [items_no_found])
 
     // submit para cargar el archivo
     const onSubmitCarga = async (data) => {

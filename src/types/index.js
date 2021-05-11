@@ -36,6 +36,7 @@ export const CREAR_OBRA = 'CREAR_OBRA'
 //modal
 export const ESTADO_MODAL = 'ESTADO_MODAL'
 export const REALIZAR_PETICION = 'REALIZAR_PETICION'
+export const CANCELAR_PETICION = 'CANCELAR_PETICION'
 
 //obras
 export const ERROR_CARGAR_OBRAS = 'ERROR_CARGAR_OBRAS'

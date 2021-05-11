@@ -24,16 +24,12 @@ export default function NuevosItems() {
     const classes = styleRegistroObra();
 
     const nuevosItemssContext = useContext(nuevosItemsContext)
-    const { mensaje } = nuevosItemssContext
+    const { mensaje_nuevos_items } = nuevosItemssContext
 
     const alertasContext = useContext(alertaContext)
     const { mostrarAlerta } = alertasContext
 
-    useEffect(() => {
-        if(mensaje){
-          mostrarAlerta(mensaje.msg, mensaje.categoria)
-        }
-    }, [mensaje])
+    
 
 
     return (

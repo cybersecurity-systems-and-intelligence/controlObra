@@ -37,7 +37,7 @@ const ObrasState = props => {
 
         } catch {
             const alerta = {
-                msg: 'Hubo un error al cargar las obras',
+                msg: 'Hubo un error al cargar las obrasw',
                 categoria: 'alerta alerta-error',
                 rand: Math.random()
             }

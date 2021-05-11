@@ -1,6 +1,7 @@
 import {   
     ESTADO_MODAL,
-    REALIZAR_PETICION
+    REALIZAR_PETICION,
+    CANCELAR_PETICION
 } from '../../types'
 
 export default (state, action) => {
@@ -15,6 +16,11 @@ export default (state, action) => {
                 ...state,
                 estado: false,
                 peticion: action.payload
+            }
+        case CANCELAR_PETICION:
+            return {
+                ...state,
+                peticion: null
             }
         default:
             return state

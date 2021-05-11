@@ -44,24 +44,25 @@ export default function HorizontalLabelPositionBelowStepper() {
 
   // se extrae la informacion del context de modal
   const modalsContext = useContext(modalContext)
-  const { peticion, estadoModal } = modalsContext
+  const { peticion, estadoModal, cancelarPeticion } = modalsContext
 
   const anticipoObrasContext = useContext(anticipoObraContext)
-  const { mensaje, obraSeleccionada, informacion, guardarFactura } = anticipoObrasContext
+  const { mensaje_anticipo_obra, obraSeleccionada, informacion, guardarFactura } = anticipoObrasContext
 
 
   useEffect(() => {
     if(peticion){
       guardarFactura()
-      setActiveStep(0);        
+      setActiveStep(0);  
+      cancelarPeticion()      
     }
   }, [peticion])
 
   useEffect(() => {
-    if(mensaje){
+    if(mensaje_anticipo_obra){
       setActiveStep(1);   
     }
-  }, [mensaje])
+  }, [mensaje_anticipo_obra])
 
   const handleNext = () => {
 

@@ -28,15 +28,16 @@ export default function Modal() {
 
   // se extrae la informacion del context
   const modalsContext = useContext(modalContext)
-  const { estado, estadoModal, realizarPeticion } = modalsContext
+  const { estado, estadoModal, realizarPeticion, cancelarPeticion } = modalsContext
 
   const handleClose = () => {
+    cancelarPeticion()
     estadoModal(false);    
   };
 
   const handleAcept = () => {
     realizarPeticion()
-    estadoModal(false);
+    estadoModal(false)
   };
 
   return (

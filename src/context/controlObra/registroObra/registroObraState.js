@@ -25,7 +25,8 @@ const  RegistroObraState = props => {
         fechaInicio: new Date(),
         fechaFin: new Date(),
         partidas: [],
-        mensaje: null,
+        items_no_found: [],
+        mensaje_registro_obra: null,
         estadoInput: false
     }
 
@@ -44,7 +45,8 @@ const  RegistroObraState = props => {
         } catch(err) {
             const alerta = {
                 msg: 'Error inesperado',
-                categoria: 'alerta alerta-error'
+                categoria: 'alerta alerta-error',
+                rand: Math.random()
             }
             dispatch({
                 type: ERROR_REGISTRO_OBRA,
@@ -76,7 +78,9 @@ const  RegistroObraState = props => {
         try {
             const res = await api.consultarItems(formData)
 
-            if(res.data.length > 0) {
+            console.log(res.data);
+
+            if(res.data.Items_Encontrados.length > 0) {
                 
                 dispatch({
                     type: CARGAR_CONCEPTOS,
@@ -85,7 +89,8 @@ const  RegistroObraState = props => {
             }else{
                 const alerta = {
                     msg: 'Debe ingresar un archivo csv con la estructura correcta',
-                    categoria: 'alerta alerta-error'
+                    categoria: 'alerta alerta-error',
+                    rand: Math.random()
                 }
                 dispatch({
                     type: ERROR_REGISTRO_OBRA,
@@ -95,7 +100,8 @@ const  RegistroObraState = props => {
         } catch(error) {
             const alerta = {
                 msg: 'Debe ingresar un archivo csv con la estructura correcta',
-                categoria: 'alerta alerta-error'
+                categoria: 'alerta alerta-error',
+                rand: Math.random()
             }
             dispatch({
                 type: ERROR_REGISTRO_OBRA,
@@ -131,7 +137,8 @@ const  RegistroObraState = props => {
 
             const alerta = {
                 msg: 'La obra ha sido registrada correctamente',
-                categoria: 'alerta alerta-error'
+                categoria: 'alerta alerta-ok',
+                rand: Math.random()
             }
 
             dispatch({
@@ -139,10 +146,12 @@ const  RegistroObraState = props => {
                 payload: alerta
             })
 
-        } catch {
+        } catch(error) {            
+            console.log(error.response.data)
             const alerta = {
                 msg: 'Hubo un error al registrar la obra',
-                categoria: 'alerta alerta-error'
+                categoria: 'alerta alerta-error',
+                rand: Math.random()
             }
             dispatch({
                 type: ERROR_REGISTRO_OBRA,
@@ -162,6 +171,8 @@ const  RegistroObraState = props => {
                 fechaFin: state.fechaFin,
                 partidas: state.partidas,
                 estadoInput: state.estadoInput,
+                mensaje_registro_obra: state.mensaje_registro_obra,
+                items_no_found: state.items_no_found,
                 guardarInfoGeneral,
                 guardarPartidas,
                 handleChangeDatos,

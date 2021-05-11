@@ -19,7 +19,7 @@ const  NuevosItemsState = props => {
         descripcion: '',
         unidad: '',
         items: [],
-        mensaje: null,
+        mensaje_nuevos_items: null,
     }
 
     // Dispatch para ejecutar las acciones
@@ -48,8 +48,11 @@ const  NuevosItemsState = props => {
         })
     }
 
-    const submitItems = () => {       
+    const submitItems = async () => {       
         try{
+
+            const resp = await api.registroItems(state.items)
+
             const alerta = {
                 msg: 'Se ha guardado la información',
                 categoria: 'alerta alerta-ok',
@@ -64,7 +67,7 @@ const  NuevosItemsState = props => {
         }catch{
 
             const alerta = {
-                msg: 'No se ha guardado la información',
+                msg: 'No se ha guardado la información ya que algunos items pueden ya estar registrados',
                 categoria: 'alerta alerta-error',
                 rand: Math.random()
             }
@@ -84,7 +87,7 @@ const  NuevosItemsState = props => {
                 descripcion: state.descripcion,
                 unidad: state.unidad,
                 items: state.items,
-                mensaje: state.mensaje,
+                mensaje_nuevos_items: state.mensaje_nuevos_items,
                 handleChangeDatos,
                 agregarItems,
                 submitItems

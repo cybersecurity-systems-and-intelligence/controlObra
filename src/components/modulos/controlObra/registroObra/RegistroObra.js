@@ -20,13 +20,18 @@ import ProgresBar from './ProgresBar'
 // se importan los state
 import alertaContext from '../../../../context/alertas/alertaContext'
 
+
 // se crea y exporta el componente
 export default function RegistroObra() {
     const classes = styleRegistroObra();
 
     // se extrae la informacion del context
     const alertasContext = useContext(alertaContext)
-    const { alerta } = alertasContext
+    const { alerta, mostrarAlerta } = alertasContext
+
+    
+
+    
 
     return (
         <Fragment>

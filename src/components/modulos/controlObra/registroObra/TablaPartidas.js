@@ -39,7 +39,7 @@ const TablaPartidas = () => {
             }}
             columns={[
                 {   title: 'Partida',
-                    field: 'partida',
+                    field: 'partidayTotal',
                     defaultGroupOrder: 0,
                     cellStyle: {
                         background: 'linear-gradient(#eeffff,#bbdefb)',

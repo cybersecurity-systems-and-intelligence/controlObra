@@ -6,7 +6,8 @@ import api from '../../libs/api'
 
 import {
     ESTADO_MODAL,
-    REALIZAR_PETICION
+    REALIZAR_PETICION,
+    CANCELAR_PETICION
 } from '../../types/index'
 
 
@@ -14,7 +15,7 @@ const ModalState = props => {
 
     const initialState = {
         estado: false,
-        peticion: null
+        peticion: null,
     }
 
     // Dispatch para ejecutar las acciones
@@ -35,13 +36,20 @@ const ModalState = props => {
         })
     }
 
+    const cancelarPeticion = () => {
+        dispatch({
+            type: CANCELAR_PETICION
+        })
+    }
+
     return (
         <modalContext.Provider
             value={{
                 estado: state.estado,
                 peticion: state.peticion,
                 estadoModal,
-                realizarPeticion
+                realizarPeticion,
+                cancelarPeticion
             }}
         >
             { props.children }

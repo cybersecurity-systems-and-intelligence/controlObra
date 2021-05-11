@@ -53,36 +53,37 @@ const Formulario = () => {
     const { clave, descripcion, unidad, items, handleChangeDatos, agregarItems, submitItems } = nuevosItemssContext
 
     // se extrae la informacion del context de modal
-  const modalsContext = useContext(modalContext)
-  const { peticion, estadoModal } = modalsContext
+    const modalsContext = useContext(modalContext)
+    const { peticion, estadoModal, cancelarPeticion } = modalsContext
 
-  const alertasContext = useContext(alertaContext)
-const { mostrarAlerta } = alertasContext
+    const alertasContext = useContext(alertaContext)
+    const { mostrarAlerta } = alertasContext
 
-  const submitItemsForm = e => {
-      e.preventDefault()
+    const submitItemsForm = e => {
+        e.preventDefault()
 
-      if(items.length === 0){
-        mostrarAlerta('Agrega al menos un item', 'alerta alerta-error')
-        return
-      }
+        if(items.length === 0){
+            mostrarAlerta('Agrega al menos un item', 'alerta alerta-error')
+            return
+        }
 
-      estadoModal(true)
+        estadoModal(true)
   }
 
-  const agregarATabla = () => {
-    if (clave.trim() === '' || descripcion.trim() === '' || unidad.trim() === ''){
-        mostrarAlerta('Agrega todos los datos', 'alerta alerta-error')
-        return
+    const agregarATabla = () => {
+        if (clave.trim() === '' || descripcion.trim() === '' || unidad.trim() === ''){
+            mostrarAlerta('Agrega todos los datos', 'alerta alerta-error')
+            return
+        }
+        agregarItems()
     }
-    agregarItems()
-  }
 
-  useEffect(() => {
-    if(peticion){
-        submitItems()
-    }
-  }, [peticion])
+    useEffect(() => {
+        if(peticion){
+            submitItems()
+            cancelarPeticion()
+        }
+    }, [peticion])
   
     return (
         <Fragment>
@@ -205,7 +206,7 @@ const { mostrarAlerta } = alertasContext
                 <form
                     onSubmit={submitItemsForm}
                 >
-                <Button type='submit' style={{margin:25}} variant="contained" color="Primary" onClick={agregarATabla}> GUARDAR </Button>
+                <Button type='submit' style={{margin:25}} variant="contained" color="Primary"> GUARDAR </Button>
                 </form>
         </Fragment>
     );

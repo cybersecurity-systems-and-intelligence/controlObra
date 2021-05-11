@@ -28,7 +28,7 @@ export default function AnticipoObra() {
 
     // Extraer los valores del context de la factura
     const anticipoObrasContext = useContext(anticipoObraContext)
-    const { mensaje } = anticipoObrasContext
+    const { mensaje_anticipo_obra } = anticipoObrasContext
 
     // Extraer los valores del context de alerta
     const alertasContext = useContext(alertaContext)
@@ -37,10 +37,10 @@ export default function AnticipoObra() {
     useEffect(() => {
 
         // si el mensaje es distinto a null se mostrará
-        if(mensaje){           
-            mostrarAlerta(mensaje.msg, mensaje.categoria)
+        if(mensaje_anticipo_obra){           
+            mostrarAlerta(mensaje_anticipo_obra.msg, mensaje_anticipo_obra.categoria)
         }
-    }, [mensaje])
+    }, [mensaje_anticipo_obra])
 
     return (
         <Fragment>

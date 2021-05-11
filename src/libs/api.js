@@ -93,7 +93,7 @@ const api = {
         return clienteAxios.get(`${baseUrl}/ordenCompra/${folio_cotizacion}`)
     },
     consultarItems: (file) => {
-        return clienteAxios.post(`${baseUrl}/archivos/CSV`, file)
+        return clienteAxios.post(`${baseUrl}/items/verificar`, file)
     },
     convertirXml: (file) => {
         return clienteAxios.post(`${baseUrl}/archivos/XML`, file)
@@ -106,6 +106,9 @@ const api = {
     },
     cargarContratos: () => {
         return clienteAxios.get(`${baseUrl}/consultarContrato`)
+    },
+    registroItems: (items) => {
+        return clienteAxios.post(`${baseUrl}/items/cargar`, { objeto: items })
     }
 }
 

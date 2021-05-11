@@ -27,12 +27,12 @@ export default (state, action) => {
                 descripcion: '',
                 unidad: '',
                 items: [],
-                mensaje: action.payload
+                mensaje_nuevos_items: action.payload
             }
         case ERROR:
             return {
                 ...state,
-                mensaje: action.payload
+                mensaje_nuevos_items: action.payload
             }
         default:
             return state

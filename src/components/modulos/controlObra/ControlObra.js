@@ -17,6 +17,8 @@ import { styleBi } from '../../../styles/bi/stylesBi'
 import barraContext from '../../../context/barras/barraContext'
 import obrasContext from '../../../context/obras/obrasContext'
 import alertaContext from '../../../context/alertas/alertaContext'
+import nuevosItemsContext from '../../../context/controlObra/nuevosItems/nuevosItemsContext'
+import registroObraContext from '../../../context/controlObra/registroObra/registroObraContext'
 
 // se crea y exporta el componente
 export default function ControlObra() {
@@ -31,11 +33,30 @@ export default function ControlObra() {
   const { cargarObras } = obrassContext
 
   const alertasContext = useContext(alertaContext)
-  const { alerta } = alertasContext
+  const { alerta, mostrarAlerta } = alertasContext
+
+  const nuevosItemssContext = useContext(nuevosItemsContext)
+  const { mensaje_nuevos_items } = nuevosItemssContext
+
+  const registroObrasContext = useContext(registroObraContext)
+  const { mensaje_registro_obra } = registroObrasContext
 
   useEffect(() => {
     cargarObras()
   }, [])
+
+  useEffect(() => {
+    if(mensaje_nuevos_items){
+      mostrarAlerta(mensaje_nuevos_items.msg, mensaje_nuevos_items.categoria)
+    }
+  }, [mensaje_nuevos_items])
+
+  useEffect(() => {
+    // si el mensaje es distinto a null se mostrará
+    if(mensaje_registro_obra){
+        mostrarAlerta(mensaje_registro_obra.msg, mensaje_registro_obra.categoria)
+    }
+  }, [mensaje_registro_obra])
 
   const paginas = () => {
     switch(numeroMenu){
