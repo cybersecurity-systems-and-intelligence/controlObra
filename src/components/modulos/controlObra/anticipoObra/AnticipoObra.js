@@ -22,6 +22,7 @@ import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
 import anticipoObraContext from '../../../../context/contabilidad/anticipoObra/anticipoObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
 
+
 // se crea y exporta el componente
 export default function AnticipoObra() {
     const classes = styleRegistroObra();

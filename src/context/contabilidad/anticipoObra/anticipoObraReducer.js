@@ -3,7 +3,9 @@ import {
     CONSULTAR_ERROR,
     SUBMIT_FACTURA,
     ERROR_REGISTRO_FACTURA,
-    SELECC_OBRA_ANTICIPO
+    SELECC_OBRA_ANTICIPO,
+    SELECT_CLAVE,
+    SELECT_CONCEPTO
 } from '../../../types'
 
 export default (state, action) => {
@@ -61,6 +63,16 @@ export default (state, action) => {
             return {
                 ...state,
                 obraSeleccionada: action.payload
+            }
+        case SELECT_CLAVE:
+            return {
+                ...state,
+                informacion: action.payload
+            }
+        case SELECT_CONCEPTO:
+            return {
+                ...state,
+                conceptoSeleccionado: action.payload
             }
         default:
             return state

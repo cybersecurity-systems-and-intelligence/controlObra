@@ -9,7 +9,9 @@ import {
     CONSULTAR_ERROR,
     SUBMIT_FACTURA,
     ERROR_REGISTRO_FACTURA,
-    SELECC_OBRA_ANTICIPO
+    SELECC_OBRA_ANTICIPO,
+    SELECT_CLAVE,
+    SELECT_CONCEPTO
 } from '../../../types'
 
 
@@ -27,6 +29,7 @@ const  AnticipoObraState = props => {
             conceptos: []
         },
         obraSeleccionada: [],
+        conceptoSeleccionado: '',
         mensaje_anticipo_obra: null
     }
 
@@ -39,9 +42,7 @@ const  AnticipoObraState = props => {
     const consultarInformacion = async (formData) => {
 
         try {
-            const res = await api.convertirXml(formData)
-
-            console.log(res);
+            const res = await api.convertirXml(formData)      
             if(res.data !== undefined) {                     
                 dispatch({
                     type: CONSULTAR_INFORMACION,
@@ -112,6 +113,20 @@ const  AnticipoObraState = props => {
             payload: obra
         })
     }
+
+    const seleccionClave = (obraSelect) => {
+        dispatch({
+            type: SELECT_CLAVE,
+            payload: obraSelect
+        })
+    }
+
+    const seleccionConcepto = (clave) => {
+        dispatch({
+            type: SELECT_CONCEPTO,
+            payload: clave
+        })
+    }
         
     return (
         <anticipoObraContext.Provider
@@ -119,9 +134,12 @@ const  AnticipoObraState = props => {
                 informacion: state.informacion,
                 mensaje_anticipo_obra: state.mensaje_anticipo_obra,
                 obraSeleccionada: state.obraSeleccionada,
+                conceptoSeleccionado: state.conceptoSeleccionado,
                 consultarInformacion,
                 guardarFactura,
-                seleccionarObra
+                seleccionarObra,
+                seleccionClave,
+                seleccionConcepto
             }}
         >
             { props.children }
