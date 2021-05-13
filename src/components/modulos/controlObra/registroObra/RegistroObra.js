@@ -18,7 +18,11 @@ import { styleRegistroObra } from '../../../../styles/bi/stylesBi'
 import ProgresBar from './ProgresBar'
 
 // se importan los state
+import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
 import alertaContext from '../../../../context/alertas/alertaContext'
+
+// se importan las librerias
+import { createPDF } from '../../../../libs/createPdf'
 
 
 // se crea y exporta el componente
@@ -29,7 +33,16 @@ export default function RegistroObra() {
     const alertasContext = useContext(alertaContext)
     const { alerta, mostrarAlerta } = alertasContext
 
+    // se extrae la informacion del context
+    const registroObrasContext = useContext(registroObraContext)
+    const { mensaje_registro_obra, guardarPartidas, items_no_found } = registroObrasContext
+
     
+    useEffect(() => {
+        if(items_no_found.length != 0) {   
+            createPDF(items_no_found)
+        }
+    }, [items_no_found])
 
     
 

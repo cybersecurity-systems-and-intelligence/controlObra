@@ -41,14 +41,7 @@ export default function CargaFactura () {
         guardarNombreFichero(e.target.files[0].name);
     }
 
-    useEffect(() => {
-        console.log(items_no_found)
-        if(items_no_found.length != 0) {
-            alert('d')
-            createPDF(items_no_found)
-        }
-    }, [items_no_found])
-
+    
     // submit para cargar el archivo
     const onSubmitCarga = async (data) => {
 

@@ -52,6 +52,8 @@ export default (state, action) => {
                     moneda: '',
                     conceptos: []
                 },
+                obraSeleccionada: [],
+                conceptoSeleccionado: '',
                 mensaje: null
             }
         case ERROR_REGISTRO_FACTURA:

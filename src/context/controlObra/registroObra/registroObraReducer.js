@@ -58,6 +58,8 @@ export default (state, action) => {
                 fechaInicio: new Date(),
                 fechaFin: new Date(),
                 partidas: [],
+                items_no_found: [],
+                estadoInput: false,
                 mensaje_registro_obra: action.payload
             }
         default:
