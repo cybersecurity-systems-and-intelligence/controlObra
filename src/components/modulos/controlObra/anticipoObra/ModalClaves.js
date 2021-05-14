@@ -21,7 +21,7 @@ export default function ModalClaves({ estado, guardarEstado }) {
 
     // Extraer los valores del context de la factura
     const anticipoObrasContext = useContext(anticipoObraContext)
-    const { informacion, obraSeleccionada, conceptoSeleccionado, seleccionClave } = anticipoObrasContext
+    const { informacion, obraSeleccionada, conceptoSeleccionado, seleccionConcepto, seleccionClave } = anticipoObrasContext
 
     const { conceptos } = informacion
     const { partidas_obra } = obraSeleccionada
@@ -30,11 +30,13 @@ export default function ModalClaves({ estado, guardarEstado }) {
     const { mostrarAlerta } = alertasContext
 
     const handleClose = () => {
-        guardarEstado(false);
+        guardarEstado(false);   
+        seleccionConcepto('') 
     };
 
     const handleAcept = () => {
         guardarEstado(false)
+        seleccionConcepto('')
     };
     const selectClave = (clave) => {
         let band = false
