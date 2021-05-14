@@ -148,7 +148,7 @@ const Formulario = () => {
             </Box>
 
             <MaterialTable
-                style={{background: '#EAF9F7',  marginTop:5, marginBottom:5, border: "2px solid #ccc", textAlign: 'center'}}
+                style={{background: '#E3F2FD',  marginTop:5, marginBottom:5, border: "2px solid #ccc", borderRadius: 25}}
                 icons={tableIcons}
                 title="DATOS CARGADOS:"
                 columns={[
@@ -156,7 +156,7 @@ const Formulario = () => {
                         title: 'Clave',
                         field: 'clave',
                         cellStyle: {
-                            background: '#eeffff',
+                            background: 'linear-gradient(#eeffff,#bbdefb)',
                             color: '#01465C',
                             width:'18%',
                             textAlign: 'center',
@@ -175,7 +175,6 @@ const Formulario = () => {
                             width:'50%',
                             textAlign: 'center', 
                             fontSize: 16,
-                            fontWeight: 700,
                             border: "1px solid #ccc",
                         },
                     },
@@ -189,18 +188,20 @@ const Formulario = () => {
                             width:'50%',
                             textAlign: 'center',
                             fontSize: 16,
-                            fontWeight: 700,
                             border: "1px solid #ccc",
                         },
                     },
                 ]}
                 options={{
+                    actionsColumnIndex: -1,
                     headerStyle: {
-                        border: "1px solid #ccc",
                         background: 'linear-gradient(#eeffff,#bbdefb)',
-                        color: '#000',
-                        textAlign: 'center'
-                    }}}
+                        color: "#01465C",
+                        border: "1px solid #ccc",
+                        textAlign: 'center',
+                        fontSize: 15,
+                        fontWeight: 600
+                    },}}
                 data={items}
                 />
                 <form

@@ -10,7 +10,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 
 // se importa los estilos
-import { NuevaObraStyle, BootstrapInput} from '../../../../../styles/bi/stylesBi'
+import { NuevaObraStyle, BootstrapInput, styleDateTime} from '../../../../../styles/bi/stylesBi'
 
 // se importan los context
 import obrasCreadasContext from '../../../../../context/general/obrasCreadas/obrasCreadasContext'
@@ -25,6 +25,7 @@ const theme = createMuiTheme({
 
 export default function DetallesObra() {
     const classes = NuevaObraStyle();
+    const css = styleDateTime();
 
     const obrasCreadassContext = useContext(obrasCreadasContext)
     const { obraSeleccionada } = obrasCreadassContext
@@ -46,8 +47,8 @@ export default function DetallesObra() {
                         <h2>Activa: { estado_obra ? <div ><ThumbUpIcon style={{color:'#B1D839', fontSize: 30}}/></div> : <div ><ThumbDownIcon style={{color:'#FF5317', fontSize: 30}}/></div> }</h2>
                     </Grid>
                   </Grid>
-                <Grid container spacing={3}>
-                    <Grid  item xs>
+                  <Grid container spacing={3} justify="center">
+                        <Grid  item xs={12} sm={6} md={4} lg={3}>
                       <FormControl className={classes.margin}>
                         <InputLabel shrink htmlFor="bootstrap-input">
                           <b>Folio</b>
@@ -55,8 +56,8 @@ export default function DetallesObra() {
                         <BootstrapInput disabled={true} name='nombreObra' value={folio_obra} />
                       </FormControl>
                     </Grid>
-      
-                    <Grid  item xs>
+
+                    <Grid  item xs={12} sm={6} md={4} lg={3}>
                       <FormControl className={classes.margin}>
                         <InputLabel shrink htmlFor="bootstrap-input">
                           <b>Ubicacion</b>
@@ -66,8 +67,8 @@ export default function DetallesObra() {
                     </Grid>
                   </Grid>
 
-                  <Grid container spacing={3}>
-                    <Grid  item xs>
+                  <Grid container spacing={3} justify="center">
+                  <Grid  item xs={12} sm={6} md={4} lg={3}>
                       <FormControl className={classes.margin}>
                         <InputLabel shrink htmlFor="bootstrap-input">
                           <b>Nombre de la obra</b>
@@ -75,18 +76,18 @@ export default function DetallesObra() {
                         <BootstrapInput disabled={true} name='nombreObra' value={nombre_obra} />
                       </FormControl>
                     </Grid>
-      
-                    <Grid  item xs>
-                      <FormControl className={classes.margin}>
+
+                    <Grid  item xs={12} sm={6} md={4} lg={3}>
+                    <FormControl className={classes.margin}>
                         <InputLabel shrink htmlFor="bootstrap-input">
                           <b>Monto total</b>
                         </InputLabel>
                         <BootstrapInput disabled={true} startAdornment={<InputAdornment position="start"><b>$</b></InputAdornment>} name='montoTotal' value={monto_total_obra}/>
                       </FormControl>
                     </Grid>
-      
-                    <Grid  item xs>
-                      <FormControl className={classes.margin}>
+
+                    <Grid  item xs={12} sm={6} md={4} lg={3}>
+                    <FormControl className={classes.margin}>
                         <InputLabel shrink htmlFor="bootstrap-input">
                           <b>Numero de contrato</b>
                         </InputLabel>
@@ -97,13 +98,14 @@ export default function DetallesObra() {
                 </Box>
       
                 <Box>
-                  <Grid container spacing={3}>
-                    <Grid  item xs>
+                <Grid container spacing={3} justify="center">
+                  <Grid  item xs={12} sm={6} md={4} lg={3}>
                       <FormControl className={classes.margin}>
                         <InputLabel shrink htmlFor="bootstrap-input">
                           <b>Fecha de contrato</b>
                         </InputLabel>
                         <KeyboardDatePicker
+                            className={css.date}
                             disabled={true}
                             margin="normal"
                             color="secondary"
@@ -115,12 +117,13 @@ export default function DetallesObra() {
                       </FormControl>
                     </Grid>
       
-                    <Grid  item xs>
+                    <Grid  item xs={12} sm={6} md={4} lg={3}>
                       <FormControl className={classes.margin}>
                         <InputLabel shrink htmlFor="bootstrap-input">
                           <b>Inicio de obra</b>
                         </InputLabel>
                         <KeyboardDatePicker
+                            className={css.date}
                             disabled={true}
                             margin="normal"
                             color="secondary"
@@ -132,12 +135,13 @@ export default function DetallesObra() {
                       </FormControl>
                     </Grid>
 
-                    <Grid  item xs>
+                    <Grid  item xs={12} sm={6} md={4} lg={3}>
                       <FormControl className={classes.margin}>
                         <InputLabel shrink htmlFor="bootstrap-input">
                           <b>Fin de obra</b>
                         </InputLabel>
                         <KeyboardDatePicker
+                            className={css.date}
                             disabled={true}
                             margin="normal"
                             color="secondary"

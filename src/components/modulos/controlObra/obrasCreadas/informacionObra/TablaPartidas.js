@@ -27,26 +27,28 @@ const TablaPartidas = () => {
 
     return (
         <MaterialTable
-            style={{background: '#E3F2FD',  marginTop: theme.spacing(5), marginBottom: theme.spacing(5), border: "2px solid #ccc", borderRadius: 25,}}
+            style={{background: 'linear-gradient(#ffff,#e6ffff)',  marginTop: theme.spacing(5), marginBottom: theme.spacing(5), border: "2px solid #ccc", borderRadius: 25,}}
             icons={tableIcons}
             title={<h3>PARTIDAS</h3>}
             options={{
                 pageSize: 5,
                 headerStyle: {
-                    color: "#000",
+                    background: 'linear-gradient(#eeffff,#bbdefb)',
+                    color: "#01465C",
                     border: "1px solid #ccc",
                     textAlign: 'center',
-                    fontSize: 18
-                }
+                    fontSize: 16,
+                    fontWeight:600,
+                    width: '100%'
+                },
             }}
             columns={[
                 {   title: 'Partida',
                     field: 'partida',
                     defaultGroupOrder: 0,
                     cellStyle: {
-                        background: 'linear-gradient(#eeffff,#bbdefb)',
+                        background: 'linear-gradient(#ffff,#e6ffff)',
                         color: '#000',
-                        width:'100%',
                     },
                 },
                 {   title: 'Clave',

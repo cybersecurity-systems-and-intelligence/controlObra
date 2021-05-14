@@ -29,34 +29,36 @@ const TablaPartidas = () => {
             icons={tableIcons}
             title={<h3>PARTIDAS</h3>}
             options={{
-                pageSize: 25,
                 headerStyle: {
-                    color: "#000",
+                    background: 'linear-gradient(#eeffff,#bbdefb)',
+                    color: "#01465C",
                     border: "1px solid #ccc",
                     textAlign: 'center',
-                    fontSize: 18
-                }
+                    fontSize: 16,
+                    fontWeight:600,
+                    width: '100%'
+                },
             }}
+            
             columns={[
                 {   title: 'Partida',
                     field: 'partidayTotal',
                     defaultGroupOrder: 0,
                     cellStyle: {
-                        background: 'linear-gradient(#eeffff,#bbdefb)',
+                        background: 'linear-gradient(#ffff,#e6ffff)',
                         color: '#000',
-                        width:'100%',
                     },
                 },
                 {   title: 'Clave',
                     field: 'clave',
                     cellStyle: {
                         background: 'linear-gradient(#eeffff,#bbdefb)',
-                        color: '#000',
-                        width:'15%',
+                        color: '#01465C',
                         textAlign: 'center',
                         fontSize: 16,
                         fontWeight: 700,
                         border: "1px solid #ccc",
+                        width:'20%'
                     },
                 },
                 {   title: 'Descripcion',
@@ -64,10 +66,10 @@ const TablaPartidas = () => {
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'100%',
                         textAlign: 'justify',
-                        fontSize: 20,
-                        border: "1px solid #ccc"
+                        fontSize: 16,
+                        border: "1px solid #ccc",
+                        width:'50%'
                     },
                 },
                 {   title: 'Unidad',
@@ -75,7 +77,6 @@ const TablaPartidas = () => {
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'9%',
                         textAlign: 'center',
                         fontSize: 20,
                         border: "1px solid #ccc"
@@ -86,7 +87,6 @@ const TablaPartidas = () => {
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'9%',
                         textAlign: 'center',
                         fontSize: 20,
                         border: "1px solid #ccc"
@@ -97,7 +97,6 @@ const TablaPartidas = () => {
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'9%',
                         textAlign: 'center',
                         fontSize: 20,
                         border: "1px solid #ccc"
@@ -108,7 +107,6 @@ const TablaPartidas = () => {
                     cellStyle: {
                         backgroundColor: '#fff',
                         color: '#000',
-                        width:'9%',
                         textAlign: 'center',
                         fontSize: 20,
                         border: "1px solid #ccc"
