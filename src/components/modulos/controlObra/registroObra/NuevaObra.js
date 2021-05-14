@@ -7,7 +7,7 @@ import { KeyboardDatePicker, MuiPickersUtilsProvider,} from '@material-ui/picker
 import DateFnsUtils from '@date-io/date-fns';
 
 // se importa los estilos
-import { NuevaObraStyle, BootstrapInput} from '../../../../styles/bi/stylesBi'
+import { NuevaObraStyle, BootstrapInput, styleDateTime} from '../../../../styles/bi/stylesBi'
 
 // se importan los context
 import registroObraContext from '../../../../context/controlObra/registroObra/registroObraContext'
@@ -24,7 +24,7 @@ const theme = createMuiTheme({
 export default function NuevaObra({ estado }) {
 
   const classes = NuevaObraStyle();
-
+  const css = styleDateTime()
   // extrae la informacion del context
   const registroObrasContext = useContext(registroObraContext)
   const { 
@@ -55,8 +55,8 @@ return (
       <ThemeProvider theme={theme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <Box >
-            <Grid container spacing={3}>
-              <Grid  item xs>
+            <Grid container spacing={3} justify="center">
+              <Grid  item xs={12} sm={6} md={4} lg={3}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Nombre de la obra</b>
@@ -65,7 +65,7 @@ return (
                 </FormControl>
               </Grid>
 
-              <Grid  item xs>
+              <Grid  item xs={12} sm={6} md={4} lg={3}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Monto total</b>
@@ -74,7 +74,7 @@ return (
                 </FormControl>
               </Grid>
 
-              <Grid  item xs>
+              <Grid  item xs={12} sm={6} md={4} lg={3}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Numero de contrato</b>
@@ -86,13 +86,14 @@ return (
           </Box>
 
           <Box>
-            <Grid container spacing={3}>
-              <Grid  item xs>
+          <Grid container spacing={3} justify="center">
+              <Grid  item xs={12} sm={6} md={4} lg={3}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Fecha de contrato</b>
                   </InputLabel>
                   <KeyboardDatePicker
+                      className={css.date}
                       disabled={estado}
                       margin="normal"
                       color="secondary"
@@ -105,12 +106,13 @@ return (
                 </FormControl>
               </Grid>
 
-              <Grid  item xs>
+              <Grid  item xs={12} sm={6} md={4} lg={3}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Inicio de obra</b>
                   </InputLabel>
                   <KeyboardDatePicker
+                      className={css.date}
                       disabled={estado}
                       margin="normal"
                       color="secondary"
@@ -123,12 +125,13 @@ return (
                 </FormControl>
               </Grid>
 
-              <Grid  item xs>
+              <Grid  item xs={12} sm={6} md={4} lg={3}>
                 <FormControl className={classes.margin}>
                   <InputLabel shrink htmlFor="bootstrap-input">
                     <b>Fin de obra</b>
                   </InputLabel>
                   <KeyboardDatePicker
+                      className={css.date}
                       disabled={estado}
                       margin="normal"
                       color="secondary"

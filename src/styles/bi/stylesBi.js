@@ -299,3 +299,14 @@ export const styleTitle = makeStyles((theme) => ({
 
   }
 }));
+
+export const styleDateTime = makeStyles((theme) => ({
+      date:
+      {
+        background: '#fff',
+        border: '2px solid #3F51B5',
+        borderRadius: '8px',
+        padding: '8px',
+        marginTop: theme.spacing(3)
+      }
+}))

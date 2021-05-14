@@ -1,7 +1,7 @@
 // se importan las librerias y hooks
 import { useContext, Fragment, useState } from 'react';
 import MaterialTable from 'material-table';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import Button from '@material-ui/core/Button';
 
 // se importan los estilos
 import { tableIcons } from '../../../../styles/bi/stylesBi'
@@ -33,95 +33,103 @@ export default function TablaConceptos() {
                 icons={tableIcons}
                 title={<h3>CONCEPTOS</h3>}
 
-                options={{
-                    headerStyle: {
-                        backgroundColor: "#82b1ff",
-                        color: "#FFF",
-                        border: "1px solid #000",
-                        textAlign: 'center',
-                        fontSize: 18
-                    }
-                }}
-
                 columns={[
-                    {   title: 'Cantidad',
+                    {   title: 'Clave Unidad',
+                        field: 'ClaveUnidad',
+                        cellStyle: {
+                            background: 'linear-gradient(#eeffff,#bbdefb)',
+                            color: '#01465C',
+                            textAlign: 'center',
+                            fontSize: 16,
+                            fontWeight: 700,
+                            border: "1px solid #ccc",
+                        },
+                    },
+                    {
+                        title: 'Cantidad',
                         field: 'Cantidad',
                         cellStyle: {
                             backgroundColor: '#fff',
                             color: '#000',
-                            width:'10%',
                             border: "1px solid #ccc",
                             textAlign: 'center',
                             fontSize: 20
                         },
                     },
-                    {   title: 'Clave Unidad',
-                        field: 'ClaveUnidad',
-                        cellStyle: {
-                            backgroundColor: '#fff',
-                            color: '#000',
-                            width:'10%',
-                            border: "1px solid #ccc",
-                            textAlign: 'center',
-                            fontSize: 20,
-                        },
-                    },
-                    {   title: 'Descripcion',
+                    {
+                        title: 'Descripcion',
                         field: 'Descripcion',
                         cellStyle: {
                             backgroundColor: '#fff',
                             color: '#000',
                             width:'100%',
                             border: "1px solid #ccc",
-                            fontSize: 11,
+                            fontSize: 15,
                             textAlign: 'justify'
                         },
                     },
-                    {   title: 'Valor Unitario',
-                        field: 'ValorUnitario',
-                        type: 'numeric',
-                        cellStyle: {
+                    {
+                        title: 'Valor Unitario',
+                        field: 'ValorUnitario',                        cellStyle: {
                             backgroundColor: '#fff',
                             color: '#000',
-                            width:'10%',
                             border: "1px solid #ccc",
                             textAlign: 'center',
                             fontSize: 15
                         },
                     },
-                    {   title: 'Importe',
+                    {
+                        title: 'Importe',
                         field: 'Importe',
-                        type: 'numeric',
                         cellStyle: {
                             backgroundColor: '#fff',
                             color: '#000',
-                            width:'10%',
                             border: "1px solid #ccc",
                             textAlign: 'center',
-                            fontSize: 15 },
+                            fontSize: 15
+                        },
                     },
-                    {   title: 'Clave seleccionada',
+                    {
+                        title: 'Clave seleccionada',
                         field: 'claveSelect',
-                        type: 'numeric',
                         cellStyle: {
-                            backgroundColor: '#fff',
-                            color: '#000',
-                            width:'10%',
-                            border: "1px solid #ccc",
+                            background: '#e0f7fa',
+                            color: '#01465C',
                             textAlign: 'center',
-                            fontSize: 15 },
+                            fontSize: 16,
+                            fontWeight: 700,
+                            border: "1px solid #ccc",
+                        },
                     },
                 ]}
                 data={conceptos}
                 actions={[
                     {
-                        icon: ArrowForwardIosIcon,
+                        icon: props => <Button size="small" variant="contained" color="primary" >Seleccionar</Button>,
                         tooltip: 'Ver obra',
                         onClick: (event, rowData) =>  handleConcepto(rowData.NoIdentificacion)
                     },
                 ]}
                 options={{
-                    actionsColumnIndex: -1
+                    actionsColumnIndex: -1,
+                    headerStyle: {
+                        background: 'linear-gradient(#eeffff,#bbdefb)',
+                        color: "#01465C",
+                        border: "1px solid #ccc",
+                        textAlign: 'center',
+                        fontSize: 16,
+                        fontWeight: 600,
+                    },
+
+                    actionsCellStyle:{
+                        background: 'linear-gradient(#eeffff,#bbdefb)',
+                        width:'2%',
+                    }
+                }}
+                localization={{
+                    header: {
+                        actions: 'Seleccionar clave'
+                    },
                 }}
             />
             <ModalClaves
