@@ -38,11 +38,7 @@ export default function RegistroObra() {
     const { mensaje_registro_obra, guardarPartidas, items_no_found } = registroObrasContext
 
     
-    useEffect(() => {
-        if(items_no_found.length != 0) {   
-            createPDF(items_no_found)
-        }
-    }, [items_no_found])
+    
 
     
 

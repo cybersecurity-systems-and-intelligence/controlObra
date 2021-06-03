@@ -56,6 +56,9 @@ export default function CargaFactura () {
                 return
             }
             await guardarPartidas(formData)
+             
+            createPDF(items_no_found)
+             
         } catch {
             mostrarAlerta('Debe ingresar un archivo csv con la estructura correcta', 'alerta alerta-error')
             return
